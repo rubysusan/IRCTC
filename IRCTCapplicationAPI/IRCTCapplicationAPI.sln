@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRCTCapplicationAPI", "IRCTCapplicationAPI\IRCTCapplicationAPI.csproj", "{C1ED94D0-2E34-4C3C-A887-29BFB400DE0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRCTCModel", "IRCTCModel\IRCTCModel.csproj", "{CBCAF24C-9E11-46D3-8EC5-52F270E03CA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1ED94D0-2E34-4C3C-A887-29BFB400DE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1ED94D0-2E34-4C3C-A887-29BFB400DE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1ED94D0-2E34-4C3C-A887-29BFB400DE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1ED94D0-2E34-4C3C-A887-29BFB400DE0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCAF24C-9E11-46D3-8EC5-52F270E03CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCAF24C-9E11-46D3-8EC5-52F270E03CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCAF24C-9E11-46D3-8EC5-52F270E03CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCAF24C-9E11-46D3-8EC5-52F270E03CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC40D7E9-B927-4149-9639-84757039625E}
+	EndGlobalSection
+EndGlobal

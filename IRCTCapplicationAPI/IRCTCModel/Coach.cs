@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IRCTCModel
+{
+    public class Coach
+    {
+        public int CoachId { get; set; }
+        public string CoachName { get; set;}
+        public double BaseCharge { get; set;}
+    }
+}
