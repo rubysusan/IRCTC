@@ -1,5 +1,7 @@
 ﻿using IRCTCapplicationAPI.Request.Command.AddUser;
 using IRCTCapplicationAPI.Request.Command.AddUserType;
+using IRCTCapplicationAPI.Request.Query.GetAllUser;
+using IRCTCapplicationAPI.Request.Query.GetAllUserType;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +18,13 @@ namespace IRCTCapplicationAPI.Controllers
         }
         [HttpPost("AddUserType")]
         public async Task<ActionResult<bool>> AddUserType([FromBody] AddUserTypeCommand command) 
-        { return Ok(await _mediator.Send(command)); }
+        { 
+            return Ok(await _mediator.Send(command));
+        }
+        [HttpGet("GetAllUserType")]
+        public async Task<ActionResult<bool>> GetAllUserType([FromQuery] GetAllUserTypeQuery command)
+        { 
+            return Ok(await _mediator.Send(command));
+        }
     }
 }
