@@ -34,7 +34,7 @@ this.router.navigate(['./register']);
       {
         if(logDetails.password===this.login?.password)
         {
-          if(logDetails.userTypeId===1)
+          if(this.login?.userTypeId===1)
           {this.router.navigate(['./passenger']);}
           else{
             this.router.navigate(['./ttr']);

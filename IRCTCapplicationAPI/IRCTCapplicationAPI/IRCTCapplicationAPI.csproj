@@ -26,4 +26,8 @@
     <ProjectReference Include="..\IRCTC.Repository\IRCTC.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Request\Query\" />
+  </ItemGroup>
+
 </Project>
