@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "75JWYW5vY4EyBwbynjSZxdm3MLHAhNVMeQ7fhnEGk0Y=",
+  "Source": "IRCTCapplicationAPI",
+  "BasePath": "_content/IRCTCapplicationAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

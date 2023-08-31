@@ -1,0 +1,9 @@
+<h3>Login</h3>
+<form [formGroup]="loginGroup">
+<label>User name </label>
+<input type="text" id="userName" formControlName="userName"/><br><br>
+<label>Password </label>
+<input type="password" id="password" formControlName="password"/><br><br>
+<input type="button" id="register" value="Register" (click)="onRegister()" />
+<input type="button" id="login" value="Login"  (click)="onLogin()"/>
+</form>

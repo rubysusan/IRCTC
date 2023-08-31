@@ -1,0 +1,14 @@
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\bin\Debug\net6.0\IRCTCModel.deps.json
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\bin\Debug\net6.0\IRCTCModel.runtimeconfig.json
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\bin\Debug\net6.0\IRCTCModel.dll
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\bin\Debug\net6.0\IRCTCModel.pdb
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.csproj.AssemblyReference.cache
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.AssemblyInfoInputs.cache
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.AssemblyInfo.cs
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.csproj.CoreCompileInputs.cache
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.dll
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\refint\IRCTCModel.dll
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.pdb
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\IRCTCModel.genruntimeconfig.cache
+D:\Training\IRCTC\IRCTCapplicationAPI\IRCTCModel\obj\Debug\net6.0\ref\IRCTCModel.dll
