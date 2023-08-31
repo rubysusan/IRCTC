@@ -1,0 +1,19 @@
+<h3>Registration</h3>
+<form [formGroup]="regGroup">
+<label>User name </label>
+<input type="text" id="userName" formControlName="userName"/><br><br>
+<label>Password </label>
+<input type="password" id="password" formControlName="password"/><br><br>
+<label>Email </label>
+<input type="email" id="email" formControlName="email"/><br><br>
+<label>Identity Card Number </label>
+<input type="text" id="idCard" formControlName="idCard"/><br><br>
+<label>User Type </label>
+<select name="userType" id="userType">
+    <option value="none" selected disabled hidden>Select an Option</option>
+    <option value="passenger">Passenger</option>
+    <option value="tte">TTE</option>
+</select><br><br>
+<input type="button" id="back" value="back"  (click)="onBack()"/>
+<input type="button" id="register" value="Register" (click)="insert()" />
+</form>

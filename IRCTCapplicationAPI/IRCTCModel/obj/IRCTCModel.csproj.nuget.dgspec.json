@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CQ-Ruby\\source\\repos\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj": {}
+    "D:\\Training\\IRCTC\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CQ-Ruby\\source\\repos\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj": {
+    "D:\\Training\\IRCTC\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CQ-Ruby\\source\\repos\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj",
+        "projectUniqueName": "D:\\Training\\IRCTC\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj",
         "projectName": "IRCTCModel",
-        "projectPath": "C:\\Users\\CQ-Ruby\\source\\repos\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj",
-        "packagesPath": "C:\\Users\\CQ-Ruby\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CQ-Ruby\\source\\repos\\IRCTCapplicationAPI\\IRCTCModel\\obj\\",
+        "projectPath": "D:\\Training\\IRCTC\\IRCTCapplicationAPI\\IRCTCModel\\IRCTCModel.csproj",
+        "packagesPath": "C:\\Users\\CQ-Asna\\.nuget\\packages\\",
+        "outputPath": "D:\\Training\\IRCTC\\IRCTCapplicationAPI\\IRCTCModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CQ-Ruby\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CQ-Asna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,36 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
