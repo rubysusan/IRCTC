@@ -1,5 +1,7 @@
 ﻿using IRCTCModel.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace IRCTC.Repository.Context
 {
@@ -20,5 +22,11 @@ namespace IRCTC.Repository.Context
         public DbSet<Seat> Seat { get; set; }
         public DbSet<Coach> Coach { get; set; }
         public DbSet<Booking>  Booking { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            var assemblyName = Assembly.GetExecutingAssembly();
+            if (assemblyName is not null)
+                modelBuilder.ApplyConfigurationsFromAssembly(assemblyName);
+        }
     }
 }
