@@ -41,7 +41,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("Preference")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("SeatId")
                         .HasColumnType("int");
@@ -94,7 +95,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("CoachName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("CoachId");
 
@@ -114,7 +116,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("SeatNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("SeatTypeId")
                         .HasColumnType("int");
@@ -141,7 +144,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("TypeName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SeatTypeId");
 
@@ -158,7 +162,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("StationName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("StationId");
 
@@ -190,7 +195,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("TrainName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("TrainId");
 
@@ -269,7 +275,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("TypeName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("TrainTypeID");
 
@@ -286,21 +293,26 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("IdentityCardID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("UserTypeID")
+                        .HasMaxLength(50)
                         .HasColumnType("int");
 
                     b.HasKey("UserId");
@@ -320,7 +332,8 @@ namespace IRCTC.Repository.Migrations
 
                     b.Property<string>("TypeName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("UserTypeId");
 
@@ -332,37 +345,37 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.TrainStop", "FromTrainStop")
                         .WithMany()
                         .HasForeignKey("FromTrainStopTrainStopId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Seat", "Seat")
                         .WithMany()
                         .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.SeatType", "SeatType")
                         .WithMany()
                         .HasForeignKey("SeatTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainStop", "ToTrainStop")
                         .WithMany()
                         .HasForeignKey("ToTrainStopTrainStopId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainClass", "TrainClass")
                         .WithMany()
                         .HasForeignKey("TrainClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("FromTrainStop");
@@ -383,13 +396,13 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.SeatType", "SeatType")
                         .WithMany()
                         .HasForeignKey("SeatTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainClass", "TrainClass")
                         .WithMany()
                         .HasForeignKey("TrainClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("SeatType");
@@ -402,13 +415,13 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.Station", "FromStation")
                         .WithMany()
                         .HasForeignKey("FromStationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Station", "ToStation")
                         .WithMany()
                         .HasForeignKey("ToStationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("FromStation");
@@ -421,13 +434,13 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.Coach", "Coach")
                         .WithMany()
                         .HasForeignKey("CoachId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Train", "Train")
                         .WithMany()
                         .HasForeignKey("TrainId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Coach");
@@ -440,13 +453,13 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.Station", "Station")
                         .WithMany()
                         .HasForeignKey("StationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Train", "Train")
                         .WithMany()
                         .HasForeignKey("TrainId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Station");
@@ -459,7 +472,7 @@ namespace IRCTC.Repository.Migrations
                     b.HasOne("IRCTCModel.Models.UserType", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("UserType");

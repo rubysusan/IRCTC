@@ -11,7 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<IrctcContext>(option =>
 {
-    option.UseSqlServer(builder.Configuration["ConnectionString:SqlServer"]);
+    option.UseSqlServer(builder.Configuration["ConnectionString:SqlServer"],
+        option => option.MigrationsAssembly("IRCTC.Repository"));
+
 });
 
 var app = builder.Build();

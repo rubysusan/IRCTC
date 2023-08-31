@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IRCTC.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class TEs : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     CoachId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CoachName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoachName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     BaseCharge = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
@@ -31,7 +31,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     SeatTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,7 +44,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     StationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StationName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    StationName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     TrainTypeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,7 +70,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     UserTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,7 +83,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     TrainId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TrainName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TrainName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     FromStationId = table.Column<int>(type: "int", nullable: false),
                     ToStationId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -98,13 +98,13 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.FromStationId,
                         principalTable: "Station",
                         principalColumn: "StationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Train_Station_ToStationId",
                         column: x => x.ToStationId,
                         principalTable: "Station",
                         principalColumn: "StationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -113,11 +113,11 @@ namespace IRCTC.Repository.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdentityCardID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserTypeID = table.Column<int>(type: "int", nullable: false)
+                    UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IdentityCardID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserTypeID = table.Column<int>(type: "int", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,7 +127,7 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.UserTypeID,
                         principalTable: "UserType",
                         principalColumn: "UserTypeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,13 +148,13 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.CoachId,
                         principalTable: "Coach",
                         principalColumn: "CoachId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_TrainClass_Train_TrainId",
                         column: x => x.TrainId,
                         principalTable: "Train",
                         principalColumn: "TrainId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,13 +177,13 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.StationId,
                         principalTable: "Station",
                         principalColumn: "StationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_TrainStop_Train_TrainId",
                         column: x => x.TrainId,
                         principalTable: "Train",
                         principalColumn: "TrainId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,7 +192,7 @@ namespace IRCTC.Repository.Migrations
                 {
                     SeatId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SeatNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SeatTypeId = table.Column<int>(type: "int", nullable: false),
                     TrainClassId = table.Column<int>(type: "int", nullable: false),
                     Booked = table.Column<bool>(type: "bit", nullable: false)
@@ -205,13 +205,13 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.SeatTypeId,
                         principalTable: "SeatType",
                         principalColumn: "SeatTypeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Seat_TrainClass_TrainClassId",
                         column: x => x.TrainClassId,
                         principalTable: "TrainClass",
                         principalColumn: "TrainClassId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -228,7 +228,7 @@ namespace IRCTC.Repository.Migrations
                     ToStop = table.Column<int>(type: "int", nullable: false),
                     ToTrainStopTrainStopId = table.Column<int>(type: "int", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false),
-                    Preference = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Preference = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TotalCost = table.Column<double>(type: "float", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -240,37 +240,37 @@ namespace IRCTC.Repository.Migrations
                         column: x => x.SeatTypeId,
                         principalTable: "SeatType",
                         principalColumn: "SeatTypeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Booking_Seat_SeatId",
                         column: x => x.SeatId,
                         principalTable: "Seat",
                         principalColumn: "SeatId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Booking_TrainClass_TrainClassId",
                         column: x => x.TrainClassId,
                         principalTable: "TrainClass",
                         principalColumn: "TrainClassId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Booking_TrainStop_FromTrainStopTrainStopId",
                         column: x => x.FromTrainStopTrainStopId,
                         principalTable: "TrainStop",
                         principalColumn: "TrainStopId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Booking_TrainStop_ToTrainStopTrainStopId",
                         column: x => x.ToTrainStopTrainStopId,
                         principalTable: "TrainStop",
                         principalColumn: "TrainStopId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Booking_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

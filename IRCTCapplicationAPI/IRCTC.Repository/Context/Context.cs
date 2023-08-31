@@ -1,5 +1,6 @@
 ﻿using IRCTCModel.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -27,6 +28,15 @@ namespace IRCTC.Repository.Context
             var assemblyName = Assembly.GetExecutingAssembly();
             if (assemblyName is not null)
                 modelBuilder.ApplyConfigurationsFromAssembly(assemblyName);
+            
+            foreach (IMutableEntityType entity in modelBuilder.Model.GetEntityTypes()) 
+            { 
+                entity.GetForeignKeys().Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade)
+                    .ToList()
+                    .ForEach(fk => fk.DeleteBehavior = DeleteBehavior.Restrict); 
+            }
+
         }
     }
 }
+
