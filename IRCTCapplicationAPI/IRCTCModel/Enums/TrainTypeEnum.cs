@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace IRCTCModel.Enums
 {
-    public enum UserTypeEnum
+    public enum TrainTypeEnum
     {
-       Passenger = 1,
-       TTE
+        Janshatabdi=1,
+        Shatabdi,
+        Antyodaya,
+        Intercity,
+        Express
     }
 }

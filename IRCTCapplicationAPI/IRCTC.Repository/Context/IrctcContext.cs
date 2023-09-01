@@ -25,6 +25,7 @@ namespace IRCTC.Repository.Context
         public DbSet<Booking>  Booking { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
             var assemblyName = Assembly.GetExecutingAssembly();
             if (assemblyName is not null)
                 modelBuilder.ApplyConfigurationsFromAssembly(assemblyName);

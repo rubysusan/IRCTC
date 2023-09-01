@@ -1,5 +1,5 @@
 ﻿using IRCTCapplicationAPI.Request.Command.AddUser;
-using IRCTCapplicationAPI.Request.Command.AddUserType;
+
 using IRCTCapplicationAPI.Request.Query.GetAllUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
