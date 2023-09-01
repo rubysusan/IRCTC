@@ -15,7 +15,6 @@ namespace IRCTC.Repository.Configurations
         {
             builder.Property(x => x.TrainId).IsRequired();
             builder.Property(x => x.ClassId).IsRequired();
-
         }
     }
 }
