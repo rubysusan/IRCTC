@@ -7,17 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using  IRCTCModel.Enums;
+
 
 namespace IRCTC.Repository.Configurations
 {
     public class UserTypeConfiguration : IEntityTypeConfiguration<UserType>
     {
-        UserType[] d = {
-            new UserType(IRCTCModel.Enums.UserType.Passenger),
-            new UserType(IRCTCModel.Enums.UserType.TTE),
-
-        }; 
-
         public void Configure(EntityTypeBuilder<UserType> builder)
         {
 
@@ -25,8 +21,8 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.TypeName).IsRequired();
             builder.Property(x => x.TypeName).HasMaxLength(50);
             builder.HasData( new UserType[] {
-            new UserType(IRCTCModel.Enums.UserType.Passenger),
-            new UserType(IRCTCModel.Enums.UserType.TTE)
+            new UserType(UserTypeEnum.Passenger),
+            new UserType(UserTypeEnum.TTE)
         });
 
         }

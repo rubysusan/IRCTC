@@ -1,4 +1,4 @@
-﻿using UserTypeEnum = IRCTCModel.Enums.UserType;
+﻿using  IRCTCModel.Enums;
 
 namespace IRCTCModel.Models
 {
