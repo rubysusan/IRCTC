@@ -14,6 +14,7 @@ namespace IRCTCModel.Models
         public SeatType SeatType { get; set; }
         public int TrainClassId { get; set; }
         public TrainClass TrainClass { get; set; }
-        public bool Booked { get; set; }
+        public int SeatStatusId { get; set; }
+        public SeatStatus SeatStatus { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace IRCTCModel.Models
     public class Coach
     {
         public int CoachId { get; set; }
-        public string CoachName { get; set; }
+        public string CoachName { get; }
         public double BaseCharge { get; set; }
     }
 }
