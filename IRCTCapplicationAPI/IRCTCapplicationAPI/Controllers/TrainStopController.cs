@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IRCTCapplicationAPI.Request.Command.AddStation;
+using IRCTCapplicationAPI.Request.Command.AddTrainStop;
+using IRCTCapplicationAPI.Request.Query.GetAllStation;
+using IRCTCapplicationAPI.Request.Query.GetAllTrainStop;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IRCTCapplicationAPI.Controllers
 {
-    public class TrainStopController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TrainStopController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IMediator _mediator;
+        public TrainStopController(IMediator mediator)
         {
-            return View();
+            _mediator = mediator;
         }
+        [HttpPost("AddTrainStop")]
+        public async Task<ActionResult<bool>> AddTrainStop([FromBody] AddTrainStopCommand command)
+        { return Ok(await _mediator.Send(command)); }
+        [HttpGet("GetAllTrainStop")]
+        public async Task<ActionResult<bool>> GetAllTrainStop([FromQuery] GetAllTrainStopQuery query)
+        { return Ok(await _mediator.Send(query)); }
     }
 }

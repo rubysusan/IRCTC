@@ -23,3 +23,4 @@ namespace IRCTCapplicationAPI.Controllers
         public async Task<ActionResult<bool>> GetAllStation([FromQuery] GetAllStationQuery query)
         { return Ok(await _mediator.Send(query)); }
     }
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IRCTCModel.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,10 @@ namespace IRCTCModel.Models
     {
         public int SeatTypeId { get; set; }
         public string TypeName { get; set; }
+        public SeatType(SeatTypeEnum seatTypeEnum)
+        {
+            SeatTypeId=(byte)seatTypeEnum;
+            TypeName=seatTypeEnum.ToString();
+        }
     }
 }

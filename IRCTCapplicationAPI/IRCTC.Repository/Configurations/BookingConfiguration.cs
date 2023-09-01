@@ -23,7 +23,24 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.Preference).HasMaxLength(50);
             builder.Property(x => x.TotalCost).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-
+            builder.HasOne(x => x.Seat)
+                   .WithMany()
+                   .HasForeignKey(x => x.SeatId);
+            builder.HasOne(x => x.SeatType)
+                   .WithMany()
+                   .HasForeignKey(x => x.SeatTypeId);
+            builder.HasOne(x => x.TrainClass)
+                   .WithMany()
+                   .HasForeignKey(x => x.TrainClassId);
+            builder.HasOne(x => x.FromTrainStop)
+                   .WithMany()
+                   .HasForeignKey(x => x.FromStop);
+            builder.HasOne(x => x.ToTrainStop)
+                   .WithMany()
+                   .HasForeignKey(x => x.ToStop);
+            builder.HasOne(x => x.User)
+                   .WithMany()
+                   .HasForeignKey(x => x.UserId);
         }
     }
 }

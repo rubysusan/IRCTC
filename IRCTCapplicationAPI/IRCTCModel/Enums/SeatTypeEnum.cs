@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace IRCTCModel.Enums
 {
-    internal class SeatTypeEnum
+    public enum SeatTypeEnum
     {
+        LowerBirth=1,
+        UpperBirth,
+        MiddleBirth,
+        WindowSeat,
+        AisleSeat
     }
 }
