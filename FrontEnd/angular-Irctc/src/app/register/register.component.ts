@@ -10,6 +10,8 @@ import { UserHttpService } from '../user-http.service';
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit{
+  selectedValue:any;
+  typeValue:number=0;
 public newUser:ILoginDetails={
   userName:"",
   password:"",
@@ -31,6 +33,19 @@ public newUser:ILoginDetails={
      userType:new FormControl('')
    })
  }
+ getSelectedValue(event:any){
+  
+  // Prints selected value
+  this.selectedValue=event.target.value;
+  if(this.selectedValue=="passenger")
+  {
+    this.typeValue=1;
+  }
+  else{
+    this.typeValue=2;
+  }
+  console.log(event.target.value);
+}
  insert(){
   const val=this.regGroup.value;
   const temp:ILoginDetails={
@@ -44,8 +59,10 @@ public newUser:ILoginDetails={
   this.newUser.password=temp.password;
   this.newUser.email=temp.email;
   this.newUser.identityCardID=temp.identityCardID;
-  this.newUser.userTypeId=temp.userTypeId;
+  this.newUser.userTypeId=this.typeValue;
   this.userService.addUser(this.newUser).subscribe(data=>{console.log(data)})
+  alert("Successfully Registered");
+  this.router.navigate(['.']);
  }
  onBack(){
   this.router.navigate(['.']);

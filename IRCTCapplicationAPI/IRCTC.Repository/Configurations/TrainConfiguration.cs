@@ -20,6 +20,10 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.Date).IsRequired();
             builder.Property(x => x.DepartureTime).IsRequired();
             builder.Property(x => x.ReachingTime).IsRequired();
+            builder.Property(x=>x.TrainTypeID).IsRequired();
+            builder.HasOne(x => x.TrainType)
+                   .WithMany()
+                   .HasForeignKey(x => x.TrainTypeID);
             builder.HasOne(x => x.FromStation)
                    .WithMany()
                    .HasForeignKey(x => x.FromStationId);

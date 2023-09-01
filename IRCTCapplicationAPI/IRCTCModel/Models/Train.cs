@@ -16,6 +16,8 @@ namespace IRCTCModel.Models
 
         public int ToStationId { get; set; }
         public Station ToStation { get; set; }
+        public int TrainTypeID { get; set; }
+        public TrainType TrainType { get; set; }
         public DateTime Date { get; set; }
         public DateTime DepartureTime { get; set; }
 

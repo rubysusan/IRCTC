@@ -9,7 +9,7 @@
 <label>Identity Card Number </label>
 <input type="text" id="idCard" formControlName="idCard"/><br><br>
 <label>User Type </label>
-<select name="userType" id="userType">
+<select name="userType" id="userType" (change)="getSelectedValue($event)">
     <option value="none" selected disabled hidden>Select an Option</option>
     <option value="passenger">Passenger</option>
     <option value="tte">TTE</option>
