@@ -11,7 +11,7 @@ namespace IRCTCModel.Models
         }
 
         public int UserTypeId { get; set; }
-        public string TypeName { get; set; }
+        public string TypeName { get;  }
 
     }
 }
