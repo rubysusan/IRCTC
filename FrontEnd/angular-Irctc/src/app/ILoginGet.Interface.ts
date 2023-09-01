@@ -1,4 +1,5 @@
-export interface ILoginDetails{
+export interface ILoginGet{
+    id:number;
     userName:string;
     password:string;
     email:string;

@@ -10,13 +10,13 @@ public loginDetails:Array<ILoginDetails>=[
     userName:"Asna",
     password:"123",
     email:"asna@gmail.com",
-    idCardNo:"A123",
+    identityCardID:"A123",
     userTypeId:1,
   },{
     userName:"Ruby",
     password:"123",
     email:"ruby@gmail.com",
-    idCardNo:"A123",
+    identityCardID:"A123",
     userTypeId:1,
   }
 ]

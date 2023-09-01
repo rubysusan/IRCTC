@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDetailsService } from '../login-details.service';
 import { ILoginDetails } from '../ILoginDetails.Interface';
+import { UserHttpService } from '../user-http.service';
+import { ILoginGet } from '../ILoginGet.Interface';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +14,10 @@ import { ILoginDetails } from '../ILoginDetails.Interface';
 export class LoginComponent implements OnInit {
   public loginGroup!:FormGroup;
   public login?:ILoginDetails;
-   constructor(private fb:FormBuilder,private router:Router,private activatedRoute: ActivatedRoute,private logService:LoginDetailsService){
-
+  public user:Array<ILoginGet>=[]
+   constructor(private userService:UserHttpService,private fb:FormBuilder,private router:Router,private activatedRoute: ActivatedRoute,private logService:LoginDetailsService){
+    this.userService.getUser().subscribe((data:Array<ILoginGet>)=>{this.user=data;
+    console.log(this.user)})
    }
    
   ngOnInit(){
@@ -28,17 +32,18 @@ this.router.navigate(['./register']);
   onLogin(){
     
       const logDetails=this.loginGroup?.value;
-      this.login=this.logService.loginDetails.find(x=>x.userName===logDetails.userName)
+      this.login=this.user.find(x=>x.userName===logDetails.userName)
       console.log(this.login?.userName)
       if(logDetails.userName===this.login?.userName)
       {
         if(logDetails.password===this.login?.password)
         {
-          if(this.login?.userTypeId===1)
-          {this.router.navigate(['./passenger']);}
-          else{
-            this.router.navigate(['./ttr']);
-          }
+          this.router.navigate(['./passenger']);
+          // if(this.login?.userTypeId===1)
+          // {this.router.navigate(['./passenger']);}
+          // else{
+          //   this.router.navigate(['./ttr']);
+          // }
         }
         else{
           alert("Wrong Password")
