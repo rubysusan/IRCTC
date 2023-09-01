@@ -22,8 +22,9 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.IdentityCardID).IsRequired();
             builder.Property(x => x.IdentityCardID).HasMaxLength(50);
             builder.Property(x => x.UserTypeID).IsRequired();
-            builder.Property(x => x.UserTypeID).HasMaxLength(50);
-
+            builder.HasOne(x => x.UserType)
+                   .WithMany()
+                   .HasForeignKey(x => x.UserTypeID);
         }
     }
 }

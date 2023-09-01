@@ -4,6 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ILoginDetails } from '../ILoginDetails.Interface';
 import { UserHttpService } from '../user-http.service';
 
+enum userTypeEnum{
+  Passenger=1,
+  TTE
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -35,15 +40,16 @@ public newUser:ILoginDetails={
  }
  getSelectedValue(event:any){
   
-  // Prints selected value
   this.selectedValue=event.target.value;
-  if(this.selectedValue=="passenger")
+  if(this.selectedValue===userTypeEnum[userTypeEnum.Passenger])
   {
     this.typeValue=1;
+    
   }
   else{
     this.typeValue=2;
   }
+  console.log(this.typeValue)
   console.log(event.target.value);
 }
  insert(){

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IRCTCModel.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,11 @@ namespace IRCTCModel.Models
         public int CoachId { get; set; }
         public string CoachName { get; }
         public double BaseCharge { get; set; }
+        public Coach(CoachEnum coachEnum,double charge)
+        {
+            CoachId = (byte)coachEnum;
+            CoachName = coachEnum.ToString();
+            BaseCharge = charge;
+        }
     }
 }
