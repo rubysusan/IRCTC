@@ -3,7 +3,12 @@
 namespace IRCTCModel.Models
 {
     public class UserType
+
     {
+        private UserType()
+        {
+            TypeName = string.Empty;
+        }
         public UserType(UserTypeEnum userTypeId)
         {
             UserTypeId = (byte)userTypeId;

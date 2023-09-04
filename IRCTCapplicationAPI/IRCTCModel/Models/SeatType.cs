@@ -11,6 +11,10 @@ namespace IRCTCModel.Models
     {
         public int SeatTypeId { get; set; }
         public string TypeName { get; set; }
+        private SeatType()
+        {
+            TypeName = string.Empty;
+        }
         public SeatType(SeatTypeEnum seatTypeEnum)
         {
             SeatTypeId=(byte)seatTypeEnum;

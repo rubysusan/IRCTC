@@ -11,6 +11,10 @@ namespace IRCTCModel.Models
     {
         public int SeatStatusId { get; set; }
         public string Status { get; }
+        private SeatStatus()
+        {
+            Status = string.Empty;
+        }
         public SeatStatus(SeatStatusEnum seatStatusEnum)
         {
             SeatStatusId = (byte)seatStatusEnum;

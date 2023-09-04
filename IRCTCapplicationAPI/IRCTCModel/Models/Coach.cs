@@ -12,6 +12,9 @@ namespace IRCTCModel.Models
         public int CoachId { get; set; }
         public string CoachName { get; }
         public double BaseCharge { get; set; }
+        private Coach() {
+            CoachName = string.Empty;
+        }
         public Coach(CoachEnum coachEnum,double charge)
         {
             CoachId = (byte)coachEnum;

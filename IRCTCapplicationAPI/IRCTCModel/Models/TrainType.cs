@@ -11,6 +11,10 @@ namespace IRCTCModel.Models
     {
         public int TrainTypeID { get; set; }
         public string TypeName { get;}
+        private TrainType()
+        {
+            TypeName = string.Empty;
+        }
         public TrainType(TrainTypeEnum trainTypeEnum)
         {
             TrainTypeID=(byte)trainTypeEnum;

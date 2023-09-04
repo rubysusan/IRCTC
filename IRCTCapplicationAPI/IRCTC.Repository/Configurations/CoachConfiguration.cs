@@ -20,14 +20,14 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.BaseCharge).IsRequired();
             builder.HasData(new Coach[]
             {
-                new Coach(CoachEnum.ACFirstClass,100),
-                new Coach(CoachEnum.ExecChairCar,200),
-                new Coach(CoachEnum.ACChairCar,150),
-                new Coach(CoachEnum.Sleeper,80),
-                new Coach(CoachEnum.SecondSitting,50),
-                new Coach(CoachEnum.ACSecondTier,130),
-                new Coach(CoachEnum.ACThirdTier,150),
-                new Coach(CoachEnum.ACThreeEconomy,85)
+                new Coach(CoachEnum.ACFirstClass,100.0),
+                new Coach(CoachEnum.ExecChairCar,200.0),
+                new Coach(CoachEnum.ACChairCar,150.0),
+                new Coach(CoachEnum.Sleeper,80.0),
+                new Coach(CoachEnum.SecondSitting,50.0),
+                new Coach(CoachEnum.ACSecondTier,130.0),
+                new Coach(CoachEnum.ACThirdTier,150.0),
+                new Coach(CoachEnum.ACThreeEconomy,85.0)
             });
         }
     }
