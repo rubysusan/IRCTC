@@ -17,17 +17,7 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.SeatNumber).HasMaxLength(50);
             builder.Property(x => x.SeatTypeId).IsRequired();
             builder.Property(x => x.TrainClassId).IsRequired();
-            builder.Property(x=>x.SeatStatusId).IsRequired();
-           
-            builder.HasOne(x => x.SeatType)
-                   .WithMany()
-                   .HasForeignKey(x => x.SeatTypeId);
-            builder.HasOne(x => x.TrainClass)
-                   .WithMany()
-                   .HasForeignKey(x => x.TrainClassId);
-            builder.HasOne(x => x.SeatStatus)
-                   .WithMany()
-                   .HasForeignKey(x => x.SeatStatusId);
+
         }
 
     }
