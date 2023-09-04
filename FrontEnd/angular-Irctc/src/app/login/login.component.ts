@@ -5,6 +5,11 @@ import { LoginDetailsService } from '../login-details.service';
 import { ILoginDetails } from '../ILoginDetails.Interface';
 import { UserHttpService } from '../user-http.service';
 import { ILoginGet } from '../ILoginGet.Interface';
+enum userTypeEnum{
+  Passenger=1,
+  TTE
+}
+
 
 @Component({
   selector: 'app-login',
@@ -39,10 +44,10 @@ this.router.navigate(['./register']);
         if(logDetails.password===this.login?.password)
         {
           this.router.navigate(['./passenger']);
-          // if(this.login?.userTypeId===1)
+          // if(this.login?.userTypeId===userTypeEnum.Passenger)
           // {this.router.navigate(['./passenger']);}
           // else{
-          //   this.router.navigate(['./ttr']);
+          //   this.router.navigate(['./tte']);
           // }
         }
         else{
