@@ -21,7 +21,8 @@
           {{option.stationName}}
         </mat-option>
       </mat-autocomplete>
-      <label>Date:</label>
-      <input type="date" formControlName="dateFilter">
+      <label>From:</label>
+      <input type="text" formControlName="to" [matAutocomplete]="auto">
+    
 </form>
 

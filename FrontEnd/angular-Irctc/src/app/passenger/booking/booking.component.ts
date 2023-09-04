@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ILoginGet } from 'src/app/ILoginGet.Interface';
-import { IStationDetails } from 'src/app/IStationDetails.Interface';
-import { StationHttpService } from 'src/app/station-http.service';
 import { UserHttpService } from 'src/app/user-http.service';
 
 
@@ -13,35 +11,28 @@ import { UserHttpService } from 'src/app/user-http.service';
   styleUrls: ['./booking.component.sass']
 })
 export class BookingComponent implements OnInit{
-station:Array<IStationDetails>=[]
-constructor(private stationService:StationHttpService,private router:Router,
+user:Array<ILoginGet>=[]
+constructor(private userService:UserHttpService,private router:Router,
   private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
-    this.stationService.getStation().subscribe((data:Array<IStationDetails>)=>{this.station=data;
-      console.log(this.station)})
+    this.userService.getUser().subscribe((data:Array<ILoginGet>)=>{this.user=data;
+      console.log(this.user)})
 }
 val:string=''
-data:Array<IStationDetails>=[]
+data:Array<ILoginGet>=[]
 fromSearch=new FormGroup({from:new FormControl('')});
-toSearch=new FormGroup({to:new FormControl('')});
-ngOnInit(): void {
 
+ngOnInit(): void {
+  this.fromSearch.controls['from'].valueChanges.subscribe(value=>{
+    console.log(value);
+    this.val=value!;
+    this.data=this.user.filter(x=>x.userName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
+    console.log(this.data);
+  }); 
+  
   
 }
 onFromSearch()
 {
-  this.fromSearch.controls['from'].valueChanges.subscribe(value=>{
-    console.log(value);
-    this.val=value!;
-    this.data=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-    console.log(this.data);
-  }); 
-}
-onToSearch(){
-  this.toSearch.controls['to'].valueChanges.subscribe(value=>{
-    console.log(value);
-    this.val=value!;
-    this.data=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-    console.log(this.data);
-  }); 
+
 }
 }
