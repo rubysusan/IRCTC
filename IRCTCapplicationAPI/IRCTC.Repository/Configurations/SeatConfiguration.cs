@@ -17,8 +17,9 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.SeatNumber).HasMaxLength(50);
             builder.Property(x => x.SeatTypeId).IsRequired();
             builder.Property(x => x.TrainClassId).IsRequired();
-           builder.Property(x=>x.SeatStatusId).IsRequired();
+
         }
+
     }
 
 }
