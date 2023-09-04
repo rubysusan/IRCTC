@@ -20,6 +20,10 @@ namespace IRCTC.Repository.Configurations
             builder.HasOne(x => x.Station)
                    .WithMany()
                    .HasForeignKey(x => x.StopStationId);
+            builder.HasOne(x => x.Train)
+                .WithMany()
+                .HasForeignKey(x => x.TrainId);
+
 
         }
     }
