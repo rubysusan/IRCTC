@@ -11,6 +11,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TteComponent } from './tte/tte.component';
 import { BookingComponent } from './passenger/booking/booking.component';
 import { AccountComponent } from './passenger/account/account.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,8 +32,7 @@ import { AccountComponent } from './passenger/account/account.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ],
+    HttpClientModule,MatAutocompleteModule,MatInputModule,MatFormFieldModule,BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

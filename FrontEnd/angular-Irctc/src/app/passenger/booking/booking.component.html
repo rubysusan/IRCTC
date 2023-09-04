@@ -1,1 +1,14 @@
-<p>booking works!</p>
+<h2>Booking</h2>
+<form [formGroup]="fromSearch"(change)="onFromSearch()">
+    <br>
+  
+    <label>From:</label>
+    <input type="text" formControlName="from" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of data" [value]="option.userName">
+          {{option.userName}}
+        </mat-option>
+      </mat-autocomplete>
+ 
+</form>
+
