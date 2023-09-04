@@ -34,7 +34,7 @@ public newUser:ILoginDetails={
      userName:new FormControl(''),
      password:new FormControl(''),
      email:new FormControl(''),
-     idCard:new FormControl(''),
+     identityCardID:new FormControl(''),
      userType:new FormControl('')
    })
  }
@@ -43,11 +43,11 @@ public newUser:ILoginDetails={
   this.selectedValue=event.target.value;
   if(this.selectedValue===userTypeEnum[userTypeEnum.Passenger])
   {
-    this.typeValue=1;
+    this.typeValue=userTypeEnum.Passenger;
     
   }
   else{
-    this.typeValue=2;
+    this.typeValue=userTypeEnum.TTE; 
   }
   console.log(this.typeValue)
   console.log(event.target.value);
