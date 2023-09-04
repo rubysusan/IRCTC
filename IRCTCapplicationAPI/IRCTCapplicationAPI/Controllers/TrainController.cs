@@ -20,7 +20,7 @@ namespace IRCTCapplicationAPI.Controllers
         {
             return Ok(await _mediator.Send(command));
         }
-        [HttpPost("GetAllTrain")]
+        [HttpGet("GetAllTrain")]
         public async Task<ActionResult<bool>> GetAllTrain([FromQuery] GetAllTrainQuery query)
         {
             return Ok(await _mediator.Send(query));
