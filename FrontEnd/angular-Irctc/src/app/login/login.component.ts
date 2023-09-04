@@ -44,7 +44,7 @@ this.router.navigate(['./register']);
         if(logDetails.password===this.login?.password)
         {
           
-          if(this.login?.userTypeID===1)
+          if(this.login?.userTypeID===userTypeEnum.Passenger)
           {
             this.router.navigate(['./passenger']);
           }

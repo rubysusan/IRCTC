@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./tte.component.sass']
 })
 export class TteComponent {
+  onSearchTrain(){
 
+  }
+  onMyAccount(){
+    
+  }
 }
