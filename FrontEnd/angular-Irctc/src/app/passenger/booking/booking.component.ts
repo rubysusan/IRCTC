@@ -27,21 +27,33 @@ ngOnInit(): void {
 
   
 }
+fromStationVal:string=''
 onFromSearch()
 {
   this.fromSearch.controls['from'].valueChanges.subscribe(value=>{
-    console.log(value);
     this.val=value!;
     this.data=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-    console.log(this.data);
+    this.fromStationVal=String(this.data.map(x=>x.stationName))
+    console.log(this.fromStationVal);
   }); 
 }
+toStationVal:string=''
 onToSearch(){
   this.toSearch.controls['to'].valueChanges.subscribe(value=>{
-    console.log(value);
     this.val=value!;
     this.data=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-    console.log(this.data);
+    this.toStationVal=String(this.data.map(x=>x.stationName))
+    console.log(this.toStationVal);
   }); 
+}
+dateVal:Date=new Date()
+onDate(event:any)
+{
+  this.dateVal=event.target.value;
+  console.log(this.dateVal)
+}
+onSearch()
+{
+  
 }
 }
