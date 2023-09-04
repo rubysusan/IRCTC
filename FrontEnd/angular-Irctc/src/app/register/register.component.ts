@@ -22,7 +22,7 @@ public newUser:ILoginDetails={
   password:"",
   email:"",
   identityCardID:"",
-  userTypeId:0
+  userTypeID:0
 }
   public regGroup!:FormGroup;
   constructor(private userService:UserHttpService,private fb:FormBuilder,
@@ -59,13 +59,13 @@ public newUser:ILoginDetails={
     password:val.password||'',
     email:val.email||'',
     identityCardID:val.identityCardID||'',
-    userTypeId:1
+    userTypeID:1
   }
   this.newUser.userName=temp.userName;
   this.newUser.password=temp.password;
   this.newUser.email=temp.email;
   this.newUser.identityCardID=temp.identityCardID;
-  this.newUser.userTypeId=this.typeValue;
+  this.newUser.userTypeID=this.typeValue;
   this.userService.addUser(this.newUser).subscribe(data=>{console.log(data)})
   alert("Successfully Registered");
   this.router.navigate(['.']);

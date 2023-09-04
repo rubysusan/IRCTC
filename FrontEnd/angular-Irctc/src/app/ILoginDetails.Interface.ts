@@ -3,5 +3,5 @@ export interface ILoginDetails{
     password:string;
     email:string;
     identityCardID:string;
-    userTypeId:number;
+    userTypeID:number;
 }
