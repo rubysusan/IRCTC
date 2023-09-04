@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IRCTC.Repository.Migrations
 {
     [DbContext(typeof(IrctcContext))]
-    [Migration("20230904051700_init")]
+    [Migration("20230904053542_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -183,14 +183,42 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.SeatStatus", b =>
                 {
                     b.Property<int>("SeatStatusId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatStatusId"));
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SeatStatusId");
 
                     b.ToTable("SeatStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            SeatStatusId = 1,
+                            Status = "Confirmed"
+                        },
+                        new
+                        {
+                            SeatStatusId = 2,
+                            Status = "ReservationAgainstCancellation"
+                        },
+                        new
+                        {
+                            SeatStatusId = 3,
+                            Status = "GeneralWaitingList"
+                        },
+                        new
+                        {
+                            SeatStatusId = 4,
+                            Status = "TatkalWaitingList"
+                        },
+                        new
+                        {
+                            SeatStatusId = 5,
+                            Status = "TicketCancelled"
+                        });
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.SeatType", b =>

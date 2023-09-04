@@ -30,8 +30,8 @@ namespace IRCTC.Repository.Migrations
                 name: "SeatStatus",
                 columns: table => new
                 {
-                    SeatStatusId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                    SeatStatusId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -305,6 +305,18 @@ namespace IRCTC.Repository.Migrations
                     { 6, 130.0, "ACSecondTier" },
                     { 7, 150.0, "ACThirdTier" },
                     { 8, 85.0, "ACThreeEconomy" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SeatStatus",
+                columns: new[] { "SeatStatusId", "Status" },
+                values: new object[,]
+                {
+                    { 1, "Confirmed" },
+                    { 2, "ReservationAgainstCancellation" },
+                    { 3, "GeneralWaitingList" },
+                    { 4, "TatkalWaitingList" },
+                    { 5, "TicketCancelled" }
                 });
 
             migrationBuilder.InsertData(
