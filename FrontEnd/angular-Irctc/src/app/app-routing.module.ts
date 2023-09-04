@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PassengerComponent } from './passenger/passenger.component';
+import { TteComponent } from './tte/tte.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path:'passenger',component:PassengerComponent
+  },
+  {
+    path:'tte',component:TteComponent
   }
 ];
 

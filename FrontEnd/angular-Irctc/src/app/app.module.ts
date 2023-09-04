@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TteComponent } from './tte/tte.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PassengerComponent
+    PassengerComponent,
+    TteComponent
   ],
   imports: [
     BrowserModule,

@@ -43,12 +43,14 @@ this.router.navigate(['./register']);
       {
         if(logDetails.password===this.login?.password)
         {
-          this.router.navigate(['./passenger']);
-          // if(this.login?.userTypeId===userTypeEnum.Passenger)
-          // {this.router.navigate(['./passenger']);}
-          // else{
-          //   this.router.navigate(['./tte']);
-          // }
+          
+          if(this.login?.userTypeID===1)
+          {
+            this.router.navigate(['./passenger']);
+          }
+          else{
+            this.router.navigate(['./tte']);
+           }
         }
         else{
           alert("Wrong Password")
