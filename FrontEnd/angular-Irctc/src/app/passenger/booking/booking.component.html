@@ -33,4 +33,10 @@
         </mat-option>
       </mat-autocomplete>
 </form>
-
+<br>
+<form>
+    <label>Date:</label>
+    <input type="date" formControlName="searchDate" (change)="onDate($event)">
+</form>
+<br>
+<button (click)="onSearch">Search</button>
