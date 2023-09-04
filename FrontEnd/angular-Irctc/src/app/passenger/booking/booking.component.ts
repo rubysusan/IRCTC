@@ -53,7 +53,6 @@ onToSearch(){
     console.log(this.toStationVal);
   }); 
 }
-<<<<<<< HEAD
 onCoachSearch(){
 this.coachSearch.controls['coach'].valueChanges.subscribe(value=>{
   console.log(value);
@@ -61,7 +60,8 @@ this.coachSearch.controls['coach'].valueChanges.subscribe(value=>{
   this.coachData=this.coach.filter(x=>x.coachName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
   console.log(this.coachData);
 });
-=======
+
+}
 dateVal:Date=new Date()
 onDate(event:any)
 {
@@ -71,7 +71,5 @@ onDate(event:any)
 onSearch()
 {
   
-}
->>>>>>> upstream/main
 }
 }
