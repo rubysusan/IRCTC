@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TteComponent } from './tte/tte.component';
+import { BookingComponent } from './passenger/booking/booking.component';
+import { AccountComponent } from './passenger/account/account.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TteComponent } from './tte/tte.component';
     LoginComponent,
     RegisterComponent,
     PassengerComponent,
-    TteComponent
+    TteComponent,
+    BookingComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { TteComponent } from './tte/tte.component';
+import { BookingComponent } from './passenger/booking/booking.component';
+import { AccountComponent } from './passenger/account/account.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,17 @@ const routes: Routes = [
     path:'register',component:RegisterComponent
   },
   {
-    path:'passenger',component:PassengerComponent
+    path:'passenger',children:[
+      {
+        path:'',component:PassengerComponent
+      },
+      {
+        path:'booking',component:BookingComponent
+      },
+      {
+        path:'account',component:AccountComponent
+      }
+    ]
   },
   {
     path:'tte',component:TteComponent
