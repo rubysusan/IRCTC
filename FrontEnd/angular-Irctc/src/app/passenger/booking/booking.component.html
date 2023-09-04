@@ -1,12 +1,24 @@
 <h2>Booking</h2>
-<form [formGroup]="fromSearch"(change)="onFromSearch()">
+<form [formGroup]="fromSearch"(click)="onFromSearch()">
     <br>
   
     <label>From:</label>
     <input type="text" formControlName="from" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of data" [value]="option.userName">
-          {{option.userName}}
+        <mat-option *ngFor="let option of data" [value]="option.stationName">
+          {{option.stationName}}
+        </mat-option>
+      </mat-autocomplete>
+ 
+</form>
+<form [formGroup]="toSearch"(click)="onToSearch()">
+    <br>
+  
+    <label>To:</label>
+    <input type="text" formControlName="to" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of data" [value]="option.stationName">
+          {{option.stationName}}
         </mat-option>
       </mat-autocomplete>
       <label>From:</label>
