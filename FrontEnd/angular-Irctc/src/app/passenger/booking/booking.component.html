@@ -15,14 +15,22 @@
     <br>
   
     <label>To:</label>
-    <input type="text" formControlName="to" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
+    <input type="text" formControlName="to" [matAutocomplete]="autoStation">
+    <mat-autocomplete #autoStation="matAutocomplete">
         <mat-option *ngFor="let option of data" [value]="option.stationName">
           {{option.stationName}}
         </mat-option>
       </mat-autocomplete>
-      <label>From:</label>
-      <input type="text" formControlName="to" [matAutocomplete]="auto">
     
+</form >
+<form [formGroup]="coachSearch" (click)="onCoachSearch()">
+  <br>
+  <label>All Classes</label>
+  <input type="text" formControlName="coach" [matAutocomplete]="autoCoach">
+    <mat-autocomplete #autoCoach="matAutocomplete">
+        <mat-option *ngFor="let option of coachData" [value]="option.coachName">
+          {{option.coachName}}
+        </mat-option>
+      </mat-autocomplete>
 </form>
 
