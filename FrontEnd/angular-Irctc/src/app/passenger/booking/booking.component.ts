@@ -20,6 +20,7 @@ constructor(private userService:UserHttpService,private router:Router,
 val:string=''
 data:Array<ILoginGet>=[]
 fromSearch=new FormGroup({from:new FormControl('')});
+
 ngOnInit(): void {
   this.fromSearch.controls['from'].valueChanges.subscribe(value=>{
     console.log(value);
@@ -27,6 +28,7 @@ ngOnInit(): void {
     this.data=this.user.filter(x=>x.userName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
     console.log(this.data);
   }); 
+  
   
 }
 onFromSearch()
