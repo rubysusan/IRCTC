@@ -24,22 +24,22 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.TotalCost).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
             builder.HasOne(x => x.Seat)
-                   .WithMany()
+                   .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.SeatId);
             builder.HasOne(x => x.SeatType)
-                   .WithMany()
+                   .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.SeatTypeId);
             builder.HasOne(x => x.TrainClass)
-                   .WithMany()
+                   .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.TrainClassId);
             builder.HasOne(x => x.FromTrainStop)
-                   .WithMany()
+                   .WithMany(y => y.FromBookings)
                    .HasForeignKey(x => x.FromStop);
             builder.HasOne(x => x.ToTrainStop)
-                   .WithMany()
+                   .WithMany(y => y.ToBookings)
                    .HasForeignKey(x => x.ToStop);
             builder.HasOne(x => x.User)
-                   .WithMany()
+                   .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.UserId);
         }
     }

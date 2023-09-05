@@ -12,6 +12,7 @@ namespace IRCTCModel.Models
         public int CoachId { get; set; }
         public string CoachName { get; }
         public double BaseCharge { get; set; }
+        public virtual IEnumerable<TrainClass> TrainClasses { get; set; } = new List<TrainClass>();
         private Coach() {
             CoachName = string.Empty;
         }

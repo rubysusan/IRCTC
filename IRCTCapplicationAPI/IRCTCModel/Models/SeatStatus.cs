@@ -11,6 +11,7 @@ namespace IRCTCModel.Models
     {
         public int SeatStatusId { get; set; }
         public string Status { get; }
+        public virtual IEnumerable<Seat> Seats { get; set; } = new List<Seat>();
         private SeatStatus()
         {
             Status = string.Empty;

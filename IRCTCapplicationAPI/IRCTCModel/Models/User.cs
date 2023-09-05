@@ -15,5 +15,7 @@ namespace IRCTCModel.Models
         public string IdentityCardID { get; set; }
         public int UserTypeID { get; set; }
         public UserType UserType { get; set; }
+        public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
+        
     }
 }
