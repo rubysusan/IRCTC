@@ -11,6 +11,7 @@ namespace IRCTCModel.Models
     {
         public int TrainTypeID { get; set; }
         public string TypeName { get;}
+        public virtual IEnumerable<Train> Trains { get; set; } = new List<Train>();
         private TrainType()
         {
             TypeName = string.Empty;

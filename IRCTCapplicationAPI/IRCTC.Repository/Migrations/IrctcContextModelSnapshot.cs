@@ -482,37 +482,37 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.Booking", b =>
                 {
                     b.HasOne("IRCTCModel.Models.TrainStop", "FromTrainStop")
-                        .WithMany()
+                        .WithMany("FromBookings")
                         .HasForeignKey("FromStop")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Seat", "Seat")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("SeatId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.SeatType", "SeatType")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("SeatTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainStop", "ToTrainStop")
-                        .WithMany()
+                        .WithMany("ToBookings")
                         .HasForeignKey("ToStop")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainClass", "TrainClass")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("TrainClassId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -533,19 +533,19 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.Seat", b =>
                 {
                     b.HasOne("IRCTCModel.Models.SeatStatus", "SeatStatus")
-                        .WithMany()
+                        .WithMany("Seats")
                         .HasForeignKey("SeatStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.SeatType", "SeatType")
-                        .WithMany()
+                        .WithMany("Seats")
                         .HasForeignKey("SeatTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainClass", "TrainClass")
-                        .WithMany()
+                        .WithMany("Seats")
                         .HasForeignKey("TrainClassId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -560,19 +560,19 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.Train", b =>
                 {
                     b.HasOne("IRCTCModel.Models.Station", "FromStation")
-                        .WithMany()
+                        .WithMany("FromTrains")
                         .HasForeignKey("FromStationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Station", "ToStation")
-                        .WithMany()
+                        .WithMany("ToTrains")
                         .HasForeignKey("ToStationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.TrainType", "TrainType")
-                        .WithMany()
+                        .WithMany("Trains")
                         .HasForeignKey("TrainTypeID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -587,13 +587,13 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.TrainClass", b =>
                 {
                     b.HasOne("IRCTCModel.Models.Coach", "Coach")
-                        .WithMany()
+                        .WithMany("TrainClasses")
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Train", "Train")
-                        .WithMany()
+                        .WithMany("TrainClasses")
                         .HasForeignKey("TrainId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -606,13 +606,13 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.TrainStop", b =>
                 {
                     b.HasOne("IRCTCModel.Models.Station", "Station")
-                        .WithMany()
+                        .WithMany("TrainStops")
                         .HasForeignKey("StopStationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IRCTCModel.Models.Train", "Train")
-                        .WithMany()
+                        .WithMany("TrainStops")
                         .HasForeignKey("TrainId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -625,12 +625,79 @@ namespace IRCTC.Repository.Migrations
             modelBuilder.Entity("IRCTCModel.Models.User", b =>
                 {
                     b.HasOne("IRCTCModel.Models.UserType", "UserType")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("UserTypeID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("UserType");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.Coach", b =>
+                {
+                    b.Navigation("TrainClasses");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.Seat", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.SeatStatus", b =>
+                {
+                    b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.SeatType", b =>
+                {
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.Station", b =>
+                {
+                    b.Navigation("FromTrains");
+
+                    b.Navigation("ToTrains");
+
+                    b.Navigation("TrainStops");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.Train", b =>
+                {
+                    b.Navigation("TrainClasses");
+
+                    b.Navigation("TrainStops");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.TrainClass", b =>
+                {
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Seats");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.TrainStop", b =>
+                {
+                    b.Navigation("FromBookings");
+
+                    b.Navigation("ToBookings");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.TrainType", b =>
+                {
+                    b.Navigation("Trains");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.User", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("IRCTCModel.Models.UserType", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

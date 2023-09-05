@@ -15,11 +15,11 @@ namespace IRCTC.Repository.Configurations
         {
             builder.Property(x => x.TrainId).IsRequired();
             builder.HasOne(x => x.Train)
-                   .WithMany()
+                   .WithMany(y => y.TrainClasses)
                    .HasForeignKey(x => x.TrainId);
             builder.Property(x => x.ClassId).IsRequired();
             builder.HasOne(x => x.Coach)
-                   .WithMany()
+                   .WithMany(y => y.TrainClasses)
                    .HasForeignKey(x => x.ClassId);
         }
     }

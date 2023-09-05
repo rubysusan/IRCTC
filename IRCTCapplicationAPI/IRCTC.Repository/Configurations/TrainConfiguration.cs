@@ -22,13 +22,13 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.ReachingTime).IsRequired();
             builder.Property(x=>x.TrainTypeID).IsRequired();
             builder.HasOne(x => x.TrainType)
-                   .WithMany()
+                   .WithMany(y => y.Trains)
                    .HasForeignKey(x => x.TrainTypeID);
             builder.HasOne(x => x.FromStation)
-                   .WithMany()
+                   .WithMany(y => y.FromTrains)
                    .HasForeignKey(x => x.FromStationId);
             builder.HasOne(x => x.ToStation)
-                  .WithMany()
+                  .WithMany(y => y.ToTrains)
                   .HasForeignKey(x => x.ToStationId);
 
         }

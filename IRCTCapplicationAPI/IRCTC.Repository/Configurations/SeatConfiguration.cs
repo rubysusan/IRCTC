@@ -18,13 +18,13 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.SeatTypeId).IsRequired();
             builder.Property(x => x.TrainClassId).IsRequired();
             builder.HasOne(x => x.SeatType)
-                   .WithMany()
+                   .WithMany(y => y.Seats)
                    .HasForeignKey(x => x.SeatTypeId);
             builder.HasOne(x => x.TrainClass)
-                   .WithMany()
+                   .WithMany(y => y.Seats)
                    .HasForeignKey(x => x.TrainClassId);
             builder.HasOne(x => x.SeatStatus)
-                   .WithMany()
+                   .WithMany(y => y.Seats)
                    .HasForeignKey(x => x.SeatStatusId);
 
         }

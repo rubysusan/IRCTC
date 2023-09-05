@@ -11,6 +11,8 @@ namespace IRCTCModel.Models
     {
         public int SeatTypeId { get; set; }
         public string TypeName { get; set; }
+        public virtual IEnumerable<Seat> Seats { get; set; } = new List<Seat>();
+        public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
         private SeatType()
         {
             TypeName = string.Empty;

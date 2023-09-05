@@ -18,10 +18,10 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.ReachingTime).IsRequired();
             builder.Property(x => x.StationCount).IsRequired();
             builder.HasOne(x => x.Station)
-                   .WithMany()
+                   .WithMany(y=>y.TrainStops)
                    .HasForeignKey(x => x.StopStationId);
             builder.HasOne(x => x.Train)
-                .WithMany()
+                .WithMany(y => y.TrainStops)
                 .HasForeignKey(x => x.TrainId);
 
 

@@ -22,5 +22,7 @@ namespace IRCTCModel.Models
         public DateTime DepartureTime { get; set; }
 
         public DateTime ReachingTime { get; set; }
+        public virtual IEnumerable<TrainStop> TrainStops { get; set; } = new List<TrainStop>();
+        public virtual IEnumerable<TrainClass> TrainClasses { get; set; } = new List<TrainClass>();
     }
 }
