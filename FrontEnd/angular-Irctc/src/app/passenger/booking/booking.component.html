@@ -17,7 +17,7 @@
     <label>To:</label>
     <input type="text" formControlName="to" [matAutocomplete]="autoStation">
     <mat-autocomplete #autoStation="matAutocomplete">
-        <mat-option *ngFor="let option of data" [value]="option.stationName">
+        <mat-option *ngFor="let option of toData" [value]="option.stationName">
           {{option.stationName}}
         </mat-option>
       </mat-autocomplete>

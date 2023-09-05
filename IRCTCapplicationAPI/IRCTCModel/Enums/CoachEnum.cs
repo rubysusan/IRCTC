@@ -16,6 +16,5 @@ namespace IRCTCModel.Enums
         ACSecondTier,
         ACThirdTier,
         ACThreeEconomy
-
     }
 }

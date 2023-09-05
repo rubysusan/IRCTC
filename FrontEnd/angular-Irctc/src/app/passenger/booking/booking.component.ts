@@ -27,6 +27,7 @@ constructor(private stationService:StationHttpService,private router:Router,
 coachData:Array<ICoachDetails>=[]
 val:string=''
 data:Array<IStationDetails>=[]
+toData:Array<IStationDetails>=[]
 fromSearch=new FormGroup({from:new FormControl('')});
 toSearch=new FormGroup({to:new FormControl('')});
 coachSearch=new FormGroup({coach: new FormControl('')});
@@ -48,17 +49,19 @@ toStationVal:string=''
 onToSearch(){
   this.toSearch.controls['to'].valueChanges.subscribe(value=>{
     this.val=value!;
-    this.data=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-    this.toStationVal=String(this.data.map(x=>x.stationName))
+    this.toData=this.station.filter(x=>x.stationName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
+    this.toStationVal=String(this.toData.map(x=>x.stationName))
     console.log(this.toStationVal);
   }); 
 }
+coachVal:string=''
 onCoachSearch(){
 this.coachSearch.controls['coach'].valueChanges.subscribe(value=>{
   console.log(value);
   this.val=value!;
   this.coachData=this.coach.filter(x=>x.coachName.toLocaleLowerCase().includes(this.val.toLocaleLowerCase()));
-  console.log(this.coachData);
+  this.coachVal=String(this.coachData.map(x=>x.coachName))
+  console.log(this.coachVal);
 });
 
 }
