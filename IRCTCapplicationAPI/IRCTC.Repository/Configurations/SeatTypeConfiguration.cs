@@ -23,6 +23,7 @@ namespace IRCTC.Repository.Configurations
                 new SeatType(SeatTypeEnum.UpperBirth),
                 new SeatType(SeatTypeEnum.MiddleBirth),
                 new SeatType(SeatTypeEnum.WindowSeat),
+                new SeatType(SeatTypeEnum.MiddleSeat),
                 new SeatType(SeatTypeEnum.AisleSeat)
             });
         }

@@ -9,9 +9,7 @@ namespace IRCTCModel.Enums
     public enum SeatStatusEnum
     {
         Confirmed=1,
-        ReservationAgainstCancellation,
-        GeneralWaitingList,
-        TatkalWaitingList,
+        NotConfirmed,
         TicketCancelled
     }
 }

@@ -4,6 +4,7 @@ using IRCTC.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IRCTC.Repository.Migrations
 {
     [DbContext(typeof(IrctcContext))]
-    partial class IrctcContextModelSnapshot : ModelSnapshot
+    [Migration("20230906044830_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,11 +249,6 @@ namespace IRCTC.Repository.Migrations
                         new
                         {
                             SeatTypeId = 5,
-                            TypeName = "MiddleSeat"
-                        },
-                        new
-                        {
-                            SeatTypeId = 6,
                             TypeName = "AisleSeat"
                         });
                 });
