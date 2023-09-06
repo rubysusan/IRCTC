@@ -15,10 +15,9 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
         }
         public async Task<List<ViewTrainBySearch>> Handle(GetTrainBySearchQuery request, CancellationToken cancellationToken)
         {
-           return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationName).
-           Contains(request.FromStationName) &&
-          x.TrainStops.Select(x => x.Station.StationName).
-           Contains(request.ToStationName) && x.Date.Date==request.Date && x.TrainClasses.Select(x => x.Coach.CoachName).Contains(request.CoachName))
+           return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationName).Contains(request.FromStationName) &&
+           x.TrainStops.Select(x => x.Station.StationName).Contains(request.ToStationName) && x.Date.Date == request.Date &&
+           EF.Functions.DateDiffHour( DateTime.Now, x.TrainStops.Where(y => y.Station.StationName == request.FromStationName).Select(z => z.ReachingTime).SingleOrDefault().AddHours(-2))>2 && x.TrainClasses.Select(x => x.Coach.CoachName).Contains(request.CoachName))
                 .Select(x=>new ViewTrainBySearch
                 {
                     TrainId = x.TrainId,
@@ -33,3 +32,4 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
         }
     }
 }
+//&& DateTime.Now < x.DepartureTime.AddHours(-2)

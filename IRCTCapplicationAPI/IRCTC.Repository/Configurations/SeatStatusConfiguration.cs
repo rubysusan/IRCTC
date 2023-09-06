@@ -20,9 +20,7 @@ namespace IRCTC.Repository.Configurations
             builder.HasData(new SeatStatus[]
             {
                 new SeatStatus(SeatStatusEnum.Confirmed),
-                new SeatStatus(SeatStatusEnum.ReservationAgainstCancellation),
-                new SeatStatus(SeatStatusEnum.GeneralWaitingList),
-                new SeatStatus(SeatStatusEnum.TatkalWaitingList),
+                new SeatStatus(SeatStatusEnum.NotConfirmed),
                 new SeatStatus(SeatStatusEnum.TicketCancelled)
             });
         }
