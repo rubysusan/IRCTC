@@ -17,6 +17,11 @@
         <td>{{i.date}}</td>
         <td>{{i.departureTime}}</td>
         <td>{{i.reachingTime}}</td>
-        <td><button (click)="onCoach()">View Coaches</button></td>
+        <td><button (click)="onCoach(i.trainId)">View Coaches</button></td>
     </tr>
+</table>
+<table>
+    <tr height="50px" *ngFor="let i of seat">
+        <td>{{i.coachName}}</td>
+        <td>{{i.seats}}</td>
 </table>

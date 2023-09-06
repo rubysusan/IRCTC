@@ -6,6 +6,8 @@ import { TrainsSearchHttpService } from 'src/app/trains-search-http.service';
 import { BookingComponent } from '../booking.component';
 import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
 import { Subscription } from 'rxjs';
+import { SeatHttpService } from 'src/app/seat-http.service';
+import { ISeatDetails } from 'src/app/ISeatDetails.Interface';
 
 @Component({
   selector: 'app-search-results',
@@ -13,6 +15,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./search-results.component.sass']
 })
 export class SearchResultsComponent implements OnInit {
+  seat:Array<ISeatDetails>=[]
   searchVal:Array<IValuesSearched>=[]
   subs?:Subscription 
   searchDate:string='';
@@ -22,7 +25,7 @@ export class SearchResultsComponent implements OnInit {
   coach:string=''
 
   train:Array<ISearchedTrain>=[]
-  constructor(private trainService:TrainsSearchHttpService,private searchService:SearchDetailsService,private router: Router,
+  constructor(private seatService:SeatHttpService,private trainService:TrainsSearchHttpService,private searchService:SearchDetailsService,private router: Router,
     private activatedRoute: ActivatedRoute,private booking:BookingComponent) {
       this.subs=this.searchService.search.subscribe((x:Array<IValuesSearched>) => this.searchVal=x)
     console.log(this.searchVal)
@@ -38,10 +41,12 @@ export class SearchResultsComponent implements OnInit {
      this.to,this.dateVal,this.coach)
       .subscribe((data:Array<ISearchedTrain>)=>{this.train=data;
       console.log(this.train)})  
+      
   }
-  onCoach()
+  onCoach(trainId:number)
   {
-    
+    this.seatService.getSeats(trainId).subscribe((data:Array<ISeatDetails>)=>{this.seat=data;
+      console.log(this.seat)})
   }
 
 }
