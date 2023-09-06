@@ -16,6 +16,7 @@ namespace IRCTCModel.Models
         public TrainClass TrainClass { get; set; }
         public int SeatStatusId { get; set; }
         public SeatStatus SeatStatus { get; set; }
+
         public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }

@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICoachDetails } from 'src/app/ICoachDetails.Interface';
 import { ILoginGet } from 'src/app/ILoginGet.Interface';
 import { IStationDetails } from 'src/app/IStationDetails.Interface';
+import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
 import { CoachHttpService } from 'src/app/coach-http.service';
+import { SearchDetailsService } from 'src/app/search-details.service';
 import { StationHttpService } from 'src/app/station-http.service';
 import { UserHttpService } from 'src/app/user-http.service';
 
@@ -17,7 +19,7 @@ import { UserHttpService } from 'src/app/user-http.service';
 export class BookingComponent implements OnInit{
 station:Array<IStationDetails>=[];
 coach:Array<ICoachDetails>=[];
-constructor(private stationService:StationHttpService,private router:Router,
+constructor(private searchService:SearchDetailsService,private stationService:StationHttpService,private router:Router,
   private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder,private coachService:CoachHttpService) {
     this.stationService.getStation().subscribe((data:Array<IStationDetails>)=>{this.station=data;
       console.log(this.station)});
@@ -71,8 +73,12 @@ onDate(event:any)
   this.dateVal=event.target.value;
   console.log(this.dateVal)
 }
+dataSearched:Array<IValuesSearched>=[]
 onSearch()
 {
-  
+ 
+  this.dataSearched.push(<IValuesSearched>({fromVal:this.fromStationVal,toVal:this.toStationVal,dateVal:this.dateVal,coachVal:this.coachVal}))
+  this.searchService.setValue(this.dataSearched)
+  this.router.navigate(['./passenger/booking/search']);
 }
 }

@@ -1,0 +1,22 @@
+<h1 style="text-align: center;">SEARCHED TRAIN DETAILS</h1>
+<table border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr bgcolor="#A9A9A9" height="50px">
+        <th><b>TRAIN NUMBER</b></th>
+        <th><b>TRAIN NAME</b></th>
+        <th><b>FROM STATION</b></th>
+        <th><b>TO STATION</b></th>
+        <th><b>DATE</b></th>
+        <th><b>DEPARTURE</b></th>
+        <th><b>ARRIVAL</b></th>
+    </tr>
+    <tr height="50px" *ngFor="let i of train">
+        <td>{{i.trainId}}</td>
+        <td>{{i.trainName}}</td>
+        <td>{{i.fromStationName}}</td>
+        <td>{{i.toStationName}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.departureTime}}</td>
+        <td>{{i.reachingTime}}</td>
+        <td><button (click)="onCoach()">View Coaches</button></td>
+    </tr>
+</table>

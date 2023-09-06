@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IRCTC.Repository.Migrations
 {
     [DbContext(typeof(IrctcContext))]
-    [Migration("20230905095042_init")]
+    [Migration("20230906040856_init")]
     partial class init
     {
         /// <inheritdoc />

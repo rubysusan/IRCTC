@@ -23,7 +23,7 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.IdentityCardID).HasMaxLength(50);
             builder.Property(x => x.UserTypeID).IsRequired();
             builder.HasOne(x => x.UserType)
-                   .WithMany(y=>y.Users)
+                   .WithMany(y => y.Users)
                    .HasForeignKey(x => x.UserTypeID);
         }
     }

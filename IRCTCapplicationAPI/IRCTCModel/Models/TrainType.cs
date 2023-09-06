@@ -11,7 +11,6 @@ namespace IRCTCModel.Models
     {
         public int TrainTypeID { get; set; }
         public string TypeName { get;}
-        public virtual IEnumerable<Train> Trains { get; set; } = new List<Train>();
         private TrainType()
         {
             TypeName = string.Empty;
@@ -22,5 +21,6 @@ namespace IRCTCModel.Models
             TypeName=trainTypeEnum.ToString();
             
         }
+        public virtual IEnumerable<Train> Trains { get; set; } = new List<Train>();
     }
 }

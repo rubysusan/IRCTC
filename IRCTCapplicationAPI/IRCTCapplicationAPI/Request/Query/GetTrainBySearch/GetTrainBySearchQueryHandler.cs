@@ -15,17 +15,19 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
         }
         public async Task<List<ViewTrainBySearch>> Handle(GetTrainBySearchQuery request, CancellationToken cancellationToken)
         {
-           return await _context.Train.Where(x=>x.FromStation.StationName==request.FromStationName &&
-           x.ToStation.StationName == request.ToStationName && x.Date.Date==request.Date && x.TrainClasses.Select(x=>x.Coach.CoachName).ToString()==request.CoachName)
+           return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationName).
+           Contains(request.FromStationName) &&
+          x.TrainStops.Select(x => x.Station.StationName).
+           Contains(request.ToStationName) && x.Date.Date==request.Date && x.TrainClasses.Select(x => x.Coach.CoachName).Contains(request.CoachName))
                 .Select(x=>new ViewTrainBySearch
                 {
                     TrainId = x.TrainId,
                     TrainName = x.TrainName,
-                    FromStatioinName = x.FromStation.StationName,
-                    ToStatioinName= x.ToStation.StationName,
+                    FromStationName = request.FromStationName,
+                    ToStationName= request.ToStationName,
                     Date = x.Date.Date,
-                    DepartureTime=x.DepartureTime,
-                    ReachingTime=x.ReachingTime
+                    DepartureTime = x.TrainStops.Where(y => y.Station.StationName == request.FromStationName).Select(z => z.ReachingTime).SingleOrDefault(),
+                    ReachingTime = x.TrainStops.Where(y => y.Station.StationName == request.ToStationName).Select(z => z.ReachingTime).SingleOrDefault()
 
                 }).ToListAsync();
         }

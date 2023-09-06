@@ -13,6 +13,7 @@ namespace IRCTCModel.Models
         public Train Train { get; set; }
         public int ClassId { get; set; }
         public Coach Coach { get; set; }
+
         public virtual IEnumerable<Seat> Seats { get; set; } = new List<Seat>();
         public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
     }

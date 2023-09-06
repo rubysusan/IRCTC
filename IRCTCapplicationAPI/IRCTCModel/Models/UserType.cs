@@ -15,7 +15,6 @@ namespace IRCTCModel.Models
             TypeName = userTypeId.ToString();
         }
         public virtual IEnumerable<User> Users { get; set; } = new List<User>();
-        
         public int UserTypeId { get; set; }
         public string TypeName { get;  }
 

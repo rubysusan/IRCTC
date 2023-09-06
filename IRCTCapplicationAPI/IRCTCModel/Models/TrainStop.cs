@@ -15,6 +15,7 @@ namespace IRCTCModel.Models
         public Station Station { get; set; }
         public DateTime ReachingTime { get; set; }
         public int StationCount { get; set; }
+
         public virtual IEnumerable<Booking> FromBookings { get; set; } = new List<Booking>();
         public virtual IEnumerable<Booking> ToBookings { get; set; } = new List<Booking>();
     }

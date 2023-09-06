@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PassengerComponent,
     TteComponent,
     BookingComponent,
-    AccountComponent
+    AccountComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,MatAutocompleteModule,MatInputModule,MatFormFieldModule,BrowserAnimationsModule],
-  providers: [],
+  providers: [BookingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
