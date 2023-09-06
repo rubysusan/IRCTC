@@ -12,6 +12,7 @@ namespace IRCTCModel.Enums
         UpperBirth,
         MiddleBirth,
         WindowSeat,
+        MiddleSeat,
         AisleSeat
     }
 }
