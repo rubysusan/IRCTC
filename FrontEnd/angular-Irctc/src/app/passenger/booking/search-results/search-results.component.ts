@@ -28,7 +28,7 @@ export class SearchResultsComponent implements OnInit {
   to:string=''
   dateVal:string=''
   coach:string=''
-  selectedTrain:Array<ISelectedTrain>=[]  id:number=0;
+  selectedTrain:Array<ISelectedTrain>=[]  
 
   train:Array<ISearchedTrain>=[]
   trainDepartEF:Array<ISearchedTrain>=[]
@@ -116,6 +116,7 @@ export class SearchResultsComponent implements OnInit {
   charge:Array<IChargeValue>=[];
   onSeat(coach:string)
   {
+    this.coachVal=coach;
     this.chargeService.getCharge(this.id,this.from,this.to,coach)
     .subscribe((data:Array<IChargeValue>)=>{this.charge=data;
     console.log(this.charge)})
@@ -159,8 +160,7 @@ export class SearchResultsComponent implements OnInit {
   this.searchService.setSelectedValue(this.selectedTrain);
  
 }
-onCoachNameClick(cname:string){
-this.coachVal=cname;
-}
+
+
 
 }

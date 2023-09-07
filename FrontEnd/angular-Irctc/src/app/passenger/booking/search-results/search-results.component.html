@@ -54,7 +54,7 @@
 </table>
 <table>
     <tr height="50px" *ngFor="let i of seat">
-        <td (click)="onCoachNameClick(i.coachName)" (click)="onSeat(i.coachName)">{{i.coachName}}</td>
+        <td (click)="onSeat(i.coachName)">{{i.coachName}}</td>
         <td>{{i.seats}}</td>
 </table>
 <table>
