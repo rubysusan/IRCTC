@@ -1,4 +1,28 @@
 <h1 style="text-align: center;">SEARCHED TRAIN DETAILS</h1>
+<label>Filter By Date:</label>
+<input type="date"  (change)="onFilterDate($event)" >
+<label> Filter By Train Type</label>
+<select name="filterTrain" id="filterTrain" (change)="getSelectedTrainType($event)">
+    <option value="none" selected disabled hidden>Select Train Type</option>
+    <option value="Janshatabdi">Janshatabdi</option>
+    <option value="Shatabdi">Shatabdi</option>
+    <option value="Antyodaya">Antyodaya</option>
+    <option value="Intercity">Intercity</option>
+    <option value="Express">Express</option>
+</select>
+<label> Filter By Class</label>
+<select name="filterClass" id="filterClass" (change)="getSelectedClass($event)">
+    <option value="none" selected disabled hidden>Select Class</option>
+    <option value="ACFirstClass">ACFirstClass</option>
+    <option value="ExecChairCar">ExecChairCar</option>
+    <option value="ACChairCar">ACChairCar</option>
+    <option value="Sleeper">Sleeper</option>
+    <option value="SecondSitting">SecondSitting</option>
+    <option value="ACSecondTier">ACSecondTier</option>
+    <option value="ACThirdTier">ACThirdTier</option>
+    <option value="ACThreeEconomy">Express</option>
+</select>
+
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
     <tr bgcolor="#A9A9A9" height="50px">
         <th><b>TRAIN NUMBER</b></th>
@@ -17,11 +41,16 @@
         <td>{{i.date}}</td>
         <td>{{i.departureTime}}</td>
         <td>{{i.reachingTime}}</td>
-        <td><button (click)="onCoach(i.trainId)">View Coaches</button></td>
+        <button (click)="onCoach(i.trainId)">View Coaches</button>
     </tr>
 </table>
 <table>
     <tr height="50px" *ngFor="let i of seat">
-        <td>{{i.coachName}}</td>
+        <td (click)="onSeat(i.coachName)">{{i.coachName}}</td>
         <td>{{i.seats}}</td>
+</table>
+<table>
+    <tr height="50px" *ngFor="let i of charge" >
+        <td >Price: Rs.{{i.charge}}</td>
+        <td><button>Book</button></td>
 </table>
