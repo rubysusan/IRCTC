@@ -8,10 +8,14 @@ import { TteComponent } from './tte/tte.component';
 import { BookingComponent } from './passenger/booking/booking.component';
 import { AccountComponent } from './passenger/account/account.component';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   {
   path:'',component:LoginComponent
+  },
+  {
+    path:'bookdetails',component:BookDetailsComponent
   },
   {
     path:'register',component:RegisterComponent

@@ -1,4 +1,12 @@
 <h1 style="text-align: center;">SEARCHED TRAIN DETAILS</h1>
+<label>Sort By: </label>
+<select name="sortBy" id="sortBy" (change)="onDepartureEF($event)">
+    <option value="none" selected disabled hidden>Select an Option</option>
+    <option value="DepartureEF">Departure (Early First)</option>
+    <option value="DepartureLF">Departure (Late First)</option>
+    <option value="ArrivalEF">Arrival (Early First)</option>
+    <option value="ArrivalLF">Arrival (Late First)</option>
+</select><br><br>
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
     <tr bgcolor="#A9A9A9" height="50px">
         <th><b>TRAIN NUMBER</b></th>
@@ -17,11 +25,11 @@
         <td>{{i.date}}</td>
         <td>{{i.departureTime}}</td>
         <td>{{i.reachingTime}}</td>
-        <td><button (click)="onCoach(i.trainId)">View Coaches</button></td>
+        <td><button (click)="onCoach(i.trainId,i.trainName,i.fromStationName,i.toStationName,i.date,i.departureTime,i.reachingTime)">View Coaches</button></td>
     </tr>
 </table>
 <table>
     <tr height="50px" *ngFor="let i of seat">
-        <td>{{i.coachName}}</td>
+        <td (click)="onCoachNameClick(i.coachName)">{{i.coachName}}</td>
         <td>{{i.seats}}</td>
 </table>
