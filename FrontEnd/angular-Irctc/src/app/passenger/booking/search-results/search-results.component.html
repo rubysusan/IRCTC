@@ -1,4 +1,12 @@
 <h1 style="text-align: center;">SEARCHED TRAIN DETAILS</h1>
+<label>Sort By: </label>
+<select name="sortBy" id="sortBy" (change)="onDepartureEF($event)">
+    <option value="none" selected disabled hidden>Select an Option</option>
+    <option value="DepartureEF">Departure (Early First)</option>
+    <option value="DepartureLF">Departure (Late First)</option>
+    <option value="ArrivalEF">Arrival (Early First)</option>
+    <option value="ArrivalLF">Arrival (Late First)</option>
+</select><br><br>
 <label>Filter By Date:</label>
 <input type="date"  (change)="onFilterDate($event)" >
 <label> Filter By Train Type</label>
@@ -41,7 +49,7 @@
         <td>{{i.date}}</td>
         <td>{{i.departureTime}}</td>
         <td>{{i.reachingTime}}</td>
-        <button (click)="onCoach(i.trainId)">View Coaches</button>
+        <td><button (click)="onCoach(i.trainId,i.trainName,i.fromStationName,i.toStationName,i.date,i.departureTime,i.reachingTime)">View Coaches</button></td>
     </tr>
 </table>
 <table>

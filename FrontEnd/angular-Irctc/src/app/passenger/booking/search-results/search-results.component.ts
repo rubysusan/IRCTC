@@ -8,6 +8,7 @@ import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
 import { Subscription } from 'rxjs';
 import { SeatHttpService } from 'src/app/seat-http.service';
 import { ISeatDetails } from 'src/app/ISeatDetails.Interface';
+import { ISelectedTrain } from 'src/app/ISelectedTrain.Interface';
 import { TraintypeHttpService } from 'src/app/traintype-http.service';
 import { ChargeHttpService } from 'src/app/charge-http.service';
 interface IChargeValue{
@@ -27,9 +28,16 @@ export class SearchResultsComponent implements OnInit {
   to:string=''
   dateVal:string=''
   coach:string=''
-  id:number=0;
+  selectedTrain:Array<ISelectedTrain>=[]  
 
   train:Array<ISearchedTrain>=[]
+  trainDepartEF:Array<ISearchedTrain>=[]
+  trainDepartLF:Array<ISearchedTrain>=[]
+  trainArrivalEF:Array<ISearchedTrain>=[]
+  trainArrivalLF:Array<ISearchedTrain>=[]
+
+
+
   constructor(private seatService:SeatHttpService,private trainService:TrainsSearchHttpService,private searchService:SearchDetailsService,private router: Router,
     private activatedRoute: ActivatedRoute,private booking:BookingComponent,private chargeService:ChargeHttpService,private trainTypeService:TraintypeHttpService) {
       this.subs=this.searchService.search.subscribe((x:Array<IValuesSearched>) => this.searchVal=x)
@@ -39,7 +47,10 @@ export class SearchResultsComponent implements OnInit {
     this.dateVal=String(this.searchVal.map(x=>x.dateVal))
     this.coach=String(this.searchVal.map(x=>x.coachVal))
     
+    
   }
+
+
   ngOnInit():void
   {
     this.trainService.getTrainBySearch(this.from,
@@ -47,10 +58,28 @@ export class SearchResultsComponent implements OnInit {
       .subscribe((data:Array<ISearchedTrain>)=>{this.train=data;
       console.log(this.train)})  
       
+      
   }
-  onCoach(trainId:number)
+  id:number=0;
+  tname:string="";
+  fromStat:string="";
+  toStat:string="";
+  depart:string="";
+  arriv:string="";
+  coachVal:string="";
+  tdate:string="";
+
+  onCoach(trainId:number,trainName:string,fromStation:string,toStation:string,date:string,departure:string,arrival:string)
   {
     this.id=trainId;
+    this.tname=trainName;
+    this.fromStat=fromStation;
+    this.toStat=toStation;
+    this.tdate=date;
+    this.depart=departure;
+    this.arriv=arrival;
+    
+
     this.seatService.getSeats(trainId).subscribe((data:Array<ISeatDetails>)=>{this.seat=data;
       console.log(this.seat)})
   }
@@ -87,10 +116,51 @@ export class SearchResultsComponent implements OnInit {
   charge:Array<IChargeValue>=[];
   onSeat(coach:string)
   {
+    this.coachVal=coach;
     this.chargeService.getCharge(this.id,this.from,this.to,coach)
     .subscribe((data:Array<IChargeValue>)=>{this.charge=data;
     console.log(this.charge)})
 
   }
+  
+  onDepartureEF(event:any){
+    
+    console.log(event.target.value); 
+    if(event.target.value=="DepartureEF"){
+    this.train==this.train.filter(x=>x.trainId).sort((a,b) => 0 - (a > b ? -1 : 1));
+    this.trainDepartEF=this.train.filter(x=>x.departureTime).sort((a,b) => 0 - (a > b ? -1 : 1));
+    this.train=this.trainDepartEF
+    console.log(this.train);
+    }
+
+    else if (event.target.value=="DepartureLF"){
+      this.train=this.train.filter(x=>x.trainId).sort((a,b) => 0 - (a > b ? -1 : 1));
+      this.trainDepartLF=this.train.filter(x=>x.departureTime).sort((a,b) => 0 - (a > b ? 1 : -1));
+      this.train=this.trainDepartLF
+    console.log(this.train);
+    }
+    else if(event.target.value=="ArrivalEF"){
+      this.train=this.train.filter(x=>x.trainId).sort((a,b) => 0 - (a > b ? -1 : 1));
+      this.trainArrivalEF=this.train.filter(x=>x.reachingTime).sort((a,b) => 0 - (a > b ? -1 : 1));
+      this.train=this.trainArrivalEF
+    console.log(this.train);
+    }
+    else if(event.target.value=="ArrivalLF"){
+      this.train=this.train.filter(x=>x.trainId).sort((a,b) => 0 - (a > b ? -1 : 1));
+      this.trainArrivalLF=this.train.filter(x=>x.reachingTime).sort((a,b) => 0 - (a > b ? 1 : -1));
+      this.train=this.trainArrivalLF
+    console.log(this.train);
+    }
+  }
+ onBook(){
+  this.selectedTrain.push(<ISelectedTrain>({trainId:this.id,trainName:this.tname,
+    fromStationName:this.fromStat,toStationName:this.toStat,coachName:this.coachVal,
+    date:this.tdate,departureTime:this.depart,reachingTime:this.arriv}));
+
+  this.searchService.setSelectedValue(this.selectedTrain);
+ 
+}
+
+
 
 }
