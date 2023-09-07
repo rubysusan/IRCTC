@@ -158,8 +158,10 @@ export class SearchResultsComponent implements OnInit {
     date:this.tdate,departureTime:this.depart,reachingTime:this.arriv}));
 
   this.searchService.setSelectedValue(this.selectedTrain);
+  this.router.navigate(['./bookdetails'])
  
 }
+
 
 
 

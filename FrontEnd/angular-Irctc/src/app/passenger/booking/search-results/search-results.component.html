@@ -60,5 +60,5 @@
 <table>
     <tr height="50px" *ngFor="let i of charge" >
         <td >Price: Rs.{{i.charge}}</td>
-        <td><button>Book</button></td>
+        <td><button (click)="onBook()">Book</button></td>
 </table>
