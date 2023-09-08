@@ -1,6 +1,8 @@
-﻿using IRCTCapplicationAPI.Request.Command.AddUser;
+﻿using IRCTCapplicationAPI.DTO;
+using IRCTCapplicationAPI.Request.Command.AddUser;
 
 using IRCTCapplicationAPI.Request.Query.GetAllUser;
+using IRCTCapplicationAPI.Request.Query.GetUserOnLogin;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +23,12 @@ namespace IRCTCapplicationAPI.Controllers
         [HttpGet("get")]
         public async Task<ActionResult<bool>> GetAllUser([FromQuery] GetAllUserQuery command)
         { return Ok(await _mediator.Send(command)); }
+
+        [HttpGet("get-on-login")]
+        public async Task<ActionResult<List<ViewUserId>>> GetUserOnLogin([FromQuery] GetUserOnLoginQuery query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
     }
 
 }

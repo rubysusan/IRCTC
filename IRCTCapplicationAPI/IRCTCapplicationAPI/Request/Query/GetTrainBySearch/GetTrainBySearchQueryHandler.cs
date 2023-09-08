@@ -24,6 +24,8 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
                     TrainName = x.TrainName,
                     FromStationName = x.FromStation.StationName,
                     ToStationName= x.ToStation.StationName,
+                    FromStationId= x.FromStation.StationId,
+                    ToStationId= x.ToStation.StationId,
                     Date = x.Date.Date,
                     DepartureTime = x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault(),
                     ReachingTime = x.TrainStops.Where(y => y.Station.StationId == request.ToStationId).Select(z => z.ReachingTime).SingleOrDefault()
