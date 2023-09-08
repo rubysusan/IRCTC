@@ -16,7 +16,7 @@ namespace IRCTCapplicationAPI.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet("TrainSearchByTrainType")]
+        [HttpGet("train-search-by-type")]
         public async Task<ActionResult<List<ViewTrainByTrainTypeSearch>>> SearchTrainByTrainType([FromQuery] GetTrainByTrainTypeSearchQuery query)
         {
             return Ok(await _mediator.Send(query));

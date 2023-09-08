@@ -15,12 +15,12 @@ namespace IRCTCapplicationAPI.Controllers
         {
             _mediator = mediator;
         }
-        [HttpPost("AddTrainClass")]
+        [HttpPost("add")]
         public async Task<ActionResult<bool>> AddTrainClass([FromBody] AddTrainClassCommand command)
         { 
             return Ok(await _mediator.Send(command));
         }
-        [HttpGet("GetAllTrainClass")]
+        [HttpGet("get")]
         public async Task<ActionResult<bool>> GetAllTrainClass([FromQuery] GetAllTrainClassQuery query)
         { return Ok(await _mediator.Send(query)); }
     }

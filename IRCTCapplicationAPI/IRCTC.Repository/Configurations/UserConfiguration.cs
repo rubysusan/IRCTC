@@ -13,6 +13,7 @@ namespace IRCTC.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasKey(x => x.UserId);
             builder.Property(x => x.UserName).IsRequired();
             builder.Property(x => x.UserName).HasMaxLength(50);
             builder.Property(x => x.Password).IsRequired();

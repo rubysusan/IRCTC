@@ -15,18 +15,18 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
         }
         public async Task<List<ViewTrainBySearch>> Handle(GetTrainBySearchQuery request, CancellationToken cancellationToken)
         {
-           return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationName).Contains(request.FromStationName) &&
-           x.TrainStops.Select(x => x.Station.StationName).Contains(request.ToStationName) && x.Date.Date == request.Date &&
-           EF.Functions.DateDiffHour( DateTime.Now,x.TrainStops.Where(y => y.Station.StationName == request.FromStationName).Select(z => z.ReachingTime).SingleOrDefault()) >2 && x.TrainClasses.Select(x => x.Coach.CoachName).Contains(request.CoachName))
+           return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationId).Contains(request.FromStationId) &&
+           x.TrainStops.Select(x => x.Station.StationId).Contains(request.ToStationId) && x.Date.Date == request.Date &&
+           EF.Functions.DateDiffHour( DateTime.Now,x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault()) >2 && x.TrainClasses.Select(x => x.Coach.CoachId).Contains(request.CoachId))
                 .Select(x=>new ViewTrainBySearch
                 {
                     TrainId = x.TrainId,
                     TrainName = x.TrainName,
-                    FromStationName = request.FromStationName,
-                    ToStationName= request.ToStationName,
+                    FromStationName = x.FromStation.StationName,
+                    ToStationName= x.ToStation.StationName,
                     Date = x.Date.Date,
-                    DepartureTime = x.TrainStops.Where(y => y.Station.StationName == request.FromStationName).Select(z => z.ReachingTime).SingleOrDefault(),
-                    ReachingTime = x.TrainStops.Where(y => y.Station.StationName == request.ToStationName).Select(z => z.ReachingTime).SingleOrDefault()
+                    DepartureTime = x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault(),
+                    ReachingTime = x.TrainStops.Where(y => y.Station.StationId == request.ToStationId).Select(z => z.ReachingTime).SingleOrDefault()
 
                 }).ToListAsync();
         }

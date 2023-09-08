@@ -13,22 +13,13 @@ namespace IRCTC.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<Booking> builder)
         {
-            builder.Property(x => x.SeatId).IsRequired();
-            builder.Property(x => x.SeatTypeId).IsRequired();
+            builder.HasKey(x => x.BookingId);
             builder.Property(x => x.TrainClassId).IsRequired();
             builder.Property(x => x.FromStop).IsRequired();
             builder.Property(x => x.ToStop).IsRequired();
             builder.Property(x => x.Count).IsRequired();
-            builder.Property(x => x.Preference).IsRequired();
-            builder.Property(x => x.Preference).HasMaxLength(50);
             builder.Property(x => x.TotalCost).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-            builder.HasOne(x => x.Seat)
-                   .WithMany(y => y.Bookings)
-                   .HasForeignKey(x => x.SeatId);
-            builder.HasOne(x => x.SeatType)
-                   .WithMany(y => y.Bookings)
-                   .HasForeignKey(x => x.SeatTypeId);
             builder.HasOne(x => x.TrainClass)
                    .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.TrainClassId);

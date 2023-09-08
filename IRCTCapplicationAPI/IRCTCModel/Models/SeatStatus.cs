@@ -9,7 +9,7 @@ namespace IRCTCModel.Models
 {
     public class SeatStatus
     {
-        public int SeatStatusId { get; set; }
+        public int SeatStatusId { get; private set; }
         public string Status { get; }
 
         public virtual IEnumerable<Seat> Seats { get; set; } = new List<Seat>();

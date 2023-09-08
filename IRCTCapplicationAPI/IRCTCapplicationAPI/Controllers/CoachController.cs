@@ -13,7 +13,7 @@ namespace IRCTCapplicationAPI.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet("GetAllCoach")]
+        [HttpGet("get")]
         public async Task<ActionResult<bool>> GetAllCoach([FromQuery] GetAllCoachQuery query)
         {
             return Ok(await _mediator.Send(query));

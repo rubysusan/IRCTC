@@ -14,15 +14,8 @@ namespace IRCTCapplicationAPI.Request.Command.AddTrain
         }
         public async Task<bool> Handle(AddTrainCommand command, CancellationToken cancellationToken)
         {
-            Train train = new Train();
-            train.TrainName = command.TrainName;
-            train.FromStationId = command.FromStationId;
-            train.ToStationId = command.ToStationId;
-            train.Date = command.Date;
-            train.DepartureTime = command.DepartureTime;
-            train.ReachingTime = command.ReachingTime;
-            train.TrainTypeID = command.TrainTypeID;
-
+            Train train = new Train(command.TrainName, command.FromStationId, command.ToStationId,command.TrainTypeID, command.Date, command.DepartureTime, command.ReachingTime);
+           
             _context.Train.Add(train);
             await _context.SaveChangesAsync();
             return true;

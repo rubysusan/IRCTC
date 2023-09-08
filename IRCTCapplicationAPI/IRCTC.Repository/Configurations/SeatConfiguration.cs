@@ -13,6 +13,7 @@ namespace IRCTC.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<Seat> builder)
         {
+            builder.HasKey(x => x.SeatId);
             builder.Property(x => x.SeatNumber).IsRequired();
             builder.Property(x => x.SeatNumber).HasMaxLength(50);
             builder.Property(x => x.SeatTypeId).IsRequired();

@@ -9,9 +9,9 @@ namespace IRCTCModel.Models
 {
     public class Coach
     {
-        public int CoachId { get; set; }
+        public int CoachId { get; private set; }
         public string CoachName { get; }
-        public double BaseCharge { get; set; }
+        public double BaseCharge { get; private set; }
 
         public virtual IEnumerable<TrainClass> TrainClasses { get; set; } = new List<TrainClass>();
         private Coach() {

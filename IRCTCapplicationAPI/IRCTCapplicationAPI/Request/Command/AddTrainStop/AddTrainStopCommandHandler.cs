@@ -15,11 +15,7 @@ namespace IRCTCapplicationAPI.Request.Command.AddTrainStop
         }
         public async Task<bool> Handle(AddTrainStopCommand command, CancellationToken cancellationToken)
         {
-            TrainStop trainStop = new TrainStop();
-            trainStop.TrainId = command.TrainId;
-            trainStop.StopStationId = command.StopStationId;
-            trainStop.ReachingTime = command.ReachingTime;
-            trainStop.StationCount = command.StationCount;
+            TrainStop trainStop = new TrainStop(command.TrainId, command.StopStationId, command.ReachingTime, command.StationCount); 
 
             _context.TrainStop.Add(trainStop);
             await _context.SaveChangesAsync();

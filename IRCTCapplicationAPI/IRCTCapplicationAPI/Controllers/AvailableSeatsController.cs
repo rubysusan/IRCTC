@@ -16,7 +16,7 @@ namespace IRCTCapplicationAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAvailableSeats")]
+        [HttpGet("get")]
         public async Task<ActionResult<List<ViewAvailableSeats>>> GetAvailableSeats([FromQuery] GetAvailableSeatsQuery query)
         {
             return Ok(await _mediator.Send(query));

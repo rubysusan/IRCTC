@@ -9,8 +9,8 @@ namespace IRCTCModel.Models
 {
     public class SeatType
     {
-        public int SeatTypeId { get; set; }
-        public string TypeName { get; set; }
+        public int SeatTypeId { get; private set; }
+        public string TypeName { get; }
         private SeatType()
         {
             TypeName = string.Empty;
@@ -22,6 +22,5 @@ namespace IRCTCModel.Models
         }
 
         public virtual IEnumerable<Seat> Seats { get; set; } = new List<Seat>();
-        public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }
