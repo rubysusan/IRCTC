@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ISeatDetails } from './ISeatDetails.Interface';
 import { Observable } from 'rxjs';
@@ -13,7 +13,9 @@ export class SeatHttpService {
     constructor(private http:HttpClient) { }
     public getSeats(id:number):Observable<Array<ISeatDetails>>
     {
-      return this.http.get<Array<ISeatDetails>>(`${this.baseURL}get?TrainId=${id}`);
+      let params=new HttpParams();
+  params = params.append('TrainId', id);
+      return this.http.get<Array<ISeatDetails>>(this.baseURL+'get',{params});
     }
   }
   
