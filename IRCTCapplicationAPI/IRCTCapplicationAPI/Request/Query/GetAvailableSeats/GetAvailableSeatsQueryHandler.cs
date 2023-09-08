@@ -19,8 +19,9 @@ namespace IRCTCapplicationAPI.Request.Query.GetAvailableSeats
                  && x.Seats.Select(x => x.TrainClassId).Contains(x.TrainClassId))
                  .Select(x => new ViewAvailableSeats
                  {
+                     CoachId=x.ClassId,
                      CoachName = x.Coach.CoachName,
-                     Seats = x.Seats.Select(y => y.SeatStatus.Equals("NotConfirmed")).Count()
+                     Seats = x.Seats.Where(y=>y.SeatStatusId==2).Select(y => y.SeatId).Count()
                  }).ToListAsync();
         }
     }

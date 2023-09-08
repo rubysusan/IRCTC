@@ -13,6 +13,6 @@ export class TrainsSearchHttpService {
   constructor(private http:HttpClient) { }
   public getTrainBySearch(from:number,to:number,date:string,coach:number):Observable<Array<ISearchedTrain>>
   {
-    return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}SearchTrain?FromStationName=${from}&ToStationName=${to}&Date=${date}&CoachName=${coach}`);
+    return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}get?FromStationId=${from}&ToStationId=${to}&Date=${date}&CoachId=${coach}`);
   }
 }

@@ -14,11 +14,29 @@ import { ChargeHttpService } from 'src/app/charge-http.service';
 interface IChargeValue {
   charge: number;
 }
+enum trainTypeEnum{
+  Janshatabdi=1,
+        Shatabdi,
+        Antyodaya,
+        Intercity,
+        Express
+}
+enum coachEnum{
+  ACFirstClass=1,
+        ExecChairCar,
+        ACChairCar,
+        Sleeper,
+        SecondSitting,
+        ACSecondTier,
+        ACThirdTier,
+        ACThreeEconomy
+}
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.sass'],
 })
+
 export class SearchResultsComponent implements OnInit {
   seat: Array<ISeatDetails> = [];
   searchVal: Array<IValuesSearched> = [];
@@ -48,17 +66,7 @@ export class SearchResultsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.trainService
-      .getTrainBySearch(
-        this.from,
-        this.to,
-        this.dateVal + 'T00:00:00',
-        this.coach
-      )
-      .subscribe((data: Array<ISearchedTrain>) => {
-        this.train = data;
-        console.log(this.train);
-      });
+ 
 
     this.subs = this.searchService.search.subscribe(
       (x: Array<IValuesSearched>) => (this.searchVal = x)
@@ -68,6 +76,18 @@ export class SearchResultsComponent implements OnInit {
     this.to = Number(this.searchVal.map((x) => x.toVal));
     this.dateVal = String(this.searchVal.map((x) => x.dateVal));
     this.coach = Number(this.searchVal.map((x) => x.coachVal));
+
+    this.trainService
+    .getTrainBySearch(
+      this.from,
+      this.to,
+      this.dateVal + 'T00:00:00',
+      this.coach
+    )
+    .subscribe((data: Array<ISearchedTrain>) => {
+      this.train = data;
+      console.log(this.train);
+    });
   }
   id: number = 0;
   tname: string = '';
@@ -123,36 +143,92 @@ export class SearchResultsComponent implements OnInit {
       });
   }
   trainTypeSearched: string = '';
+  trainTypeValue:number=0;
   getSelectedTrainType(event: any) {
     this.trainTypeSearched = event.target.value;
     console.log(this.trainTypeSearched);
+    if(this.trainTypeSearched==trainTypeEnum[trainTypeEnum.Antyodaya])
+    {
+      this.trainTypeValue=trainTypeEnum.Antyodaya
+    }
+    else if(this.trainTypeSearched==trainTypeEnum[trainTypeEnum.Express])
+    {
+      this.trainTypeValue=trainTypeEnum.Express
+    }
+    else if(this.trainTypeSearched==trainTypeEnum[trainTypeEnum.Intercity])
+    {
+      this.trainTypeValue=trainTypeEnum.Intercity
+    }
+    else if(this.trainTypeSearched==trainTypeEnum[trainTypeEnum.Janshatabdi])
+    {
+      this.trainTypeValue=trainTypeEnum.Janshatabdi
+    }
+    else if(this.trainTypeSearched==trainTypeEnum[trainTypeEnum.Shatabdi])
+    {
+      this.trainTypeValue=trainTypeEnum.Shatabdi
+    }
     this.trainTypeService
       .getTrainByType(
         this.from,
         this.to,
         this.dateVal,
         this.coach,
-        this.trainTypeSearched
+        this.trainTypeValue
       )
       .subscribe((data: Array<ISearchedTrain>) => {
         this.train = data;
         console.log(this.train);
       });
   }
+  classId:number=0;
   classSearched: string = '';
   getSelectedClass(event: any) {
-    this.coach = event.target.value;
+    this.classSearched = event.target.value;
     console.log(this.classSearched);
+    if(this.classSearched==coachEnum[coachEnum.ACChairCar])
+    {
+      this.classId=coachEnum.ACChairCar
+    }
+    else if(this.classSearched==coachEnum[coachEnum.ACFirstClass])
+    {
+      this.classId=coachEnum.ACFirstClass
+    }
+    else if(this.classSearched==coachEnum[coachEnum.ACSecondTier])
+    {
+      this.classId=coachEnum.ACSecondTier
+    }
+    else if(this.classSearched==coachEnum[coachEnum.ACThirdTier])
+    {
+      this.classId=coachEnum.ACThirdTier
+    }
+    else if(this.classSearched==coachEnum[coachEnum.ACThreeEconomy])
+    {
+      this.classId=coachEnum.ACThreeEconomy
+    }
+    else if(this.classSearched==coachEnum[coachEnum.ExecChairCar])
+    {
+      this.classId=coachEnum.ExecChairCar
+    }
+    else if(this.classSearched==coachEnum[coachEnum.SecondSitting])
+    {
+      this.classId=coachEnum.SecondSitting
+    }
+    else if(this.classSearched==coachEnum[coachEnum.Sleeper])
+    {
+      this.classId=coachEnum.Sleeper
+    }
     this.trainService
-      .getTrainBySearch(this.from, this.to, this.dateVal, this.coach)
+      .getTrainBySearch(this.from, this.to, this.dateVal, this.classId)
       .subscribe((data: Array<ISearchedTrain>) => {
         this.train = data;
         console.log(this.train);
       });
   }
   charge: Array<IChargeValue> = [];
-  onSeat(coach: number) {
+  onSeat(coach: number,name:string) {
+    console.log(coach)
     this.coachValId = coach;
+    this.coachVal=name;
     this.chargeService
       .getCharge(this.id, this.from, this.to, this.coachValId)
       .subscribe((data: Array<IChargeValue>) => {
