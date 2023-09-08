@@ -14,3 +14,24 @@
     <td>Coach Name:{{i.coachName}}</td>
 </tr>
 </table>
+<button (click)="addPassenger()">Add Passenger</button>
+<form *ngIf="view" [formGroup]="passengerGroup">
+    <label>Name:</label>
+    <input type="text" id="passengerName" formControlName="passengerName"/><br><br>
+    <label>Age:</label>
+    <input type="text" id="passengerAge" formControlName="passengerAge"/><br><br>
+    <label>Gender:</label>
+    <input type="text" id="passengeGender" formControlName="passengeGender"/><br><br>
+    <label>Preference:</label>
+    <select  formControlName="preference" id="userType" (change)="getSelectedValue($event)">
+        <option value="none" selected disabled hidden>Select an Option</option>
+        <option value="Upper">Upper</option>
+        <option value="Middle">Middle</option>
+        <option value="Lower">Lower</option>
+        <option value="Window">Window</option>
+        <option value="Aisle">Aisle</option>
+    </select><br><br>
+    <button (click)="add()">Add</button>
+   
+</form><br><br>
+<button>Book</button>

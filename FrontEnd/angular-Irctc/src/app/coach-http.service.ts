@@ -10,7 +10,7 @@ export class CoachHttpService {
   private baseURL="https://localhost:7247/api/Coach/"
   constructor(private http:HttpClient) { }
   public getCoach():Observable<Array<ICoachDetails>>{
-    return this.http.get<Array<ICoachDetails>>(this.baseURL+"GetAllCoach");
+    return this.http.get<Array<ICoachDetails>>(this.baseURL+"get");
   }
   
 }

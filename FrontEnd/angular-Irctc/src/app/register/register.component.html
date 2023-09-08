@@ -9,11 +9,11 @@
 <label>Identity Card Number </label>
 <input type="text" id="identityCardID" formControlName="identityCardID"/><br><br>
 <label>User Type </label>
-<select name="userType" id="userType" (change)="getSelectedValue($event)">
+<select formControlName="userType" id="userType" (change)="getSelectedValue($event)">
     <option value="none" selected disabled hidden>Select an Option</option>
     <option value="Passenger">Passenger</option>
     <option value="TTE">TTE</option>
 </select><br><br>
 <input type="button" id="back" value="Back"  (click)="onBack()"/>
-<input type="button" id="register" value="Register" (click)="insert()" />
+<input type="button" [disabled]="!regGroup.valid" id="register" value="Register" (click)="insert()" />
 </form>

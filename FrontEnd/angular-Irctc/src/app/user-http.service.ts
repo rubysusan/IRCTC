@@ -14,10 +14,10 @@ export class UserHttpService {
   constructor(private http:HttpClient) { }
   public getUser():Observable<Array<ILoginGet>>
   {
-    return this.http.get<Array<ILoginGet>>(this.baseURL+"GetAllUser");
+    return this.http.get<Array<ILoginGet>>(this.baseURL+"get");
   }
   public addUser(user:ILoginDetails):Observable<ILoginGet>
   {
-    return this.http.post<ILoginGet>(this.baseURL+"AddUser",user);
+    return this.http.post<ILoginGet>(this.baseURL+"add",user);
   }
 }

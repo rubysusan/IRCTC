@@ -13,7 +13,7 @@ export class SeatHttpService {
     constructor(private http:HttpClient) { }
     public getSeats(id:number):Observable<Array<ISeatDetails>>
     {
-      return this.http.get<Array<ISeatDetails>>(`${this.baseURL}GetAvailableSeats?TrainId=${id}`);
+      return this.http.get<Array<ISeatDetails>>(`${this.baseURL}get?TrainId=${id}`);
     }
   }
   

@@ -28,7 +28,7 @@
     <option value="SecondSitting">SecondSitting</option>
     <option value="ACSecondTier">ACSecondTier</option>
     <option value="ACThirdTier">ACThirdTier</option>
-    <option value="ACThreeEconomy">Express</option>
+    <option value="ACThreeEconomy">ACThreeEconomy</option>
 </select>
 
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
@@ -54,7 +54,7 @@
 </table>
 <table>
     <tr height="50px" *ngFor="let i of seat">
-        <td (click)="onSeat(i.coachName)">{{i.coachName}}</td>
+        <td (click)="onSeat(i.coachId,i.coachName)">{{i.coachName}}</td>
         <td>{{i.seats}}</td>
 </table>
 <table>

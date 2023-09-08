@@ -1,5 +1,5 @@
 import {
-  HttpClient
+  HttpClient, HttpParams
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ISearchedTrain } from './ISearchedTrain.Interface';
@@ -10,8 +10,14 @@ import { Observable } from 'rxjs';
 export class TraintypeHttpService {
 private baseURL="https://localhost:7247/api/TrainSearchByTrainType/";
 constructor(private http:HttpClient) { }
-public getTrainByType(from:string,to:string,date:string,coach:string,type:string):Observable<Array<ISearchedTrain>>
+public getTrainByType(from:number,to:number,date:string,coach:number,type:number):Observable<Array<ISearchedTrain>>
 {
-  return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}TrainSearchByTrainType?FromStationName=${from}&ToStationName=${to}&Date=${date}&CoachName=${coach}&TypeName=${type}`);
+  let params=new HttpParams();
+  params = params.append('FromStationId', from);
+  params = params.append('ToStationId', to);
+  params = params.append('Date', date);
+  params = params.append('CoachId', coach);
+  params = params.append('TypeId', type);
+  return this.http.get<Array<ISearchedTrain>>(this.baseURL+'get',{params});
 }
 }
