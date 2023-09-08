@@ -25,8 +25,8 @@ namespace IRCTCModel.Models
         {
             SeatNumber = Num;
             SeatTypeId = SeatType;
-            TrainClassId = TrainClassId;
-            SeatStatusId = SeatStatusId;
+            TrainClassId = TrainClass;
+            SeatStatusId = SeatStatus;
         }
     }
 }

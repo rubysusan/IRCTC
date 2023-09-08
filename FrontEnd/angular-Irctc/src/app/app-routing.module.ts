@@ -12,7 +12,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   {
-  path:'',component:LoginComponent
+  path:'login',component:LoginComponent
   },
   {
     path:'bookdetails',component:BookDetailsComponent
@@ -40,7 +40,11 @@ const routes: Routes = [
   },
   {
     path:'tte',component:TteComponent
-  }
+  },
+  {
+     path: '', redirectTo: '/login', pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({

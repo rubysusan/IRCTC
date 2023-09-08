@@ -12,6 +12,6 @@ export class StationHttpService {
   constructor(private http:HttpClient) { }
   public getStation():Observable<Array<IStationDetails>>
   {
-    return this.http.get<Array<IStationDetails>>(this.baseURL+"GetAllStation");
+    return this.http.get<Array<IStationDetails>>(this.baseURL+"get");
   }
 }

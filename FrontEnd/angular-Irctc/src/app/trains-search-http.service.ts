@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 export class TrainsSearchHttpService {
   private baseURL="https://localhost:7247/api/TrainSearch/";
   constructor(private http:HttpClient) { }
-  public getTrainBySearch(from:string,to:string,date:string,coach:string):Observable<Array<ISearchedTrain>>
+  public getTrainBySearch(from:number,to:number,date:string,coach:number):Observable<Array<ISearchedTrain>>
   {
-    return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}SearchTrain?FromStationName=${from}&ToStationName=${to}&Date=${date}&CoachName=${coach}`);
+    return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}get?FromStationId=${from}&ToStationId=${to}&Date=${date}&CoachId=${coach}`);
   }
 }
