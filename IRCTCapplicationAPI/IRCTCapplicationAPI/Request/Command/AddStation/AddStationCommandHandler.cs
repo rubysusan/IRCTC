@@ -14,8 +14,7 @@ namespace IRCTCapplicationAPI.Request.Command.AddStation
         }
         public async Task<bool> Handle(AddStationCommand command, CancellationToken cancellationToken)
         {
-            Station station = new Station();
-            station.StationName = command.StationName;
+            Station station = new Station(command.StationName);
 
             _context.Station.Add(station);
             await _context.SaveChangesAsync();

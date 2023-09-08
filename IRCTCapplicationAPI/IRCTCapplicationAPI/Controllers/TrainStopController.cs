@@ -16,10 +16,10 @@ namespace IRCTCapplicationAPI.Controllers
         {
             _mediator = mediator;
         }
-        [HttpPost("AddTrainStop")]
+        [HttpPost("add")]
         public async Task<ActionResult<bool>> AddTrainStop([FromBody] AddTrainStopCommand command)
         { return Ok(await _mediator.Send(command)); }
-        [HttpGet("GetAllTrainStop")]
+        [HttpGet("get")]
         public async Task<ActionResult<bool>> GetAllTrainStop([FromQuery] GetAllTrainStopQuery query)
         { return Ok(await _mediator.Send(query)); }
     }

@@ -5,11 +5,11 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
 {
     public class GetTrainBySearchQuery:IRequest<List<ViewTrainBySearch>>
     {
-        public string FromStationName { get; set; }
-        public string ToStationName { get; set;}
+        public int FromStationId { get; set; }
+        public int ToStationId { get; set;}
 
         public DateTime Date { get; set; }
-        public string CoachName { get; set; }
+        public int CoachId { get; set; }
 
     }
 }

@@ -8,10 +8,17 @@ namespace IRCTCModel.Models
 {
     public class Station
     {
-        public int StationId { get; set; }
-        public string StationName { get; set; }
+        public int StationId { get;  }
+        public string StationName { get; private set; }
+        public Station()
+        {
+            
+        }
 
-
+        public Station(string Name)
+        {
+            StationName = Name;
+        }
         public virtual IEnumerable<Train> FromTrains { get; set; } = new List<Train>();
         public virtual IEnumerable<Train> ToTrains { get; set; } = new List<Train>();
         public virtual IEnumerable<TrainStop> TrainStops { get; set; } = new List<TrainStop>();

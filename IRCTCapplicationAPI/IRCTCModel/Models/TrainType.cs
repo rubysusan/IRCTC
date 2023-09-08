@@ -9,7 +9,7 @@ namespace IRCTCModel.Models
 {
     public class TrainType
     {
-        public int TrainTypeID { get; set; }
+        public int TrainTypeID { get; private set; }
         public string TypeName { get;}
         private TrainType()
         {

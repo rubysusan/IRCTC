@@ -20,9 +20,9 @@ namespace IRCTCapplicationAPI.Request.Query.GetCharge
         }
         public async Task<List<ViewCharge>> Handle(GetChargeQuery request, CancellationToken cancellationToken)
         {
-            FromCount = _context.TrainStop.Where(x => x.TrainId == request.TrainId && x.Station.StationName == request.FromStation).Select(x => x.StationCount).SingleOrDefault();
-            ToCount = _context.TrainStop.Where(x => x.TrainId == request.TrainId && x.Station.StationName == request.ToStation).Select(x => x.StationCount).SingleOrDefault();
-            return await _context.TrainClass.Where(x => x.TrainId == request.TrainId && x.Coach.CoachName== request.CoachName).Select(x => new ViewCharge
+            FromCount = _context.TrainStop.Where(x => x.TrainId == request.TrainId && x.Station.StationId == request.FromStationId).Select(x => x.StationCount).SingleOrDefault();
+            ToCount = _context.TrainStop.Where(x => x.TrainId == request.TrainId && x.Station.StationId == request.ToStationId).Select(x => x.StationCount).SingleOrDefault();
+            return await _context.TrainClass.Where(x => x.TrainId == request.TrainId && x.Coach.CoachId== request.CoachId).Select(x => new ViewCharge
                 { Charge = x.Coach.BaseCharge + ((ToCount-FromCount) *10)
                     
 

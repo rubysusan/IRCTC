@@ -14,9 +14,7 @@ namespace IRCTCapplicationAPI.Request.Command.AddTrainClass
         }
         public async Task<bool> Handle(AddTrainClassCommand command, CancellationToken cancellationToken)
         {
-            TrainClass trainClass = new TrainClass();
-            trainClass.TrainId = command.TrainId;
-            trainClass.ClassId = command.ClassId;
+            TrainClass trainClass = new TrainClass(command.TrainId, command.ClassId); 
             _context.TrainClass.Add(trainClass);
             await _context.SaveChangesAsync();
             return true;

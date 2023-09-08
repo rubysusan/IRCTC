@@ -15,7 +15,7 @@ namespace IRCTCapplicationAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetCharge")]
+        [HttpGet("get")]
         public async Task<ActionResult<List<ViewCharge>>> GetCharge([FromQuery] GetChargeQuery query)
         {
             return Ok(await _mediator.Send(query));

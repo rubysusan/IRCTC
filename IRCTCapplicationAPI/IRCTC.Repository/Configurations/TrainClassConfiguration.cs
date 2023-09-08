@@ -13,6 +13,7 @@ namespace IRCTC.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<TrainClass> builder)
         {
+            builder.HasKey(x => x.TrainClassId);
             builder.Property(x => x.TrainId).IsRequired();
             builder.HasOne(x => x.Train)
                    .WithMany(y => y.TrainClasses)

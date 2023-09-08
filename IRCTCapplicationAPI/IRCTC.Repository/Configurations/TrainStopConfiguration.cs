@@ -13,6 +13,7 @@ namespace IRCTC.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<TrainStop> builder)
         {
+            builder.HasKey(x => x.TrainStopId);
             builder.Property(x => x.TrainId).IsRequired();
             builder.Property(x => x.StopStationId).IsRequired();
             builder.Property(x => x.ReachingTime).IsRequired();

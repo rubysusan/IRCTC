@@ -14,12 +14,7 @@ namespace IRCTCapplicationAPI.Request.Command.AddSeat
         }
         public async Task<bool> Handle(AddSeatCommand command, CancellationToken cancellationToken)
         {
-            Seat seat = new Seat();
-            seat.SeatNumber = command.SeatNumber;
-            seat.SeatTypeId = command.SeatTypeId;
-            seat.TrainClassId = command.TrainClassId;
-            seat.SeatStatusId = command.SeatStatusId;
-
+            Seat seat = new Seat(command.SeatNumber, command.SeatTypeId, command.TrainClassId, command.SeatStatusId);
             _context.Seat.Add(seat);
             await _context.SaveChangesAsync();
             return true;

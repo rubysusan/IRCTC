@@ -6,8 +6,8 @@ namespace IRCTCapplicationAPI.Request.Query.GetCharge
     public class GetChargeQuery: IRequest<List<ViewCharge>>
     {
         public int TrainId { get; set; }
-        public string FromStation { get; set; } 
-        public string ToStation { get; set; }
-        public string CoachName { get; set; }
+        public int FromStationId { get; set; } 
+        public int ToStationId { get; set; }
+        public int CoachId { get; set; }
     }
 }
