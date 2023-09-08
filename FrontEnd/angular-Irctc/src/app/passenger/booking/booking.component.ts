@@ -97,6 +97,7 @@ export class BookingComponent implements OnInit {
       coachVal: this.coachVal,
     });
     this.searchService.setValue(this.dataSearched);
+    console.log(this.dataSearched)
     this.router.navigate(['passenger/booking/search']);
   }
 }
