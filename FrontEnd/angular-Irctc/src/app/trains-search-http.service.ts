@@ -1,5 +1,5 @@
 import {
-  HttpClient
+  HttpClient, HttpParams
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ISearchedTrain } from './ISearchedTrain.Interface';
@@ -13,6 +13,11 @@ export class TrainsSearchHttpService {
   constructor(private http:HttpClient) { }
   public getTrainBySearch(from:number,to:number,date:string,coach:number):Observable<Array<ISearchedTrain>>
   {
-    return this.http.get<Array<ISearchedTrain>>(`${this.baseURL}get?FromStationId=${from}&ToStationId=${to}&Date=${date}&CoachId=${coach}`);
+    let params=new HttpParams();
+  params = params.append('FromStationId', from);
+  params = params.append('ToStationId', to);
+  params = params.append('Date', date);
+  params = params.append('CoachId', coach);
+    return this.http.get<Array<ISearchedTrain>>(this.baseURL+'get',{params});
   }
 }
