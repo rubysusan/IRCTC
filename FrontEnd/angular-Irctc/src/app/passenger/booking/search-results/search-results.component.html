@@ -6,7 +6,7 @@
     <option value="DepartureLF">Departure (Late First)</option>
     <option value="ArrivalEF">Arrival (Early First)</option>
     <option value="ArrivalLF">Arrival (Late First)</option>
-</select><br><br>
+</select>
 <label>Filter By Date:</label>
 <input type="date"  (change)="onFilterDate($event)" >
 <label> Filter By Train Type</label>
@@ -54,7 +54,7 @@
 </table>
 <table>
     <tr height="50px" *ngFor="let i of seat">
-        <td (click)="onSeat(i.coachName)">{{i.coachName}}</td>
+        <td (click)="onSeat(i.coachId)">{{i.coachName}}</td>
         <td>{{i.seats}}</td>
 </table>
 <table>

@@ -1,6 +1,6 @@
 export interface IValuesSearched{
-    toVal:string;
-    fromVal:string;
-    coachVal:string;
+    toVal:number;
+    fromVal:number;
+    coachVal:number;
     dateVal:Date;
 }
