@@ -5,6 +5,9 @@ import { LoginDetailsService } from '../login-details.service';
 import { ILoginDetails } from '../ILoginDetails.Interface';
 import { UserHttpService } from '../user-http.service';
 import { ILoginGet } from '../ILoginGet.Interface';
+import { IUserDetails } from '../IUserDetails.Interface';
+import { SearchDetailsService } from '../search-details.service';
+import { Subscription } from 'rxjs';
 enum userTypeEnum {
   Passenger = 1,
   TTE,
@@ -17,45 +20,49 @@ enum userTypeEnum {
 })
 export class LoginComponent implements OnInit {
   public loginGroup!: FormGroup;
-  public login?: ILoginDetails;
-  public user: Array<ILoginGet> = [];
+  public login?: IUserDetails;
+  public user: Array<IUserDetails> = [];
   constructor(
     private userService: UserHttpService,
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private logService: LoginDetailsService
+    private logService: LoginDetailsService,private searchService: SearchDetailsService
   ) {}
-
+  id:number=0;
+  type:number=0;
   ngOnInit() {
     this.loginGroup = this.fb.group({
       userName: new FormControl(''),
       password: new FormControl(''),
     });
-    this.userService.getUser().subscribe((data: Array<ILoginGet>) => {
-      this.user = data;
-      console.log(this.user);
-    });
+   
   }
   onRegister() {
     this.router.navigate(['register']);
   }
+  
   onLogin() {
     const logDetails = this.loginGroup?.value;
-    this.login = this.user.find((x) => x.userName === logDetails.userName);
-    console.log(this.login?.userName);
-    if (logDetails.userName === this.login?.userName) {
-      if (logDetails.password === this.login?.password) {
-        if (this.login?.userTypeID === userTypeEnum.Passenger) {
-          this.router.navigate(['passenger']);
-        } else {
-          this.router.navigate(['tte']);
-        }
-      } else {
-        alert('Wrong Password');
+    this.userService.getUserOnLogin(logDetails.userName,logDetails.password).subscribe((data: Array<IUserDetails>) => {
+      this.user = data;
+      console.log(this.user);
+      this.id=Number(this.user.map(x=>x.userId))
+      this.type=Number(this.user.map(x=>x.userTypeId))
+      this.searchService.setUser(this.id,this.type)
+      if(this.id==0)
+      {
+        alert("Wrong Credentials")
       }
-    } else {
-      alert('Wrong Username');
-    }
+      else if(this.type==userTypeEnum.Passenger)
+      {
+        this.router.navigate(['passenger'])
+      }
+      else{
+        this.router.navigate(['tte'])
+      }
+    }); 
+    
+    
   }
 }

@@ -1,5 +1,5 @@
 export interface ILoginGet{
-    id:number;
+    userId:number;
     userName:string;
     password:string;
     email:string;

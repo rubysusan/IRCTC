@@ -30,5 +30,14 @@ namespace IRCTCModel.Models
         }
         public virtual IEnumerable<Booking> Bookings { get; set; } = new List<Booking>();
 
+        public void UserUpdate(string Name, String Pass, String Mail, string Card, int TypeId)
+        {
+            UserName=Name;
+            Password=Pass;
+            Email=Mail;
+            IdentityCardID = Card;
+            UserTypeID = TypeId;
+        }
+
     }
 }
