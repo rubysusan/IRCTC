@@ -9,6 +9,7 @@ import { BookingComponent } from './passenger/booking/booking.component';
 import { AccountComponent } from './passenger/account/account.component';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { TteAccountComponent } from './tte/tte-account/tte-account.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,14 @@ const routes: Routes = [
     ]
   },
   {
-    path:'tte',component:TteComponent
+    path:'tte',children:[
+      {
+        path:'',component:TteComponent
+      },
+      {
+        path:'account',component:TteAccountComponent
+      }
+    ]
   },
   {
      path: '', redirectTo: '/login', pathMatch: 'full'

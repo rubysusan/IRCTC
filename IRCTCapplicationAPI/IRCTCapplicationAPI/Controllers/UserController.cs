@@ -37,7 +37,7 @@ namespace IRCTCapplicationAPI.Controllers
             return Ok(await _mediator.Send(query));
         }
         [HttpPut("update")]
-        public async Task<ActionResult<List<User>>> UpdateUserById([FromQuery] UpdateUserByIdCommand command)
+        public async Task<ActionResult<List<User>>> UpdateUserById([FromBody] UpdateUserByIdCommand command)
         { return Ok(await _mediator.Send(command)); }
     }
 

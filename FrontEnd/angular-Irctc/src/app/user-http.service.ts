@@ -7,6 +7,7 @@ import { ILoginGet } from './ILoginGet.Interface';
 import { ILoginDetails } from './ILoginDetails.Interface';
 import { IUserDetails } from './IUserDetails.Interface';
 import { IViewUserDetails } from './IViewUserDetails.Interface';
+import { IUpdateData } from './IUpdateData.Interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +36,10 @@ export class UserHttpService {
     params=params.append('UserId',id)
     return this.http.get<Array<IViewUserDetails>>(this.baseURL+'get-by-id',{params});
   }
-  public updateUserById(id:number,name:string,mail:string,pass:string,card:string,type:string)
-  :Observable<Array<ILoginGet>>
+  public updateUserById(user:IUpdateData)
+  :Observable<Array<IUpdateData>>
   {
-    let params=new HttpParams()
-    params=params.append('Id',id)
-    params=params.append('UserName',name)
-    params=params.append('Email',mail)
-    params=params.append('Password',pass)
-    params=params.append('IdCard',card)
-    params=params.append('TypeName',type)
-    return this.http.put<Array<ILoginGet>>(this.baseURL+'update',{params});
+  
+    return this.http.put<Array<IUpdateData>>(this.baseURL+'update',user);
   }
 }
