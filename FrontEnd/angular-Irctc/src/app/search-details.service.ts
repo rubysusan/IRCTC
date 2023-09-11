@@ -13,7 +13,11 @@ export class SearchDetailsService {
  
   public searchData=new BehaviorSubject<Array<IValuesSearched>>([]);
   search=this.searchData.asObservable();
+  public userId=new BehaviorSubject<number>(0);
+  idVal=this.userId.asObservable();
   
+  public typeId=new BehaviorSubject<number>(0);
+  typeVal=this.typeId.asObservable();
   
     setValue(data:Array<IValuesSearched>)
     {
@@ -23,6 +27,11 @@ export class SearchDetailsService {
     setSelectedValue(data:Array<ISelectedTrain>)
     {
       this.selectData.next(data);
+    }
+    setUser(id:number,type:number)
+    {
+      this.userId.next(id)
+      this.typeId.next(type)
     }
     
 

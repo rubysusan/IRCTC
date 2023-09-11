@@ -1,8 +1,10 @@
 ﻿using IRCTCapplicationAPI.DTO;
 using IRCTCapplicationAPI.Request.Command.AddUser;
-
+using IRCTCapplicationAPI.Request.Command.UpdateUserById;
 using IRCTCapplicationAPI.Request.Query.GetAllUser;
+using IRCTCapplicationAPI.Request.Query.GetUserById;
 using IRCTCapplicationAPI.Request.Query.GetUserOnLogin;
+using IRCTCModel.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +31,14 @@ namespace IRCTCapplicationAPI.Controllers
         {
             return Ok(await _mediator.Send(query));
         }
+        [HttpGet("get-by-id")]
+        public async Task<ActionResult<List<ViewUser>>> GetUserById([FromQuery] GetUserByIdQuery query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
+        [HttpPut("update")]
+        public async Task<ActionResult<List<User>>> UpdateUserById([FromQuery] UpdateUserByIdCommand command)
+        { return Ok(await _mediator.Send(command)); }
     }
 
 }

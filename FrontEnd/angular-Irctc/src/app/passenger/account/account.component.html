@@ -1,4 +1,34 @@
 <h2>MY ACCOUNT</h2>
-<button>View Profile</button>
-<button>Edit Profile</button>
-<button>View Bookings</button>
+<button (click)="viewProfile()">View Profile</button>
+<button (click)="editProfile()">Edit Profile</button>
+<button (click)="pastBookings()">View Past Bookings</button>
+<button (click)="futureBookings()">View Upcoming Bookings</button>
+<div  *ngIf="view">
+<div *ngFor="let i of user">
+    <p>Name: {{i.userName}}</p>
+    <p>Password: {{i.password}}</p>
+    <p>Email: {{i.email}}</p>
+    <p>Identity Card Number:{{i.idCard}}</p>
+    <p>User Type:{{i.userType}}</p>
+    <button (click)="onDone()">Done</button>
+</div>
+</div>
+<div *ngIf="val" >
+    <form [formGroup]="editGroup">
+        <label>Name:</label>
+        <input type="text"id="userName" formControlName="userName"/><br><br>
+        <label>Password </label>
+        <input type="password" id="password" formControlName="password"/><br><br>
+        <label>Email </label>
+        <input type="email" id="email" formControlName="email"/><br><br>
+        <label>Identity Card Number </label>
+        <input type="text" id="identityCardID" formControlName="identityCardID"/><br><br>
+        <label>User Type </label>
+        <select formControlName="userType" id="userType" (change)="getSelectedValue($event)">
+            <option value="none" selected disabled hidden>Select an Option</option>
+            <option value="Passenger">Passenger</option>
+            <option value="TTE">TTE</option>
+        </select><br><br>
+        <button (click)="onEdit()">Edit</button>
+    </form>
+</div>
