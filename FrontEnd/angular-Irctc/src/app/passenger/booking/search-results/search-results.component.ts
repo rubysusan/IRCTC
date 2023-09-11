@@ -235,6 +235,7 @@ export class SearchResultsComponent implements OnInit {
         this.charge = data;
         console.log(this.charge);
       });
+    this.chargeService.setChargeValue(this.charge);
   }
 
   onDepartureEF(event: any) {

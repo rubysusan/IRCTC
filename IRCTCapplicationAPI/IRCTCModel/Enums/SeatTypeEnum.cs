@@ -8,9 +8,9 @@ namespace IRCTCModel.Enums
 {
     public enum SeatTypeEnum
     {
-        LowerBirth=1,
-        UpperBirth,
-        MiddleBirth,
+        LowerBerth=1,
+        UpperBerth,
+        MiddleBerth,
         WindowSeat,
         MiddleSeat,
         AisleSeat
