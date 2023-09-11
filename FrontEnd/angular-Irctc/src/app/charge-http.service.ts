@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 interface IChargeValue{
   charge:number;
@@ -20,5 +20,13 @@ public getCharge(id:number,from:number,to:number,coach:number):Observable<Array<
   params = params.append('CoachId', coach);
   return this.http.get<Array<IChargeValue>>(this.baseURL+'get',{params});
 }
+public chargeValue=new BehaviorSubject<Array<IChargeValue>>([]);
+  charge=this.chargeValue.asObservable();
+  
+  
+    setChargeValue(data:Array<IChargeValue>)
+    {
+      this.chargeValue.next(data);
+    }
 
 }

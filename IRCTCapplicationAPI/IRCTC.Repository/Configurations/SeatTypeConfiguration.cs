@@ -19,9 +19,9 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.TypeName).HasMaxLength(50);
             builder.HasData(new SeatType[]
             {
-                new SeatType(SeatTypeEnum.LowerBirth),
-                new SeatType(SeatTypeEnum.UpperBirth),
-                new SeatType(SeatTypeEnum.MiddleBirth),
+                new SeatType(SeatTypeEnum.LowerBerth),
+                new SeatType(SeatTypeEnum.UpperBerth),
+                new SeatType(SeatTypeEnum.MiddleBerth),
                 new SeatType(SeatTypeEnum.WindowSeat),
                 new SeatType(SeatTypeEnum.MiddleSeat),
                 new SeatType(SeatTypeEnum.AisleSeat)

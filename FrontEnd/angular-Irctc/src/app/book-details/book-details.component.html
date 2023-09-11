@@ -14,6 +14,31 @@
     <td>Coach Name:{{i.coachName}}</td>
 </tr>
 </table>
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Gender
+        </th>
+    </tr>
+    <tr  *ngFor="let i of newPassengerList">
+        <td>
+            {{i.name}}
+        </td>
+        <td>
+            {{i.age}}
+        </td>
+        <td>
+            {{i.gender}}
+        </td>      
+    </tr>
+</table>
 <button (click)="addPassenger()">Add Passenger</button>
 <form *ngIf="view" [formGroup]="passengerGroup">
     <label>Name:</label>
@@ -25,13 +50,14 @@
     <label>Preference:</label>
     <select  formControlName="preference" id="userType" (change)="getSelectedValue($event)">
         <option value="none" selected disabled hidden>Select an Option</option>
-        <option value="Upper">Upper</option>
-        <option value="Middle">Middle</option>
-        <option value="Lower">Lower</option>
-        <option value="Window">Window</option>
-        <option value="Aisle">Aisle</option>
+        <option value="LowerBerth">Lower Berth</option>
+        <option value="UpperBerth">Upper Berth</option>
+        <option value="MiddleBerth">Middle Berth</option>
+        <option value="WindowSeat">Window Seat</option>
+        <option value="MiddleSeat">Middle Seat</option>
+        <option value="AisleSeat">Aisle Seat</option>
     </select><br><br>
-    <button (click)="add()">Add</button>
+    <input type="button" (click)="add()" value="Add"/>
    
 </form><br><br>
-<button>Book</button>
+<button (click)="onBook()">Book</button>
