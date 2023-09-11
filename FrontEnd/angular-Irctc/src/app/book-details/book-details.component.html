@@ -57,6 +57,11 @@
         <option value="MiddleSeat">Middle Seat</option>
         <option value="AisleSeat">Aisle Seat</option>
     </select><br><br>
+    <select *ngFor="let i of seats" >
+        <option>{{i.seatName}}</option>
+    </select>
+
+    
     <input type="button" (click)="add()" value="Add"/>
    
 </form><br><br>

@@ -8,6 +8,8 @@ import { PassengerDetailsService } from '../passenger-details.service';
 import { BookingService } from '../booking.service';
 import { IBookingData } from '../IBookingData.Interface';
 import { ChargeHttpService } from '../charge-http.service';
+import { SeatHttpService } from '../seat-http.service';
+import { ISeatForPassenger } from '../ISeatForPassenger.Interface';
 enum seatTypeEnum{
   LowerBerth=1,
   UpperBerth,
@@ -46,7 +48,8 @@ export class BookDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private passengerService:  PassengerDetailsService,
     private bookingService:BookingService,
-    private chargeService:ChargeHttpService
+    private chargeService:ChargeHttpService,
+    private seatService:SeatHttpService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +64,7 @@ export class BookDetailsComponent implements OnInit {
       (x: Array<ISelectedTrain>) => (this.selectVal = x)
     );
     console.log(this.selectVal);
+   
 
     this.subscript = this.chargeService.charge.subscribe(
       (x: Array<IChargeValue>) => (this.cost = x)
@@ -72,6 +76,8 @@ export class BookDetailsComponent implements OnInit {
     console.log(this.uId);
 
   }
+  trainClassId:number=0
+  seats:Array<ISeatForPassenger>=[]
   getSelectedValue(event: any) {
     this.selectedValue = event.target.value;
     if (this.selectedValue === seatTypeEnum[seatTypeEnum.LowerBerth]) 
@@ -98,6 +104,9 @@ export class BookDetailsComponent implements OnInit {
     {
       this.typeValue = seatTypeEnum.AisleSeat;
     }
+    this.trainClassId=Number(this.selectVal.map(x=>x.coachId))
+    this.seatService.getSeatForPassenger(this.typeValue,this.trainClassId).subscribe(
+      (data:Array<ISeatForPassenger>)=>{this.seats=data});
     console.log(this.typeValue);
     console.log(event.target.value);
   }
