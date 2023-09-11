@@ -106,7 +106,9 @@ export class SearchResultsComponent implements OnInit {
     trainId: number,
     trainName: string,
     fromStation: string,
+    fromStatId:number,
     toStation: string,
+    toStatId:number,
     date: string,
     departure: string,
     arrival: string
@@ -118,6 +120,8 @@ export class SearchResultsComponent implements OnInit {
     this.tdate = date;
     this.depart = departure;
     this.arriv = arrival;
+    this.fromStatId=fromStatId;
+    this.toStatId=toStatId;
 
     this.seatService
       .getSeats(trainId)
