@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IBooking } from './IBooking.Interface';
+import { IBookingData } from './IBookingData.Interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class BookingService {
   {
     return this.http.get<Array<IBooking>>(this.baseURL+"get");
   }
-  public addBookingDetails(booking:IBooking):Observable<IBooking>
+  public addBookingDetails(booking:IBookingData):Observable<IBookingData>
   {
-    return this.http.post<IBooking>(this.baseURL+"add",booking);
+    return this.http.post<IBookingData>(this.baseURL+"add",booking);
   }
 }

@@ -29,15 +29,17 @@ export class BookDetailsComponent implements OnInit {
   public passengerGroup!: FormGroup;
   subs?: Subscription;
   subscript?: Subscription;
+  sub?: Subscription;
   selectVal: Array<ISelectedTrain> = [];
   view?: Boolean;
   selectedValue: any;
   typeValue: number = 0;
   passengerCount:number=0;
   cost: Array<IChargeValue> = [];
+  uId:number=0;
   public newPassenger: Array<IPassenger> = [];
   public newPassengerList:Array<IPassenger>=[];
-  public newBooking:Array<IBookingData>=[];
+  public newBooking?:IBookingData;
   
   constructor(
     private searchService: SearchDetailsService,
@@ -59,10 +61,16 @@ export class BookDetailsComponent implements OnInit {
       (x: Array<ISelectedTrain>) => (this.selectVal = x)
     );
     console.log(this.selectVal);
+
     this.subscript = this.chargeService.charge.subscribe(
       (x: Array<IChargeValue>) => (this.cost = x)
     );
     console.log(this.cost);
+    this.sub=this.searchService.idVal.subscribe(
+      (x:number)=>(this.uId=x)
+    );
+    console.log(this.uId);
+
   }
   getSelectedValue(event: any) {
     this.selectedValue = event.target.value;
@@ -124,14 +132,17 @@ export class BookDetailsComponent implements OnInit {
     }
   }
   onBook(){
-    this.newBooking.push(<IBookingData>{
+    this.newBooking={
       trainClassId:Number(this.selectVal.map(x=>x.coachId)),
       fromStop:Number(this.selectVal.map(x=>x.fromStationId)),
       toStop:Number(this.selectVal.map(x=>x.toStationId)),
       count:this.passengerCount,
-      totalCost:Number(this.cost),
-      userId:
-    })
+      totalCost:(Number(this.cost))*this.passengerCount,
+      userId:this.uId
+    }
+    console.log(Number(this.selectVal.map(x=>x.fromStationId)));
+    console.log(Number(this.selectVal.map(x=>x.toStationId)));
+    console.log(this.passengerCount)
     this.bookingService.addBookingDetails(this.newBooking).subscribe((data) => {
       console.log(data);
   })
