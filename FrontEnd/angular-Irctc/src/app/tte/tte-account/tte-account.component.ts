@@ -1,22 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl,
-  FormGroup,
-  Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ILoginDetails } from 'src/app/ILoginDetails.Interface';
-import { ILoginGet } from 'src/app/ILoginGet.Interface';
 import { IUpdateData } from 'src/app/IUpdateData.Interface';
 import { IViewUserDetails } from 'src/app/IViewUserDetails.Interface';
 import { SearchDetailsService } from 'src/app/search-details.service';
 import { UserHttpService } from 'src/app/user-http.service';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.sass']
+  selector: 'app-tte-account',
+  templateUrl: './tte-account.component.html',
+  styleUrls: ['./tte-account.component.sass']
 })
-export class AccountComponent implements OnInit {
+export class TteAccountComponent {
   id:number=0;
   subs?:Subscription
   user:Array<IViewUserDetails>=[]
@@ -78,14 +74,6 @@ export class AccountComponent implements OnInit {
           alert("Profile Edited Successfully")
           this.val=false
     }
-  }
-  pastBookings()
-  {
-
-  }
-  futureBookings()
-  {
-
   }
 
 }

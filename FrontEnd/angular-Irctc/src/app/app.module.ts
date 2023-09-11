@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { TteAccountComponent } from './tte/tte-account/tte-account.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookingComponent,
     AccountComponent,
     SearchResultsComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    TteAccountComponent
   ],
   imports: [
     BrowserModule,
