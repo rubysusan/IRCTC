@@ -23,6 +23,7 @@ namespace IRCTC.Repository.Context
         public DbSet<Seat> Seat { get; set; }
         public DbSet<Coach> Coach { get; set; }
         public DbSet<Booking>  Booking { get; set; }
+        public DbSet<Passenger> Passenger { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            

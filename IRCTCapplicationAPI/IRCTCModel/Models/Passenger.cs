@@ -14,6 +14,13 @@ namespace IRCTCModel.Models
         public Seat Seat { get; set; }
         public int BookingId { get; private set; }
         public Booking Booking { get; set; }
+        public Passenger() { }
+        public Passenger(string name,int seatId,int bookId)
+        {
+            PassengerName = name;
+            SeatId = seatId;
+            BookingId = bookId;
+        }
 
     }
 }

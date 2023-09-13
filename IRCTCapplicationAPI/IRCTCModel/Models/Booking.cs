@@ -25,7 +25,7 @@ namespace IRCTCModel.Models
         {
 
         }
-        public Booking(int trainClassId,int from,int to,int count,int cost,int userId)
+        public Booking(int trainClassId,int from,int to,int count,int cost,int userId,int statId)
         {
             TrainClassId = trainClassId;
             FromStop = from;
@@ -33,7 +33,12 @@ namespace IRCTCModel.Models
             Count=count;
             TotalCost = cost;
             UserId = userId;
+            BookingStatusId = statId;
         }
         public virtual IEnumerable<Passenger> Passengers { get; set; } = new List<Passenger>();
+        public void BookingStatusUpdate(int statusId)
+        {
+            BookingStatusId=statusId;
+        }
     }
 }

@@ -27,7 +27,8 @@ namespace IRCTCapplicationAPI.Request.Query.GetFutureBookings
                     FromStation = x.FromTrainStop.Station.StationName,
                     ToStation = x.ToTrainStop.Station.StationName,
                     Count = x.Count,
-                    Total = x.TotalCost
+                    Total = x.TotalCost,
+                    BookingStatus=x.BookingStatus.Status
 
                 }).ToListAsync();
         }

@@ -9,5 +9,6 @@
         public string ToStation { get; set;}
         public int Count { get; set; }
         public double Total { get; set; }
+        public string BookingStatus { get; set; }
     }
 }

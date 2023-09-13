@@ -27,7 +27,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetBooking
                    ToStop = x.ToStop,
                    Count = x.Count,
                    TotalCost = x.TotalCost,
-                   UserId = x.UserId,
+                   UserId = x.UserId
 
                }).ToListAsync();
 

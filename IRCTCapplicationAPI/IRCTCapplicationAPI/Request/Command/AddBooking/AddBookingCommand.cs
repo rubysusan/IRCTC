@@ -10,5 +10,6 @@ namespace IRCTCapplicationAPI.Request.Command.AddBooking
         public int Count { get; set; }
         public int TotalCost { get; set; }
         public int UserId { get; set; }
+        public int BookingStatusId { get; set; }    
     }
 }
