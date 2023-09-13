@@ -32,5 +32,6 @@ namespace IRCTCModel.Models
         {
            SeatStatusId=seatStatusId;
         }
+        public virtual Passenger Passenger { get; set; } 
     }
 }
