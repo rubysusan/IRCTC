@@ -18,7 +18,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetFutureBookings
         {
 
 
-            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime >= DateTime.Now)
+            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime >= DateTime.Now && x.BookingStatusId==1)
                 .Select(x => new ViewBookingHistory
                 {
                     BookingId = x.BookingId,

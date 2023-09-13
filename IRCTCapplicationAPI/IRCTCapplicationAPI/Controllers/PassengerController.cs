@@ -1,5 +1,7 @@
-﻿using IRCTCapplicationAPI.Request.Command.AddBooking;
+﻿using IRCTCapplicationAPI.DTO;
+using IRCTCapplicationAPI.Request.Command.AddBooking;
 using IRCTCapplicationAPI.Request.Command.AddPassenger;
+using IRCTCapplicationAPI.Request.Query.GetPassengerByTrainId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,12 @@ namespace IRCTCapplicationAPI.Controllers
 
         {
             return Ok(await _mediator.Send(command));
+        }
+        [HttpGet("get-for-tte")]
+        public async Task<ActionResult<List<ViewPassenger>>> GetPassenger([FromQuery] GetPassengerByTrainIdQuery query)
+
+        {
+            return Ok(await _mediator.Send(query));
         }
     }
 }

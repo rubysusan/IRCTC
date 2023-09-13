@@ -16,7 +16,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetPastBookings
         }
         public async Task<List<ViewBookingHistory>> Handle(GetPastBookingsQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime < DateTime.Now)
+            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime < DateTime.Now ||x.BookingStatusId==2)
                 .Select(x => new ViewBookingHistory
                 {
                     BookingId = x.BookingId,
