@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { TteAccountComponent } from './tte/tte-account/tte-account.component';
+import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TteAccountComponent } from './tte/tte-account/tte-account.component';
     AccountComponent,
     SearchResultsComponent,
     BookDetailsComponent,
-    TteAccountComponent
+    TteAccountComponent,
+    ViewTicketComponent
   ],
   imports: [
     BrowserModule,

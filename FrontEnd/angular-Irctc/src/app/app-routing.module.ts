@@ -10,13 +10,22 @@ import { AccountComponent } from './passenger/account/account.component';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { TteAccountComponent } from './tte/tte-account/tte-account.component';
+import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 
 const routes: Routes = [
   {
   path:'login',component:LoginComponent
   },
   {
-    path:'bookdetails',component:BookDetailsComponent
+    path:'bookdetails',children:[
+      {
+        path:'',component:BookDetailsComponent
+      },
+      {
+        path:'viewticket',component:ViewTicketComponent
+      }
+    ]
+    
   },
   {
     path:'register',component:RegisterComponent

@@ -6,11 +6,12 @@ import { TrainsSearchHttpService } from 'src/app/trains-search-http.service';
 import { BookingComponent } from '../booking.component';
 import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
 import { Subscription } from 'rxjs';
-import { SeatHttpService } from 'src/app/seat-http.service';
+import { AvailableSeatHttpService } from 'src/app/available-seat-http.service';
 import { ISeatDetails } from 'src/app/ISeatDetails.Interface';
 import { ISelectedTrain } from 'src/app/ISelectedTrain.Interface';
 import { TraintypeHttpService } from 'src/app/traintype-http.service';
 import { ChargeHttpService } from 'src/app/charge-http.service';
+import { SeatService } from 'src/app/seat.service';
 interface IChargeValue {
   charge: number;
 }
@@ -55,14 +56,16 @@ export class SearchResultsComponent implements OnInit {
   trainArrivalLF: Array<ISearchedTrain> = [];
 
   constructor(
-    private seatService: SeatHttpService,
+    private availableSeatService: AvailableSeatHttpService,
     private trainService: TrainsSearchHttpService,
     private searchService: SearchDetailsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private booking: BookingComponent,
     private chargeService: ChargeHttpService,
-    private trainTypeService: TraintypeHttpService
+    private trainTypeService: TraintypeHttpService,
+    private seatService:SeatService
+    
   ) {}
 
   ngOnInit(): void {
@@ -124,7 +127,7 @@ export class SearchResultsComponent implements OnInit {
     this.fromStatId=fromStatId;
     this.toStatId=toStatId;
 
-    this.seatService
+    this.availableSeatService
       .getSeats(trainId)
       .subscribe((data: Array<ISeatDetails>) => {
         this.seat = data;

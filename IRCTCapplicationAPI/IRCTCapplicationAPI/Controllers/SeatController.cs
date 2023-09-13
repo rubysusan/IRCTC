@@ -33,7 +33,7 @@ namespace IRCTCapplicationAPI.Controllers
             { return Ok(await _mediator.Send(query)); }
         }
         [HttpPut("update")]
-        public async Task<ActionResult<List<Seat>>> UpdateSeatBySeatId([FromBody] UpdateSeatBySeatIdCommand command)
+        public async Task<ActionResult<bool>> UpdateSeatBySeatId([FromBody] UpdateSeatBySeatIdCommand command)
         { return Ok(await _mediator.Send(command)); }
 
 
