@@ -5,4 +5,5 @@ export interface IBookingData{
     count:number;
     totalCost:number;
     userId:number;
+    bookingStatusId:number;
 }

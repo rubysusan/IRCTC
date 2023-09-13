@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { BookingService } from '../booking.service';
 import { IBooking } from '../IBooking.Interface';
+import { IBookingData } from '../IBookingData.Interface';
 
 @Component({
   selector: 'app-view-ticket',
@@ -35,13 +36,17 @@ export class ViewTicketComponent implements OnInit{
       this.bookId=this.newPassengerList[0].bookId
     }
     )
-    this.bookingService.getBookingDetails().subscribe((data:Array<IBooking>)=>{
-      console.log(data);
-      this.total=Number(data.map(x=>x.totalCost));
-  })
-}
+    this.subs = this.bookingService.bookingData.subscribe(
+      (x: IBookingData) =>{ this.total=x.totalCost
+        console.log(this.total)
+  });
+    
+      
+  }
   onDone(){
     this.router.navigate(['passenger']);
   }
-} 
+}
+  
+
 

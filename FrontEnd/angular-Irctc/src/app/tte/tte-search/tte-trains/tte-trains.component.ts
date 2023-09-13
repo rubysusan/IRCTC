@@ -5,10 +5,10 @@ import { ISearchedTrain } from 'src/app/ISearchedTrain.Interface';
 import { ISeatDetails } from 'src/app/ISeatDetails.Interface';
 import { ISelectedTrain } from 'src/app/ISelectedTrain.Interface';
 import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
+import { AvailableSeatHttpService } from 'src/app/available-seat-http.service';
 import { ChargeHttpService } from 'src/app/charge-http.service';
 import { BookingComponent } from 'src/app/passenger/booking/booking.component';
 import { SearchDetailsService } from 'src/app/search-details.service';
-import { SeatHttpService } from 'src/app/seat-http.service';
 import { TrainsSearchHttpService } from 'src/app/trains-search-http.service';
 import { TraintypeHttpService } from 'src/app/traintype-http.service';
 interface IChargeValue {
@@ -54,7 +54,7 @@ export class TteTrainsComponent {
   trainArrivalLF: Array<ISearchedTrain> = [];
 
   constructor(
-    private seatService: SeatHttpService,
+    private seatService: AvailableSeatHttpService,
     private trainService: TrainsSearchHttpService,
     private searchService: SearchDetailsService,
     private router: Router,

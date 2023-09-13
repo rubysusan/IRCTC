@@ -28,12 +28,17 @@ enum seatTypeEnum {
   MiddleSeat,
   AisleSeat,
 }
+enum bookingStatusEnum {
+  Confirmed=1,
+  Cancelled
+}
 interface IChargeValue {
   charge: number;
 }
 interface ITrainClass {
   trainClassId: number;
 }
+
 
 @Component({
   selector: 'app-book-details',
@@ -54,9 +59,16 @@ export class BookDetailsComponent implements OnInit {
   passengerCount: number = 0;
   cost: Array<IChargeValue> = [];
   uId: number = 0;
+  total:number=0;
   public newPassenger: Array<IPassenger> = [];
   public newPassengerList: Array<IPassenger> = [];
-  public newBooking?: IBookingData;
+  public newBooking: IBookingData={ trainClassId:0,
+    fromStop:0,
+    toStop:0,
+    count:0,
+    totalCost:0,
+    userId:0,
+    bookingStatusId:0};
 
   constructor(
     private searchService: SearchDetailsService,
@@ -178,11 +190,13 @@ export class BookDetailsComponent implements OnInit {
       console.log(this.newPassengerList);
       this.passengerCount = this.newPassengerList.length;
     }
+    this.costVal = Number(this.cost.map((x) => x.charge));
+    this.total=this.costVal * this.passengerCount
   }
   costVal: number = 0;
-  total:number=0;
+  
   onBook() {
-    this.costVal = Number(this.cost.map((x) => x.charge));
+    
     this.newBooking = {
       trainClassId: this.trainClassId,
       fromStop: Number(this.selectVal.map((x) => x.fromStationId)),
@@ -190,6 +204,7 @@ export class BookDetailsComponent implements OnInit {
       count: this.passengerCount,
       totalCost: this.costVal * this.passengerCount,
       userId: this.uId,
+      bookingStatusId:bookingStatusEnum.Confirmed
     };
     console.log(Number(this.selectVal.map((x) => x.fromStationId)));
     console.log(Number(this.selectVal.map((x) => x.toStationId)));
@@ -200,10 +215,11 @@ export class BookDetailsComponent implements OnInit {
     console.log(this.costVal * this.passengerCount);
     this.bookingService.addBookingDetails(this.newBooking).subscribe((data) => {
       console.log(data);
+      this.bookingService.setValue(this.newBooking)
       this.bookingService.getBookingDetails().subscribe((data:Array<IBooking>)=>{
         console.log(data);
         this.newBookId=Number(data.map(x=>x.bookingId));
-        this.total=Number(data.map(x=>x.totalCost));
+        
         this.newPassengerList.forEach((x,index)=>{
           this.indexes.push(index)
         })
