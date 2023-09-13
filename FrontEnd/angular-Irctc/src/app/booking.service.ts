@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IBooking } from './IBooking.Interface';
 import { IBookingData } from './IBookingData.Interface';
 import { IBookingHistory } from './IBookingHistory.Interface';
@@ -9,7 +9,20 @@ import { IBookingHistory } from './IBookingHistory.Interface';
   providedIn: 'root'
 })
 export class BookingService {
-
+  public bookingData=new BehaviorSubject<IBookingData>({ trainClassId:0,
+    fromStop:0,
+    toStop:0,
+    count:0,
+    totalCost:0,
+    userId:0,
+    bookingStatusId:0});
+  newBooking=this.bookingData.asObservable();
+  
+  
+    setValue(data:IBookingData)
+    {
+      this.bookingData.next(data);
+    }
   private baseURL="https://localhost:7247/api/Booking/"
   constructor(private http:HttpClient) { }
 
