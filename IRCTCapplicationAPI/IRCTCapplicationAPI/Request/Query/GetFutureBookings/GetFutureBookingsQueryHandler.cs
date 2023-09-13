@@ -1,6 +1,7 @@
 ﻿using IRCTC.Repository.Context;
 using IRCTCapplicationAPI.DTO;
 using IRCTCapplicationAPI.Request.Query.GetPastBookings;
+using IRCTCModel.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,9 @@ namespace IRCTCapplicationAPI.Request.Query.GetFutureBookings
         }
         public async Task<List<ViewBookingHistory>> Handle(GetFutureBookingsQuery request, CancellationToken cancellationToken)
         {
+           
 
-
-            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime >= DateTime.Now && x.BookingStatusId==1)
+            return await _context.Booking.Where(x => x.UserId == request.UserId && x.FromTrainStop.ReachingTime >= DateTime.Now && x.BookingStatusId.Equals((int)BookingStatusEnum.Confirmed))
                 .Select(x => new ViewBookingHistory
                 {
                     BookingId = x.BookingId,

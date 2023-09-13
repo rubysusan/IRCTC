@@ -227,6 +227,7 @@ export class BookDetailsComponent implements OnInit {
           this.newPassengerList[x].bookId=this.newBookId
         })
         console.log(this.newPassengerList);
+        
         this.passengerService.setValue(this.newPassengerList);
       });
     });

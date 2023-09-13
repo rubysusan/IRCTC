@@ -1,4 +1,5 @@
 ﻿using IRCTC.Repository.Context;
+using IRCTCModel.Enums;
 using IRCTCModel.Models;
 using MediatR;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -16,7 +17,7 @@ namespace IRCTCapplicationAPI.Request.Command.UpdateSeats
         public async Task<List<Seat>> Handle(UpdateSeatBySeatIdCommand request, CancellationToken cancellationtoken)
         {
             
-            _context.Seat.FirstOrDefault(x => x.SeatId == request.SeatId).SeatUpdate(1); ;
+            _context.Seat.FirstOrDefault(x => x.SeatId == request.SeatId).SeatUpdate((int)SeatStatusEnum.Confirmed); ;
             await _context.SaveChangesAsync();
             return _context.Seat.ToList();
         }

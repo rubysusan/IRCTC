@@ -1,5 +1,6 @@
 ﻿using IRCTC.Repository.Context;
 using IRCTCapplicationAPI.Request.Command.UpdateSeats;
+using IRCTCModel.Enums;
 using IRCTCModel.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +20,10 @@ namespace IRCTCapplicationAPI.Request.Command.Cancellation
         {
 
             var book = _context.Booking.FirstOrDefault(x => x.BookingId == request.BookingId);
-            book.BookingStatusUpdate(2);
+            book.BookingStatusUpdate((int)BookingStatusEnum.Cancelled);
             var pass = book.Passengers.Select(x => x.Seat).ToList();
             if (pass.Any())
-            { pass.ForEach(x => x.SeatUpdate(3)); }
+            { pass.ForEach(x => x.SeatUpdate((int)SeatStatusEnum.TicketCancelled)); }
             await _context.SaveChangesAsync();
             return true;
         }
