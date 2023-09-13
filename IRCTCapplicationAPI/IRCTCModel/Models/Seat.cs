@@ -28,5 +28,9 @@ namespace IRCTCModel.Models
             TrainClassId = TrainClass;
             SeatStatusId = SeatStatus;
         }
+        public void SeatUpdate(int seatStatusId)
+        {
+           SeatStatusId=seatStatusId;
+        }
     }
 }

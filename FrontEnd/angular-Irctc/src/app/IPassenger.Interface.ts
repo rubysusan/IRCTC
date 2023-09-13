@@ -4,4 +4,6 @@ export interface IPassenger{
     age:number;
     gender:string;
     preference:number;
+    seatName:string;
+    seatId:number;
 } 
