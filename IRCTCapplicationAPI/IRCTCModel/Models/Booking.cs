@@ -19,6 +19,8 @@ namespace IRCTCModel.Models
         public double TotalCost { get; private set; }
         public int UserId { get; private set; }
         public User User { get; set; }
+        public int BookingStatusId { get; private set; }
+        public BookingStatus BookingStatus { get; set; }
         public Booking()
         {
 
@@ -32,5 +34,6 @@ namespace IRCTCModel.Models
             TotalCost = cost;
             UserId = userId;
         }
+        public virtual IEnumerable<Passenger> Passengers { get; set; } = new List<Passenger>();
     }
 }

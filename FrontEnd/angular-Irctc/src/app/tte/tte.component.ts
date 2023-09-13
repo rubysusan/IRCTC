@@ -11,7 +11,7 @@ export class TteComponent {
 
   }
   onSearchTrain(){
-
+    this.router.navigate(['tte/search'])
   }
   onMyAccount(){
     this.router.navigate(['tte/account'])

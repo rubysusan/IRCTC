@@ -10,6 +10,8 @@ import { AccountComponent } from './passenger/account/account.component';
 import { SearchResultsComponent } from './passenger/booking/search-results/search-results.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { TteAccountComponent } from './tte/tte-account/tte-account.component';
+import { TteSearchComponent } from './tte/tte-search/tte-search.component';
+import { TteTrainsComponent } from './tte/tte-search/tte-trains/tte-trains.component';
 import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 
 const routes: Routes = [
@@ -51,10 +53,20 @@ const routes: Routes = [
   {
     path:'tte',children:[
       {
-        path:'',component:TteComponent
+        path:'',component:TteComponent 
       },
       {
         path:'account',component:TteAccountComponent
+      },
+      {
+        path:'search',children:[
+          {
+            path:'',component:TteSearchComponent
+          },
+          {
+            path:'view-trains', component:TteTrainsComponent
+          }
+        ] 
       }
     ]
   },

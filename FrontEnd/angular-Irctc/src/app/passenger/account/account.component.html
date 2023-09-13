@@ -32,3 +32,53 @@
         <button (click)="onEdit()">Edit</button>
     </form>
 </div>
+<div *ngIf="past">
+    <table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
+        <tr bgcolor="#A9A9A9" height="50px">
+            <th><b>BOOKING ID</b></th>
+            <th><b>TRAIN </b></th>
+            <th><b>CLASS</b></th>
+            <th><b>FROM STATION</b></th>
+            <th><b>TO STATION</b></th>
+            <th><b>PASSENGER COUNT</b></th>
+            <th><b>TOTAL COST</b></th>
+        </tr>
+        <tr height="50px" *ngFor="let i of bookPast">
+            <td>{{i.bookingId}}</td>
+            <td>{{i.train}}</td>
+            <td>{{i.coach}}</td>
+            <td>{{i.fromStation}}</td>
+            <td>{{i.toStation}}</td>
+            <td>{{i.count}}</td>
+            <td>{{i.total}}</td>
+            </tr>
+            
+    </table>
+    <button (click)="onDone()">Done</button>
+    </div>
+
+<div *ngIf="future">
+<table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr bgcolor="#A9A9A9" height="50px">
+        <th><b>BOOKING ID</b></th>
+        <th><b>TRAIN </b></th>
+        <th><b>CLASS</b></th>
+        <th><b>FROM STATION</b></th>
+        <th><b>TO STATION</b></th>
+        <th><b>PASSENGER COUNT</b></th>
+        <th><b>TOTAL COST</b></th>
+    </tr>
+    <tr height="50px" *ngFor="let i of bookFuture">
+        <td>{{i.bookingId}}</td>
+        <td>{{i.train}}</td>
+        <td>{{i.coach}}</td>
+        <td>{{i.fromStation}}</td>
+        <td>{{i.toStation}}</td>
+        <td>{{i.count}}</td>
+        <td>{{i.total}}</td>
+        <td><button (click)="onCancel()">Cancel</button></td>
+        </tr>
+        
+</table>
+<button (click)="onDone()">Done</button>
+</div>

@@ -32,6 +32,9 @@ namespace IRCTC.Repository.Configurations
             builder.HasOne(x => x.User)
                    .WithMany(y => y.Bookings)
                    .HasForeignKey(x => x.UserId);
+            builder.HasOne(x => x.BookingStatus)
+                   .WithMany(y => y.Bookings)
+                   .HasForeignKey(x => x.BookingStatusId);
         }
     }
 }

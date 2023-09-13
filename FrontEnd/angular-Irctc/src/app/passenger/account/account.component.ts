@@ -4,10 +4,12 @@ import { FormBuilder,FormControl,
   Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IBookingHistory } from 'src/app/IBookingHistory.Interface';
 import { ILoginDetails } from 'src/app/ILoginDetails.Interface';
 import { ILoginGet } from 'src/app/ILoginGet.Interface';
 import { IUpdateData } from 'src/app/IUpdateData.Interface';
 import { IViewUserDetails } from 'src/app/IViewUserDetails.Interface';
+import { BookingService } from 'src/app/booking.service';
 import { SearchDetailsService } from 'src/app/search-details.service';
 import { UserHttpService } from 'src/app/user-http.service';
 
@@ -23,7 +25,7 @@ export class AccountComponent implements OnInit {
   public editGroup!:FormGroup
   constructor(private userService: UserHttpService,private router: Router,private fb:FormBuilder,
     private activatedRoute: ActivatedRoute,
-   private searchService: SearchDetailsService)
+   private searchService: SearchDetailsService,private bookService:BookingService)
   {}
   ngOnInit(): void {
     this.subs=this.searchService.idVal.subscribe((x:number)=>(this.id=x));
@@ -48,9 +50,13 @@ export class AccountComponent implements OnInit {
     console.log(this.user)});
  
   }
+  past?:boolean
+  future?:boolean
   onDone()
   {
     this.view=false
+    this.past=false
+    this.future=false
   }
   val?:boolean
   edit:Array<IUpdateData>=[]
@@ -79,13 +85,28 @@ export class AccountComponent implements OnInit {
           this.val=false
     }
   }
+  bookPast:Array<IBookingHistory>=[]
+  
+  bookFuture:Array<IBookingHistory>=[]
+  
   pastBookings()
   {
-
+    this.past=true;
+    this.bookService.getPastBooking(this.id).subscribe((data:Array<IBookingHistory>)=>{
+      this.bookPast=data
+      console.log(this.bookPast)
+    })
   }
   futureBookings()
   {
+    this.future=true
+    this.bookService.getFutureBooking(this.id).subscribe((data:Array<IBookingHistory>)=>{
+      this.bookFuture=data
+      console.log(this.bookFuture)
+    })
+  }
+  
+  onCancel(){
 
   }
-
 }
