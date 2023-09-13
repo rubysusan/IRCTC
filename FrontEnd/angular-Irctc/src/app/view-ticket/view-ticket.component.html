@@ -1,0 +1,52 @@
+<h3>View Journey</h3>
+<h4 >BookId:{{bookId}}</h4>
+
+<table *ngFor="let i of selectVal" border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr height="20px">
+        <td>Train Name:{{i.trainName}}({{i.trainId}})</td>
+    </tr>
+    <tr height="20px">
+        <td>From Station:{{i.fromStationName}}</td>
+        <td>To Station:{{i.toStationName}}</td>  
+    </tr>
+    <tr height="20px">
+        <td>Departure Time:{{i.departureTime}}</td>
+        <td>Reaching Time:{{i.reachingTime}}</td>
+    </tr>
+    <tr height="20px">
+        <td>Coach Name:{{i.coachName}}</td>
+    </tr>
+</table>
+<h4>Passenger Details</h4>
+<table border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr bgcolor="#A9A9A9" height="20px">
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            Seat Name
+        </th>
+    </tr>
+    <tr  *ngFor="let i of newPassengerList" height="20px">
+        <td>
+            {{i.name}}
+        </td>
+        <td>
+            {{i.age}}
+        </td>
+        <td>
+            {{i.gender}}
+        </td> 
+        <td>
+            {{i.seatName}}
+        </td>     
+    </tr>
+</table>
+<h4>Amount paid: {{total}}</h4>
+<button (click)="onDone()">Done</button>

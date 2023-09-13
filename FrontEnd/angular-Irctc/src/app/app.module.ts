@@ -21,6 +21,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { TteAccountComponent } from './tte/tte-account/tte-account.component';
 import { TteSearchComponent } from './tte/tte-search/tte-search.component';
 import { TteTrainsComponent } from './tte/tte-search/tte-trains/tte-trains.component';
+import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TteTrainsComponent } from './tte/tte-search/tte-trains/tte-trains.compo
     BookDetailsComponent,
     TteAccountComponent,
     TteSearchComponent,
-    TteTrainsComponent
+    TteTrainsComponent,
+    ViewTicketComponent
   ],
   imports: [
     BrowserModule,

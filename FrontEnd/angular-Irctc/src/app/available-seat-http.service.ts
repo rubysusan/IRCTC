@@ -7,7 +7,7 @@ import { ISeatForPassenger } from './ISeatForPassenger.Interface';
 @Injectable({
   providedIn: 'root'
 })
-export class SeatHttpService {
+export class AvailableSeatHttpService {
 
     private baseURL="https://localhost:7247/api/AvailableSeats/"
   

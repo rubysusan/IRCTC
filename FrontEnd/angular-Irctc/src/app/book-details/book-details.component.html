@@ -1,22 +1,22 @@
-<table *ngFor="let i of selectVal">
-<tr>
+<table *ngFor="let i of selectVal" border="1px solid black" style="width:100%; margin:0;text-align: center;">
+<tr height="20px">
     <td>Train Name:{{i.trainName}}({{i.trainId}})</td>
 </tr>
-<tr>
+<tr height="20px">
     <td>From Station:{{i.fromStationName}}</td>
     <td>To Station:{{i.toStationName}}</td>  
 </tr>
-<tr>
+<tr height="20px">
     <td>Departure Time:{{i.departureTime}}</td>
     <td>Reaching Time:{{i.reachingTime}}</td>
 </tr>
-<tr>
+<tr height="20px">
     <td>Coach Name:{{i.coachName}}</td>
 </tr>
 </table>
 
-<table>
-    <tr>
+<table border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr bgcolor="#A9A9A9"  height="20px">
         <th>
             Name
         </th>
@@ -30,7 +30,7 @@
             Seat Name
         </th>
     </tr>
-    <tr  *ngFor="let i of newPassengerList">
+    <tr  *ngFor="let i of newPassengerList" height="20px">
         <td>
             {{i.name}}
         </td>
@@ -72,4 +72,5 @@
     <input type="button" (click)="add()" value="Add"/>
    
 </form><br><br>
+<h4>Total Amount:{{total}}</h4>
 <button (click)="onBook()">Book</button>
