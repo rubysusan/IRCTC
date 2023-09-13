@@ -1,7 +1,10 @@
 ﻿using IRCTCapplicationAPI.DTO;
 using IRCTCapplicationAPI.Request.Command.AddSeat;
+using IRCTCapplicationAPI.Request.Command.UpdateSeats;
+using IRCTCapplicationAPI.Request.Command.UpdateUserById;
 using IRCTCapplicationAPI.Request.Query.GetAllSeat;
 using IRCTCapplicationAPI.Request.Query.GetSeatForPassenger;
+using IRCTCModel.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,11 +32,9 @@ namespace IRCTCapplicationAPI.Controllers
         {
             { return Ok(await _mediator.Send(query)); }
         }
-        [HttpGet("get-seat-for-passenger")]
-        public async Task<ActionResult<List<ViewSeatForPassenger>>> GetSeatForPassenger([FromQuery] GetSeatForPassengerQuery query)
-        {
-            return Ok(await _mediator.Send(query));
-        }
+        [HttpPut("update")]
+        public async Task<ActionResult<List<Seat>>> UpdateSeatBySeatId([FromBody] UpdateSeatBySeatIdCommand command)
+        { return Ok(await _mediator.Send(command)); }
 
 
     }

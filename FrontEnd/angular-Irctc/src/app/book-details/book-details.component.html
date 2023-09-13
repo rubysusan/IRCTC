@@ -26,6 +26,9 @@
         <th>
             Gender
         </th>
+        <th>
+            Seat Name
+        </th>
     </tr>
     <tr  *ngFor="let i of newPassengerList">
         <td>
@@ -36,7 +39,10 @@
         </td>
         <td>
             {{i.gender}}
-        </td>      
+        </td> 
+        <td>
+            {{i.seatName}}
+        </td>     
     </tr>
 </table>
 <button (click)="addPassenger()">Add Passenger</button>
@@ -57,8 +63,9 @@
         <option value="MiddleSeat">Middle Seat</option>
         <option value="AisleSeat">Aisle Seat</option>
     </select><br><br>
-    <select *ngFor="let i of seats" >
-        <option>{{i.seatName}}</option>
+    <label>Select seat from below:</label>
+    <select formControlName="seatName" *ngFor="let i of seats" id="seatName" (change)="getSelectedSeatValue($event)">
+        <option value="{{i.seatName}}">{{i.seatName}}</option>
     </select>
 
     

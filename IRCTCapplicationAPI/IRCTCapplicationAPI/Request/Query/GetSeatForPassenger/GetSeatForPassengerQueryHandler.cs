@@ -15,7 +15,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetSeatForPassenger
         }
         public async Task<List<ViewSeatForPassenger>> Handle(GetSeatForPassengerQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Seat.Where(x => x.SeatTypeId == request.SeatTypeId && x.SeatStatusId ==2 && x.TrainClassId==request.TrainClassId)
+            return await _context.Seat.Where(x => x.SeatTypeId == request.SeatTypeId && (x.SeatStatusId ==2 || x.SeatStatusId==3) && x.TrainClassId==request.TrainClassId)
                 .Select(x => new ViewSeatForPassenger
             {
                 SeatId = x.SeatId,

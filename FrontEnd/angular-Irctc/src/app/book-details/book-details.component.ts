@@ -10,6 +10,7 @@ import { IBookingData } from '../IBookingData.Interface';
 import { ChargeHttpService } from '../charge-http.service';
 import { SeatHttpService } from '../seat-http.service';
 import { ISeatForPassenger } from '../ISeatForPassenger.Interface';
+import { TrainClassService } from '../train-class.service';
 enum seatTypeEnum{
   LowerBerth=1,
   UpperBerth,
@@ -21,6 +22,10 @@ enum seatTypeEnum{
 interface IChargeValue {
   charge: number;
 }
+interface ITrainClass{
+  trainClassId:number;
+}
+
 
 @Component({
   selector: 'app-book-details',
@@ -35,6 +40,8 @@ export class BookDetailsComponent implements OnInit {
   selectVal: Array<ISelectedTrain> = [];
   view?: Boolean;
   selectedValue: any;
+  seatValue:any;
+  seatValueId:number=0;
   typeValue: number = 0;
   passengerCount:number=0;
   cost: Array<IChargeValue> = [];
@@ -49,7 +56,8 @@ export class BookDetailsComponent implements OnInit {
     private passengerService:  PassengerDetailsService,
     private bookingService:BookingService,
     private chargeService:ChargeHttpService,
-    private seatService:SeatHttpService
+    private seatService:SeatHttpService,
+    private trainClassService:TrainClassService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +66,8 @@ export class BookDetailsComponent implements OnInit {
       passengerAge: new FormControl('',[Validators.required]),
       passengeGender: new FormControl('',[Validators.required]),
       preference: new FormControl('',[Validators.required]),
+      seatName:new FormControl('')
+
     });
 
     this.subs = this.searchService.select.subscribe(
@@ -67,7 +77,9 @@ export class BookDetailsComponent implements OnInit {
    
 
     this.subscript = this.chargeService.charge.subscribe(
-      (x: Array<IChargeValue>) => (this.cost = x)
+      (x:Array<IChargeValue>) => {this.cost = x;
+        console.log(this.cost)
+      }
     );
     console.log(this.cost);
     this.sub=this.searchService.idVal.subscribe(
@@ -76,7 +88,10 @@ export class BookDetailsComponent implements OnInit {
     console.log(this.uId);
 
   }
-  trainClassId:number=0
+  trainClass:Array<ITrainClass>=[];
+  trainClassId:number=0;
+  coachId:number=0;
+  trainId:number=0;
   seats:Array<ISeatForPassenger>=[]
   getSelectedValue(event: any) {
     this.selectedValue = event.target.value;
@@ -104,9 +119,21 @@ export class BookDetailsComponent implements OnInit {
     {
       this.typeValue = seatTypeEnum.AisleSeat;
     }
-    this.trainClassId=Number(this.selectVal.map(x=>x.coachId))
+    this.coachId=Number(this.selectVal.map(x=>x.coachId))
+    this.trainId=Number(this.selectVal.map(x=>x.trainId))
+    console.log(this.selectVal);
+    console.log(this.coachId);
+    console.log(this.typeValue);
+    console.log(this.trainId);
+    this.trainClassService.getTrainClassId(this.trainId,this.coachId).subscribe(
+      (data:Array<ITrainClass>)=>{this.trainClass=data;
+      console.log(this.trainClass)});
+    setTimeout(()=>{console.log(this.trainClass);
+    this.trainClassId=Number(this.trainClass.map(x=>x.trainClassId));
+    console.log(this.trainClassId);
     this.seatService.getSeatForPassenger(this.typeValue,this.trainClassId).subscribe(
       (data:Array<ISeatForPassenger>)=>{this.seats=data});
+      console.log(this.seats);},500);
     console.log(this.typeValue);
     console.log(event.target.value);
   }
@@ -123,7 +150,9 @@ export class BookDetailsComponent implements OnInit {
        name:val.passengerName,
        age:val.passengerAge,
        gender:val.passengeGender,
-       preference:this.typeValue
+       preference:this.typeValue,
+       seatName:this.seatValue,
+       seatId:this.seatValueId
       };
       console.log(temp);
       this.newPassenger.push(<IPassenger>{
@@ -131,7 +160,9 @@ export class BookDetailsComponent implements OnInit {
         name:temp.name,
         age:temp.age,
         gender:temp.gender,
-        preference:temp.preference
+        preference:temp.preference,
+        seatName:temp.seatName,
+        seatId:temp.seatId
       })
       console.log(this.newPassenger)
       this.passengerService.setValue(this.newPassenger)
@@ -140,20 +171,36 @@ export class BookDetailsComponent implements OnInit {
       this.passengerCount=this.newPassengerList.length;
     }
   }
+  costVal:number =0
   onBook(){
+    this.costVal=Number(this.cost.map(x=>x.charge))
     this.newBooking={
-      trainClassId:Number(this.selectVal.map(x=>x.coachId)),
+      trainClassId:this.trainClassId,
       fromStop:Number(this.selectVal.map(x=>x.fromStationId)),
       toStop:Number(this.selectVal.map(x=>x.toStationId)),
       count:this.passengerCount,
-      totalCost:(Number(this.cost))*this.passengerCount,
+      totalCost:(this.costVal)*this.passengerCount,
       userId:this.uId
     }
     console.log(Number(this.selectVal.map(x=>x.fromStationId)));
     console.log(Number(this.selectVal.map(x=>x.toStationId)));
-    console.log(this.passengerCount)
+    console.log(this.passengerCount);
+    console.log(this.cost);
+   
+    
+    console.log(this.costVal);
+    console.log((this.costVal)*this.passengerCount);
     this.bookingService.addBookingDetails(this.newBooking).subscribe((data) => {
       console.log(data);
+
+    
   })
+  }
+  getSelectedSeatValue(event: any){
+    this.seatValue=event.target.value;
+    console.log(this.seatValue);
+    this.seatValueId=Number(this.seats.filter(x=>x.seatName===this.seatValue).map(x=>x.seatId));
+    console.log(this.seatValueId);
+    console.log(this.seats.map(x=>x.seatId));
   }
 }

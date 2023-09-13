@@ -1,5 +1,6 @@
 ﻿using IRCTCapplicationAPI.Request.Command.AddTrainClass;
 using IRCTCapplicationAPI.Request.Query.GetAllTrainClass;
+using IRCTCapplicationAPI.Request.Query.GetTrainClassId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -23,5 +24,10 @@ namespace IRCTCapplicationAPI.Controllers
         [HttpGet("get")]
         public async Task<ActionResult<bool>> GetAllTrainClass([FromQuery] GetAllTrainClassQuery query)
         { return Ok(await _mediator.Send(query)); }
+        [HttpGet("get-train-class-id")]
+        public async Task<ActionResult<bool>> GetTrainClassId([FromQuery] GetTrainClassIdQuery query)
+        {
+            return Ok(await _mediator.Send(query));
+        }
     }
 }
