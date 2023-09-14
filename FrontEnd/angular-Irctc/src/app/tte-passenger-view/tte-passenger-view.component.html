@@ -11,8 +11,10 @@
         <td>{{i.seatId}}</td>
         <td>{{i.coachName}}</td>
         <td>{{i.bookingId}}</td>
+        <div *ngIf="view">
         <td>
-            <input type="checkbox"name="marking"/>
-        </td>
+            <input type="checkbox"name="marking" (change)="onCheck($event)"/>
+        </td></div>
+        <td>{{val}}</td>
     </tr>
 </table>

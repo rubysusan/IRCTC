@@ -16,7 +16,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainByTrainTypeSearch
         {
             return await _context.Train.Where(x => x.TrainStops.Select(x => x.Station.StationId).Contains(request.FromStationId) &&
            x.TrainStops.Select(x => x.Station.StationId).Contains(request.ToStationId) && x.Date.Date == request.Date &&
-           DateTime.Now < DateTime.Parse(x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault().ToString()).AddHours(-2) && x.TrainClasses.Select(x => x.Coach.CoachId).Contains(request.CoachId) && x.TrainType.TrainTypeID == request.TypeId)
+             x.TrainClasses.Select(x => x.Coach.CoachId).Contains(request.CoachId) && x.TrainType.TrainTypeID == request.TypeId)
                 .Select(x => new ViewTrainByTrainTypeSearch
                 {
                     TrainId = x.TrainId,
@@ -34,3 +34,4 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainByTrainTypeSearch
     }
 }
 // && x.TrainType.TypeName==request.TypeName
+//DateTime.Now < DateTime.Parse(x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault().ToString()).AddHours(-2)

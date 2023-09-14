@@ -9,6 +9,7 @@ import { IPassengerTTE } from '../IPassengerTTE.Interface';
   styleUrls: ['./tte-passenger-view.component.sass']
 })
 export class TtePassengerViewComponent implements OnInit{
+  view:boolean=true;
   constructor(private passengerHttpService:PassengerHttpService){}
   trainId:number=0;
   subs?:Subscription;
@@ -23,5 +24,14 @@ export class TtePassengerViewComponent implements OnInit{
         console.log(this.passengerData);
     })
   })
+}
+val:string=''
+onCheck(event:any)
+{
+  if(event.currentTarget.checked)
+  {
+    this.val='Arrived';
+    this.view=false
+  }
 }
 }
