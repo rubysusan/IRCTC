@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IPassengerTTE } from './IPassengerTTE.Interface';
 import { IPassengerInsert } from './IPassengerInsert.Interface';
 
@@ -23,4 +23,12 @@ export class PassengerHttpService {
     return this.http.get<Array<IPassengerTTE>>(this.baseURL+"get-for-tte",{params})
 
   }
+  public train=new BehaviorSubject<number>(0);
+  trainId=this.train.asObservable();
+  
+  
+    setValue(data:number)
+    {
+      this.train.next(data);
+    }
 }

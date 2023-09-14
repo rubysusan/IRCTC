@@ -1,6 +1,6 @@
 export interface IPassengerTTE{
     passengerId:number;
-    passsengerName:string;
+    passengerName:string;
     seatId:number;
     coachName:string;
     bookingId:number;
