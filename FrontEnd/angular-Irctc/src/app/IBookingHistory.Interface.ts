@@ -6,4 +6,5 @@ export interface IBookingHistory{
     toStation:string;
     count:number;
     total:number;
+    bookingStatus:string;
 }
