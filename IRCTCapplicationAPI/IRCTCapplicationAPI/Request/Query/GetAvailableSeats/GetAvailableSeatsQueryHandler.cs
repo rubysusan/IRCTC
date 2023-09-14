@@ -1,5 +1,6 @@
 ﻿using IRCTC.Repository.Context;
 using IRCTCapplicationAPI.DTO;
+using IRCTCModel.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetAvailableSeats
                  {
                      CoachId=x.ClassId,
                      CoachName = x.Coach.CoachName,
-                     Seats = x.Seats.Where(y=>y.SeatStatusId== 2 || y.SeatStatusId==3).Select(y => y.SeatId).Count()
+                     Seats = x.Seats.Where(y=>y.SeatStatusId== (int)SeatStatusEnum.TicketCancelled || y.SeatStatusId== (int)SeatStatusEnum.NotConfirmed).Select(y => y.SeatId).Count()
                  }).ToListAsync();
         }
     }

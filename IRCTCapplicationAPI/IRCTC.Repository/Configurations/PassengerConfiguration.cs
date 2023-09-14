@@ -18,9 +18,9 @@ namespace IRCTC.Repository.Configurations
             builder.Property(x => x.PassengerName).HasMaxLength(50);
             builder.Property(x => x.SeatId).IsRequired();
             builder.Property(x => x.BookingId).IsRequired();
-            builder.HasOne<Seat>(x => x.Seat)
-                   .WithOne(y => y.Passenger)
-                   .HasForeignKey<Passenger>(x => x.SeatId);
+            builder.HasOne(x => x.Seat)
+                   .WithMany(y => y.Passengers)
+                   .HasForeignKey(x => x.SeatId);
             builder.HasOne(x=>x.Booking)
                    .WithMany(y=>y.Passengers)
                    .HasForeignKey(x=>x.BookingId);

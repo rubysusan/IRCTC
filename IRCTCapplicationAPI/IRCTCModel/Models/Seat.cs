@@ -32,6 +32,6 @@ namespace IRCTCModel.Models
         {
            SeatStatusId=seatStatusId;
         }
-        public virtual Passenger Passenger { get; set; } 
+        public virtual IEnumerable<Passenger> Passengers { get; set; } = new List<Passenger>();
     }
 }

@@ -33,6 +33,7 @@
     </form>
 </div>
 <div *ngIf="past">
+    <h3>PREVIOUS BOOKINGS</h3>
     <table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
         <tr bgcolor="#A9A9A9" height="50px">
             <th><b>BOOKING ID</b></th>
@@ -42,6 +43,7 @@
             <th><b>TO STATION</b></th>
             <th><b>PASSENGER COUNT</b></th>
             <th><b>TOTAL COST</b></th>
+            <th><b>STATUS</b></th>
         </tr>
         <tr height="50px" *ngFor="let i of bookPast">
             <td>{{i.bookingId}}</td>
@@ -51,6 +53,7 @@
             <td>{{i.toStation}}</td>
             <td>{{i.count}}</td>
             <td>{{i.total}}</td>
+            <td>{{i.bookingStatus}}</td>
             </tr>
             
     </table>
@@ -58,6 +61,7 @@
     </div>
 
 <div *ngIf="future">
+    <h3>UPCOMING BOOKINGS</h3>
 <table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
     <tr bgcolor="#A9A9A9" height="50px">
         <th><b>BOOKING ID</b></th>
@@ -67,6 +71,7 @@
         <th><b>TO STATION</b></th>
         <th><b>PASSENGER COUNT</b></th>
         <th><b>TOTAL COST</b></th>
+        <th><b>STATUS</b></th>
     </tr>
     <tr height="50px" *ngFor="let i of bookFuture">
         <td>{{i.bookingId}}</td>
@@ -76,7 +81,8 @@
         <td>{{i.toStation}}</td>
         <td>{{i.count}}</td>
         <td>{{i.total}}</td>
-        <td><button (click)="onCancel()">Cancel</button></td>
+        <td>{{i.bookingStatus}}</td>
+        <td><button (click)="onCancel(i.bookingId)">Cancel</button></td>
         </tr>
         
 </table>

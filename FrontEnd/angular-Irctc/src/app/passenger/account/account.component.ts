@@ -10,9 +10,12 @@ import { ILoginGet } from 'src/app/ILoginGet.Interface';
 import { IUpdateData } from 'src/app/IUpdateData.Interface';
 import { IViewUserDetails } from 'src/app/IViewUserDetails.Interface';
 import { BookingService } from 'src/app/booking.service';
+import { CancelHttpService } from 'src/app/cancel-http.service';
 import { SearchDetailsService } from 'src/app/search-details.service';
 import { UserHttpService } from 'src/app/user-http.service';
-
+interface IBook{
+  bookingId:number;
+}
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -25,7 +28,8 @@ export class AccountComponent implements OnInit {
   public editGroup!:FormGroup
   constructor(private userService: UserHttpService,private router: Router,private fb:FormBuilder,
     private activatedRoute: ActivatedRoute,
-   private searchService: SearchDetailsService,private bookService:BookingService)
+   private searchService: SearchDetailsService,private bookService:BookingService,
+   private cancelService:CancelHttpService)
   {}
   ngOnInit(): void {
     this.subs=this.searchService.idVal.subscribe((x:number)=>(this.id=x));
@@ -105,8 +109,16 @@ export class AccountComponent implements OnInit {
       console.log(this.bookFuture)
     })
   }
-  
-  onCancel(){
-
+  book:IBook={
+    bookingId:0
+  }
+  onCancel(id:number){
+    this.book={
+      bookingId:id
+    }
+    this.cancelService.cancel(this.book).subscribe((data)=>{
+      console.log(data);this.futureBookings();
+      })
+    alert("Cancelled Successfully")
   }
 }
