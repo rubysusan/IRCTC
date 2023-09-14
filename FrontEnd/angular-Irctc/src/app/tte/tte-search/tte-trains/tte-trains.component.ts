@@ -7,6 +7,7 @@ import { ISelectedTrain } from 'src/app/ISelectedTrain.Interface';
 import { IValuesSearched } from 'src/app/IValuesSearched.Interface';
 import { AvailableSeatHttpService } from 'src/app/available-seat-http.service';
 import { ChargeHttpService } from 'src/app/charge-http.service';
+import { PassengerHttpService } from 'src/app/passenger-http.service';
 import { BookingComponent } from 'src/app/passenger/booking/booking.component';
 import { SearchDetailsService } from 'src/app/search-details.service';
 import { TrainsSearchHttpService } from 'src/app/trains-search-http.service';
@@ -61,7 +62,8 @@ export class TteTrainsComponent {
     private activatedRoute: ActivatedRoute,
     private booking: BookingComponent,
     private chargeService: ChargeHttpService,
-    private trainTypeService: TraintypeHttpService
+    private trainTypeService: TraintypeHttpService,
+    private passengerHttpService:PassengerHttpService
   ) {}
 
   ngOnInit(): void {
@@ -272,7 +274,8 @@ export class TteTrainsComponent {
 
   onPassenger(trainId:number)
   {
-    
+    this.passengerHttpService.setValue(trainId);
+    this.router.navigate(['tte/search/view-trains/view-passenger'])
   }
 
 }

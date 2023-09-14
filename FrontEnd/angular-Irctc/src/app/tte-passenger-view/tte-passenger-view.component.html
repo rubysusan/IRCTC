@@ -1,0 +1,18 @@
+<p>Passenger List</p>
+<table border="1px solid black" style="width:100%; margin:0;text-align: center;">
+    <tr bgcolor="#A9A9A9" height="50px">
+        <th><b>PASSENGER NAME</b></th>
+        <th><b>SEAT ID</b></th>
+        <th><b>COURSE NAME</b></th>
+        <th><b>BOOKING ID</b></th>
+    </tr>
+    <tr height="50px" *ngFor="let i of passengerData">
+        <td>{{i.passengerName}}</td>
+        <td>{{i.seatId}}</td>
+        <td>{{i.coachName}}</td>
+        <td>{{i.bookingId}}</td>
+        <td>
+            <input type="checkbox"name="marking"/>
+        </td>
+    </tr>
+</table>
