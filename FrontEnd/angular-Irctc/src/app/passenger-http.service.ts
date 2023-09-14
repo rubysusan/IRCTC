@@ -13,7 +13,7 @@ export class PassengerHttpService {
   constructor(private http:HttpClient) { }
   public addPassenger(pass:IPassengerInsert ):Observable<IPassengerInsert>
   {
-    return this.http.put<IPassengerInsert>(this.baseURL+"add",pass);
+    return this.http.post<IPassengerInsert>(this.baseURL+"add",pass);
   }
 
   public getPassenger(trainId:number):Observable<Array<IPassengerTTE>>

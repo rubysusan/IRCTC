@@ -270,7 +270,7 @@ export class TteTrainsComponent {
     }
   }
 
-  onPassenger()
+  onPassenger(trainId:number)
   {
     
   }

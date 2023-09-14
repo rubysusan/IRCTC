@@ -63,7 +63,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Booking");
+                    b.ToTable("Booking", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.BookingStatus", b =>
@@ -77,7 +77,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("BookingStatusId");
 
-                    b.ToTable("BookingStatus");
+                    b.ToTable("BookingStatus", (string)null);
 
                     b.HasData(
                         new
@@ -107,7 +107,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("CoachId");
 
-                    b.ToTable("Coach");
+                    b.ToTable("Coach", (string)null);
 
                     b.HasData(
                         new
@@ -186,7 +186,7 @@ namespace IRCTC.Repository.Migrations
                     b.HasIndex("SeatId")
                         .IsUnique();
 
-                    b.ToTable("Passenger");
+                    b.ToTable("Passenger", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.Seat", b =>
@@ -219,7 +219,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("TrainClassId");
 
-                    b.ToTable("Seat");
+                    b.ToTable("Seat", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.SeatStatus", b =>
@@ -233,7 +233,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("SeatStatusId");
 
-                    b.ToTable("SeatStatus");
+                    b.ToTable("SeatStatus", (string)null);
 
                     b.HasData(
                         new
@@ -265,7 +265,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("SeatTypeId");
 
-                    b.ToTable("SeatType");
+                    b.ToTable("SeatType", (string)null);
 
                     b.HasData(
                         new
@@ -315,7 +315,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("StationId");
 
-                    b.ToTable("Station");
+                    b.ToTable("Station", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.Train", b =>
@@ -357,7 +357,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("TrainTypeID");
 
-                    b.ToTable("Train");
+                    b.ToTable("Train", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.TrainClass", b =>
@@ -380,7 +380,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("TrainId");
 
-                    b.ToTable("TrainClass");
+                    b.ToTable("TrainClass", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.TrainStop", b =>
@@ -409,7 +409,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("TrainId");
 
-                    b.ToTable("TrainStop");
+                    b.ToTable("TrainStop", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.TrainType", b =>
@@ -424,7 +424,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("TrainTypeID");
 
-                    b.ToTable("TrainType");
+                    b.ToTable("TrainType", (string)null);
 
                     b.HasData(
                         new
@@ -489,7 +489,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasIndex("UserTypeID");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("IRCTCModel.Models.UserType", b =>
@@ -504,7 +504,7 @@ namespace IRCTC.Repository.Migrations
 
                     b.HasKey("UserTypeId");
 
-                    b.ToTable("UserType");
+                    b.ToTable("UserType", (string)null);
 
                     b.HasData(
                         new

@@ -20,6 +20,8 @@ import { SeatService } from '../seat.service';
 import { IUpdateSeat } from '../IUpdateSeat.Interface';
 import { IBooking } from '../IBooking.Interface';
 import { Router } from '@angular/router';
+import { IPassengerInsert } from '../IPassengerInsert.Interface';
+import { PassengerHttpService } from '../passenger-http.service';
 enum seatTypeEnum {
   LowerBerth = 1,
   UpperBerth,
@@ -79,7 +81,8 @@ export class BookDetailsComponent implements OnInit {
     private availableSeatService: AvailableSeatHttpService,
     private seatService: SeatService,
     private trainClassService: TrainClassService,
-    private router: Router
+    private router: Router,
+    private passengerHttpService:PassengerHttpService
   ) {}
 
   ngOnInit(): void {
@@ -194,7 +197,11 @@ export class BookDetailsComponent implements OnInit {
     this.total=this.costVal * this.passengerCount
   }
   costVal: number = 0;
-  
+  passenger:IPassengerInsert={
+    passengerName:'',
+    seatId:0,
+    bookingId:0
+  }
   onBook() {
     
     this.newBooking = {
@@ -227,7 +234,16 @@ export class BookDetailsComponent implements OnInit {
           this.newPassengerList[x].bookId=this.newBookId
         })
         console.log(this.newPassengerList);
-        
+        this.newPassengerList.forEach(x=>{
+          this.passenger={
+            passengerName:x.name,
+            seatId:x.seatId,
+            bookingId:x.bookId
+          }
+          this.passengerHttpService.addPassenger(this.passenger).subscribe((data)=>{
+            console.log(data);
+          })
+        })
         this.passengerService.setValue(this.newPassengerList);
       });
     });
