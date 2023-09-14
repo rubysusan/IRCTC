@@ -1,8 +1,8 @@
 <h1 style="text-align: center;">SEARCHED TRAIN DETAILS</h1>
 <label>Sort By: </label>
-<select name="sortBy" id="sortBy" (change)="onDepartureEF($event)">
-    <option value="none" selected disabled hidden>Select an Option</option>
-    <option value="DepartureEF">Departure (Early First)</option>
+<select name="sortBy" id="sortBy" (change)="onSort($event)">
+    <option value="none" selected disabled hidden >Select an Option</option>
+    <option value="DepartureEF" >Departure (Early First)</option>
     <option value="DepartureLF">Departure (Late First)</option>
     <option value="ArrivalEF">Arrival (Early First)</option>
     <option value="ArrivalLF">Arrival (Late First)</option>

@@ -247,45 +247,50 @@ export class SearchResultsComponent implements OnInit {
     
   }
 
-  onDepartureEF(event: any) {
-    console.log(event.target.value);
-    if (event.target.value == 'DepartureEF') {
-      this.train ==
+  onDepartureEF(){
+    this.train =
         this.train
-          .filter((x) => x.trainId)
-          .sort((a, b) => 0 - (a > b ? -1 : 1));
-      this.trainDepartEF = this.train
-        .filter((x) => x.departureTime)
-        .sort((a, b) => 0 - (a > b ? -1 : 1));
+          .sort((a, b) => 0 - (a.trainId > b.trainId ? 1 : -1));
+          console.log(this.train);
+    this.trainDepartEF = this.train
+        .sort((a, b) => 0 - (a.departureTime > b.departureTime ? -1 : 1));
       this.train = this.trainDepartEF;
       console.log(this.train);
-    } else if (event.target.value == 'DepartureLF') {
-      this.train = this.train
-        .filter((x) => x.trainId)
-        .sort((a, b) => 0 - (a > b ? -1 : 1));
-      this.trainDepartLF = this.train
-        .filter((x) => x.departureTime)
-        .sort((a, b) => 0 - (a > b ? 1 : -1));
+  }
+  onDepartureLF(){
+    this.train =
+    this.train.sort((a, b) => 0 - (a.trainId > b.trainId ? 1 : -1));
+      console.log(this.train);
+    this.trainDepartLF = this.train.sort((a, b) => 0 - (a.departureTime > b.departureTime ? 1 : -1));
       this.train = this.trainDepartLF;
       console.log(this.train);
-    } else if (event.target.value == 'ArrivalEF') {
-      this.train = this.train
-        .filter((x) => x.trainId)
-        .sort((a, b) => 0 - (a > b ? -1 : 1));
-      this.trainArrivalEF = this.train
-        .filter((x) => x.reachingTime)
-        .sort((a, b) => 0 - (a > b ? -1 : 1));
+  }
+  onArrivalEF(){
+    this.train =
+    this.train.sort((a, b) => 0 - (a.trainId > b.trainId ? 1 : -1));
+      console.log(this.train);
+    this.trainArrivalEF = this.train.sort((a, b) => 0 - (a.reachingTime > b.reachingTime ? -1 : 1));
       this.train = this.trainArrivalEF;
       console.log(this.train);
-    } else if (event.target.value == 'ArrivalLF') {
-      this.train = this.train
-        .filter((x) => x.trainId)
-        .sort((a, b) => 0 - (a > b ? -1 : 1));
-      this.trainArrivalLF = this.train
-        .filter((x) => x.reachingTime)
-        .sort((a, b) => 0 - (a > b ? 1 : -1));
+  }
+  onArrivalLF(){
+    this.train =
+    this.train.sort((a, b) => 0 - (a.trainId > b.trainId ? 1 : -1));
+      console.log(this.train);
+    this.trainArrivalLF = this.train.sort((a, b) => 0 - (a.reachingTime > b.reachingTime ? 1 : -1));
       this.train = this.trainArrivalLF;
       console.log(this.train);
+  }
+  onSort(event: any) {
+    console.log(event.target.value);
+    if (event.target.value == 'DepartureEF') {
+      this.onDepartureEF();
+    }else if (event.target.value == 'DepartureLF') {
+      this.onDepartureLF();
+    } else if (event.target.value == 'ArrivalEF') {
+      this.onArrivalEF();
+    } else if (event.target.value == 'ArrivalLF') {
+      this.onArrivalLF();
     }
   }
   onBook() {
