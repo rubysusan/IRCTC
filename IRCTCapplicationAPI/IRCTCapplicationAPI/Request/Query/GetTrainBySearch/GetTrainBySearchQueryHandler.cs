@@ -18,7 +18,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetTrainBySearch
         {
             
             return await _context.Train.Where(x=>x.TrainStops.Select(x=>x.Station.StationId).Contains(request.FromStationId) &&
-           x.TrainStops.Select(x => x.Station.StationId).Contains(request.ToStationId) && x.Date.Date == request.Date   && x.TrainClasses.Select(x => x.Coach.CoachId).Contains(request.CoachId))
+           x.TrainStops.Select(x => x.Station.StationId).Contains(request.ToStationId) && x.Date.Date == request.Date && EF.Functions.DateDiffHour(DateTime.Now, x.TrainStops.Where(y => y.Station.StationId == request.FromStationId).Select(z => z.ReachingTime).SingleOrDefault())>2  && x.TrainClasses.Select(x => x.Coach.CoachId).Contains(request.CoachId))
                 .Select(x=>new ViewTrainBySearch
                 {
                     TrainId = x.TrainId,
