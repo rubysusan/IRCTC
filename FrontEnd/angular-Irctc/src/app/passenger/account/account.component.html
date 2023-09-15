@@ -1,16 +1,17 @@
 <h2>MY ACCOUNT</h2>
-<button (click)="viewProfile()">View Profile</button>
-<button (click)="editProfile()">Edit Profile</button>
-<button (click)="pastBookings()">View Past Bookings</button>
-<button (click)="futureBookings()">View Upcoming Bookings</button>
-<div  *ngIf="view">
+<button class="button" id=buttonSpace (click)="viewProfile()">View Profile</button>
+<button class="button" id=buttonSpace (click)="editProfile()">Edit Profile</button>
+<button class="button" id=buttonSpace (click)="pastBookings()">View Past Bookings</button>
+<button class="button" (click)="futureBookings()">View Upcoming Bookings</button>
+<br><br>
+<div class="background" *ngIf="view">
 <div *ngFor="let i of user">
     <p>Name: {{i.userName}}</p>
     <p>Password: {{i.password}}</p>
     <p>Email: {{i.email}}</p>
     <p>Identity Card Number:{{i.idCard}}</p>
     <p>User Type:{{i.userType}}</p>
-    <button (click)="onDone()">Done</button>
+    <button class="button" (click)="onDone()">Done</button>
 </div>
 </div>
 <div *ngIf="val" >
@@ -29,13 +30,14 @@
             <option value="Passenger">Passenger</option>
             <option value="TTE">TTE</option>
         </select><br><br>
-        <button (click)="onEdit()">Edit</button>
+        <button class="button" (click)="onEdit()">Edit</button>
+        <button class="button" (click)="onDone()">Done</button>
     </form>
 </div>
 <div *ngIf="past">
     <h3>PREVIOUS BOOKINGS</h3>
     <table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
-        <tr bgcolor="#A9A9A9" height="50px">
+        <tr bgcolor="#b8b8b8" height="50px">
             <th><b>BOOKING ID</b></th>
             <th><b>TRAIN </b></th>
             <th><b>CLASS</b></th>
@@ -57,13 +59,14 @@
             </tr>
             
     </table>
-    <button (click)="onDone()">Done</button>
+    <br><br>
+    <button class="button" (click)="onDone()">Done</button>
     </div>
 
 <div *ngIf="future">
     <h3>UPCOMING BOOKINGS</h3>
 <table  border="1px solid black" style="width:100%; margin:0;text-align: center;">
-    <tr bgcolor="#A9A9A9" height="50px">
+    <tr bgcolor="#b8b8b8" height="50px">
         <th><b>BOOKING ID</b></th>
         <th><b>TRAIN </b></th>
         <th><b>CLASS</b></th>
@@ -82,9 +85,10 @@
         <td>{{i.count}}</td>
         <td>{{i.total}}</td>
         <td>{{i.bookingStatus}}</td>
-        <td><button (click)="onCancel(i.bookingId)">Cancel</button></td>
+        <td><button class="button" (click)="onCancel(i.bookingId)">Cancel</button></td>
         </tr>
         
 </table>
-<button (click)="onDone()">Done</button>
+<br><br>
+<button class="button" (click)="onDone()">Done</button>
 </div>

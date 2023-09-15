@@ -30,9 +30,9 @@
     <option value="ACThirdTier">ACThirdTier</option>
     <option value="ACThreeEconomy">ACThreeEconomy</option>
 </select>
-
+<br><br>
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
-    <tr bgcolor="#A9A9A9" height="50px">
+    <tr bgcolor="#b8b8b8" height="50px">
         <th><b>TRAIN NUMBER</b></th>
         <th><b>TRAIN NAME</b></th>
         <th><b>FROM STATION</b></th>
@@ -49,7 +49,7 @@
         <td>{{i.date}}</td>
         <td>{{i.departureTime}}</td>
         <td>{{i.reachingTime}}</td>
-        <td><button (click)="onPassenger(i.trainId)">View Passengers</button></td>
+        <td><button class="button" (click)="onPassenger(i.trainId)">View Passengers</button></td>
     </tr>
 </table>
 

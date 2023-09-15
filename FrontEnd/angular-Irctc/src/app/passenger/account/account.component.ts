@@ -61,6 +61,7 @@ export class AccountComponent implements OnInit {
     this.view=false
     this.past=false
     this.future=false
+    this.val=false
   }
   val?:boolean
   edit:Array<IUpdateData>=[]
