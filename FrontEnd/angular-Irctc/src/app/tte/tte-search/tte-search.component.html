@@ -1,4 +1,5 @@
 <h2>View Trains</h2>
+<div>
 <form [formGroup]="fromSearch"(click)="onFromSearch()">
     <br>
   
@@ -26,18 +27,17 @@
 </form >
 <form [formGroup]="coachSearch" (click)="onCoachSearch()">
   <br>
-  <label>All Classes</label>
+  <label>Class:</label>
   <input type="text" formControlName="coach" [matAutocomplete]="autoCoach">
     <mat-autocomplete #autoCoach="matAutocomplete">
         <mat-option *ngFor="let option of coachData" [value]="option.coachName">
           {{option.coachName}}
         </mat-option>
       </mat-autocomplete>
-</form>
-<br>
-<form>
+<br><br>
     <label>Date:</label>
     <input type="date" formControlName="searchDate" (change)="onDate($event)">
+    <br><br>
+    <button class="button" (click)="onSearch()">Search</button>
 </form>
-<br>
-<button (click)="onSearch()">Search</button>
+</div>

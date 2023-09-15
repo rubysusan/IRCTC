@@ -16,7 +16,7 @@
 </table>
 
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
-    <tr bgcolor="#A9A9A9"  height="20px">
+    <tr bgcolor="#b8b8b8"  height="20px">
         <th>
             Name
         </th>
@@ -45,7 +45,7 @@
         </td>     
     </tr>
 </table>
-<button (click)="addPassenger()">Add Passenger</button>
+<button class="button" (click)="addPassenger()">Add Passenger</button>
 <form *ngIf="view" [formGroup]="passengerGroup">
     <label>Name:</label>
     <input type="text" id="passengerName" formControlName="passengerName"/><br><br>
@@ -69,8 +69,8 @@
     </select>
 
     
-    <input type="button" (click)="add()" value="Add"/>
+    <input type="button" class="button" (click)="add()" value="Add"/>
    
 </form><br><br>
 <h4>Total Amount:{{total}}</h4>
-<button (click)="onBook()">Book</button>
+<button class="button" (click)="onBook()">Book</button>
