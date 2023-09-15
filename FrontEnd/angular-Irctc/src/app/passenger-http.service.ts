@@ -8,6 +8,7 @@ import { IPassengerInsert } from './IPassengerInsert.Interface';
   providedIn: 'root'
 })
 export class PassengerHttpService {
+  
   private baseURL="https://localhost:7247/api/Passenger/"
 
   constructor(private http:HttpClient) { }
