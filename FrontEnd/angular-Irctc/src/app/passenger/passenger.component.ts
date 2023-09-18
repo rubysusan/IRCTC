@@ -14,4 +14,7 @@ export class PassengerComponent {
   onAccountClick() {
     this.router.navigate(['passenger/account']);
   }
+  onLoginClick(){
+    this.router.navigate(['login'])
+  }
 }
