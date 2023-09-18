@@ -4,7 +4,11 @@ import { Subscription } from 'rxjs';
 import { IPassengerTTE } from '../IPassengerTTE.Interface';
 import { PassengerDetailsService } from '../passenger-details.service';
 import { IPassengerStatus } from '../IPassengerStatus.Interface';
+import { Router } from '@angular/router';
 
+interface IPassengerId{
+  id:number
+}
 @Component({
   selector: 'app-tte-passenger-view',
   templateUrl: './tte-passenger-view.component.html',
@@ -12,7 +16,7 @@ import { IPassengerStatus } from '../IPassengerStatus.Interface';
 })
 export class TtePassengerViewComponent implements OnInit{
   view:boolean=true;
-  constructor(private passengerHttpService:PassengerHttpService,private passengerDetailsService:PassengerDetailsService){}
+  constructor(private router:Router ,private passengerHttpService:PassengerHttpService,private passengerDetailsService:PassengerDetailsService){}
   trainId:number=0;
   subs?:Subscription;
   sub?:Subscription;
@@ -29,32 +33,31 @@ export class TtePassengerViewComponent implements OnInit{
         console.log(this.passengerData);
     })
   })
-  this.sub=this.passengerDetailsService.status.subscribe((x:Array<IPassengerStatus>)=>{this.statusVal=x})
-}
+  }
+  idVal:IPassengerId={
+    id:0
+  }
 stat:string=''
 val:Array<IPassengerStatus>=[]
-onCheck(event:any,id:number)
+onCheck(event:any,passId:number)
 {
+  this.idVal={
+    id:passId
+  }
   if(event.currentTarget.checked)
   {
-    this.val=[{
-passengerId:id,
-status:'Arrived'
-    }]
-    this.stat='Arrived'
-    this.passengerDetailsService.setStatusValue(this.val)
+    this.passengerHttpService.updatePassenger(this.idVal).subscribe((data:boolean)=>console.log(data))
+    
     this.view=false
+    this.setVal()
   }
 }
-onStatusCheck()
+setVal()
 {
-  if(this.statusVal.find(x=>x.status=='Arrived'))
-  {
-    return false
-  }
-  else
-  {
-    return true
-  }
+  this.view=true
+}
+onHome()
+{
+  this.router.navigate(['tte'])
 }
 }

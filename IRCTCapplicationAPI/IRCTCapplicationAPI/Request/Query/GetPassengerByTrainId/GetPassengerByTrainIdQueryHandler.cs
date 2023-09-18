@@ -18,7 +18,7 @@ namespace IRCTCapplicationAPI.Request.Query.GetPassengerByTrainId
         public async Task<List<ViewPassenger>> Handle(GetPassengerByTrainIdQuery request, CancellationToken cancellationToken)
         { 
             return await _context.Passenger.Where(x=>x.Seat.TrainClass.TrainId==request.TrainId && x.Seat.SeatStatusId==(int)SeatStatusEnum.Confirmed
-            && x.Booking.BookingStatusId==(int)BookingStatusEnum.Confirmed).Select(x=>new ViewPassenger
+            && x.Booking.BookingStatusId==(int)BookingStatusEnum.Confirmed && x.HasArrived==false).Select(x=>new ViewPassenger
             {
                 PassengerId=x.PassengerId,
                 PassengerName=x.PassengerName,

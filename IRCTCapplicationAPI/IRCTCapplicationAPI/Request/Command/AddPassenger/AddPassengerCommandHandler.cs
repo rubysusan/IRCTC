@@ -15,7 +15,7 @@ namespace IRCTCapplicationAPI.Request.Command.AddPassenger
         }
         public async Task<bool> Handle(AddPassengerCommand command, CancellationToken cancellationToken)
         {
-            Passenger passenger = new Passenger(command.PassengerName, command.SeatId, command.BookingId);
+            Passenger passenger = new Passenger(command.PassengerName, command.SeatId, command.BookingId,false);
             _context.Passenger.Add(passenger);
             await _context.SaveChangesAsync();
             return true;

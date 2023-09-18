@@ -12,15 +12,11 @@ export class PassengerDetailsService {
   public passsengerData=new BehaviorSubject<Array<IPassenger>>([]);
   passenger=this.passsengerData.asObservable();
   
-  public passengerStatus=new BehaviorSubject<Array<IPassengerStatus>>([])
-  status=this.passengerStatus.asObservable();
+
   
     setValue(data:Array<IPassenger>)
     {
       this.passsengerData.next(data);
     }
-    setStatusValue(data:Array<IPassengerStatus>)
-    {
-      this.passengerStatus.next(data)
-    }
+    
 }

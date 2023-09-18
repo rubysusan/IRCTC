@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IPassengerTTE } from './IPassengerTTE.Interface';
 import { IPassengerInsert } from './IPassengerInsert.Interface';
-
+interface IPassengerId{
+  id:number
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +25,10 @@ export class PassengerHttpService {
     params=params.append('TrainId',trainId)
     return this.http.get<Array<IPassengerTTE>>(this.baseURL+"get-for-tte",{params})
 
+  }
+  public updatePassenger(id:IPassengerId):Observable<boolean>
+  {
+    return this.http.put<boolean>(this.baseURL+"update-passenger",id)
   }
   public train=new BehaviorSubject<number>(0);
   trainId=this.train.asObservable();
