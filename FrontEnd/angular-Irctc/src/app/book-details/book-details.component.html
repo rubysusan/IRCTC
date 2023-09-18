@@ -14,7 +14,7 @@
     <td>Coach Name:{{i.coachName}}</td>
 </tr>
 </table>
-
+<br><br>
 <table border="1px solid black" style="width:100%; margin:0;text-align: center;">
     <tr bgcolor="#b8b8b8"  height="20px">
         <th>
@@ -45,7 +45,9 @@
         </td>     
     </tr>
 </table>
+<br><br>
 <button class="button" (click)="addPassenger()">Add Passenger</button>
+<br><br>
 <form *ngIf="view" [formGroup]="passengerGroup">
     <label>Name:</label>
     <input type="text" id="passengerName" formControlName="passengerName"/><br><br>
@@ -63,14 +65,17 @@
         <option value="MiddleSeat">Middle Seat</option>
         <option value="AisleSeat">Aisle Seat</option>
     </select><br><br>
-    <label>Select seat from below:</label>
+    <label>Select seat:</label>
     <select formControlName="seatName" *ngFor="let i of seats" id="seatName" (change)="getSelectedSeatValue($event)">
         <option value="{{i.seatName}}">{{i.seatName}}</option>
     </select>
-
+    <br><br>
     
     <input type="button" class="button" (click)="add()" value="Add"/>
    
 </form><br><br>
+<div>
 <h4>Total Amount:{{total}}</h4>
+</div>
+<br><br>
 <button class="button" (click)="onBook()">Book</button>

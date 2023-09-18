@@ -1,7 +1,8 @@
 <h2>MY ACCOUNT</h2>
 <button class="button" (click)="viewProfile()">View Profile</button>
 <button class="button" (click)="editProfile()">Edit Profile</button>
-<div  *ngIf="view">
+<br><br>
+<div  class="background" *ngIf="view">
 <div *ngFor="let i of user">
     <p>Name: {{i.userName}}</p>
     <p>Password: {{i.password}}</p>
@@ -10,7 +11,7 @@
     <p>User Type:{{i.userType}}</p>
     <button class="button" (click)="onDone()">Done</button>
 </div>
-</div>
+</div><br><br>
 <div *ngIf="val" >
     <form [formGroup]="editGroup">
         <label>Name:</label>
@@ -28,6 +29,7 @@
             <option value="TTE">TTE</option>
         </select><br><br>
         <button class="button" (click)="onEdit()">Edit</button>
+        <button class="button" (click)="onDone()">Done</button>
     </form>
 </div>
 <button class="button" (click)="onHome()">Home</button>

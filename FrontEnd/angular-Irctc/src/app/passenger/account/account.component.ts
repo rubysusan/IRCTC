@@ -122,4 +122,7 @@ export class AccountComponent implements OnInit {
       })
     alert("Cancelled Successfully")
   }
+  onHome(){
+    this.router.navigate(['passenger'])
+  }
 }

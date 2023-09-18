@@ -47,6 +47,7 @@ export class TteAccountComponent {
   onDone()
   {
     this.view=false
+    this.val=false
   }
   val?:boolean
   edit:Array<IUpdateData>=[]
