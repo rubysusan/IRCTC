@@ -1,6 +1,7 @@
 ﻿using IRCTCapplicationAPI.DTO;
 using IRCTCapplicationAPI.Request.Command.AddBooking;
 using IRCTCapplicationAPI.Request.Command.AddPassenger;
+using IRCTCapplicationAPI.Request.Command.UpdatePassengerStatus;
 using IRCTCapplicationAPI.Request.Query.GetPassengerByTrainId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,11 @@ namespace IRCTCapplicationAPI.Controllers
 
         {
             return Ok(await _mediator.Send(query));
+        }
+        [HttpPut("update-passenger")]
+        public async Task<ActionResult<bool>> UpdatePassenger([FromBody]UpdatePassengerStatusCommand command)
+        {
+            return Ok(await _mediator.Send(command));
         }
     }
 }

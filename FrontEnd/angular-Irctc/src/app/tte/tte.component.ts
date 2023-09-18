@@ -16,4 +16,8 @@ export class TteComponent {
   onMyAccount(){
     this.router.navigate(['tte/account'])
   }
+  onLogin()
+  {
+    this.router.navigate(['login'])
+  }
 }

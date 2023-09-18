@@ -75,5 +75,9 @@ export class TteAccountComponent {
           this.val=false
     }
   }
+  onHome()
+  {
+    this.router.navigate(['tte'])
+  }
 
 }
