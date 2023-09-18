@@ -163,38 +163,51 @@ export class BookDetailsComponent implements OnInit {
   addPassenger() {
     this.view = true;
   }
+  checkVal:boolean=true;
   add() {
     this.view = false;
     if (this.passengerGroup.valid) {
-      const val = this.passengerGroup.value;
-      console.log(val);
-      const temp: IPassenger = {
-        bookId: -1,
-        name: val.passengerName,
-        age: val.passengerAge,
-        gender: val.passengeGender,
-        preference: this.typeValue,
-        seatName: this.seatValue,
-        seatId: this.seatValueId,
-      };
-      console.log(temp);
-      this.newPassenger.push(<IPassenger>{
-        bookId: temp.bookId,
-        name: temp.name,
-        age: temp.age,
-        gender: temp.gender,
-        preference: temp.preference,
-        seatName: temp.seatName,
-        seatId: temp.seatId,
-      });
-      console.log(this.newPassenger);
+      this.newPassenger.forEach((x)=>
+                                {
+                                  if(x.seatId==this.seatValueId)
+                                    this.checkVal=false
+                                })
+      if(this.checkVal){
+        const val = this.passengerGroup.value;
+        console.log(val);
+        const temp: IPassenger = {
+          bookId: -1,
+          name: val.passengerName,
+          age: val.passengerAge,
+          gender: val.passengeGender,
+          preference: this.typeValue,
+          seatName: this.seatValue,
+          seatId: this.seatValueId,
+        };
+        console.log(temp);
+        this.newPassenger.push(<IPassenger>{
+          bookId: temp.bookId,
+          name: temp.name,
+          age: temp.age,
+          gender: temp.gender,
+          preference: temp.preference,
+          seatName: temp.seatName,
+          seatId: temp.seatId,
+        });
+        console.log(this.newPassenger);
+        
+        this.newPassengerList = this.newPassenger.filter((x) => x.bookId === -1);
+        console.log(this.newPassengerList);
+        this.passengerCount = this.newPassengerList.length;
+      }
+      else{
+        alert("Cannot select same seat!")
+      }
+      this.costVal = Number(this.cost.map((x) => x.charge));
+      this.total=this.costVal * this.passengerCount
+      }
+     
       
-      this.newPassengerList = this.newPassenger.filter((x) => x.bookId === -1);
-      console.log(this.newPassengerList);
-      this.passengerCount = this.newPassengerList.length;
-    }
-    this.costVal = Number(this.cost.map((x) => x.charge));
-    this.total=this.costVal * this.passengerCount
   }
   costVal: number = 0;
   passenger:IPassengerInsert={
